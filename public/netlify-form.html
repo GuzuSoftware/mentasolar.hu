@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="hu">
+  <head><meta charset="utf-8" /><title>Netlify Forms</title></head>
+  <body>
+    <!-- A Netlify ezt a statikus mintát a buildkor felismeri.
+         A látogatók a tényleges űrlapot a főoldalon és a kapcsolat oldalon látják. -->
+    <form name="kapcsolat" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="kapcsolat" />
+      <p hidden><label>Ne töltse ki: <input name="bot-field" /></label></p>
+      <input name="nev" />
+      <input name="email" type="email" />
+      <input name="telefon" />
+      <select name="erdeklodes"><option>Napelem</option></select>
+      <textarea name="uzenet"></textarea>
+      <button type="submit">Küldés</button>
+    </form>
+  </body>
+</html>
