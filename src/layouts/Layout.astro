@@ -1,0 +1,32 @@
+---
+import site from '../content/site.json'
+interface Props { title?: string; description?: string }
+const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = 'Professzionális napelem, klíma és elektromosautó-töltő megoldások.' } = Astro.props
+---
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href="/images/favicon.png" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/meanmenu.css" />
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
+    <link rel="stylesheet" href="/css/nice-select.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="header-top d-none d-lg-block"><div class="container"><div class="header-top-wrp"><ul class="info"><li><i class="fa-solid fa-paper-plane"></i> <a href={`mailto:${site.email}`}>{site.email}</a></li><li class="bor-left ms-4 ps-4"><i class="fa-solid fa-location-dot"></i> {site.address}</li></ul><ul class="link-info"><li class="bor-right"><a href={site.facebook} aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li><li><a href={site.instagram} aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li></ul></div></div></div>
+    <header class="header-area"><div class="container"><div class="header__main"><a href="/" class="logo"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a><nav class="main-menu"><ul><li><a href="/">Kezdőlap</a></li><li><a href="/napelem">Napelem</a></li><li><a href="/auto-tolto">Autótöltő</a></li><li><a href="/klima">Klíma</a></li><li><a href="/gyik">GYIK</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav><a href="/kapcsolat" class="btn-two d-none d-lg-inline-block">Árajánlat <i class="fa-solid fa-arrow-right"></i></a></div></div></header>
+    <main><slot /></main>
+    <footer class="footer-area footer-one secondary-bg"><div class="container"><div class="footer__wrp pt-100 pb-100"><div class="row g-4"><div class="col-lg-5"><a href="/" class="footer-logo"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a><p class="text-white mt-25">MentaSolar – Használja fel a Nap erejét!</p></div><div class="col-lg-3"><h4 class="text-white">Szolgáltatások</h4><ul><li><a href="/napelem">Napelem</a></li><li><a href="/auto-tolto">Autótöltő</a></li><li><a href="/klima">Klíma</a></li></ul></div><div class="col-lg-4"><h4 class="text-white">Kapcsolat</h4><ul><li>{site.address}</li><li><a href={`tel:${site.phone.replaceAll(' ', '')}`}>{site.phone}</a></li><li><a href={`mailto:${site.email}`}>{site.email}</a></li></ul></div></div></div></div><div class="footer__copy text-center py-3">© {new Date().getFullYear()} MentaSolar. Minden jog fenntartva.</div></footer>
+    <script is:inline src="/js/jquery-3.7.1.min.js"></script><script is:inline src="/js/bootstrap.min.js"></script><script is:inline src="/js/jquery.meanmenu.js"></script><script is:inline src="/js/swiper-bundle.min.js"></script><script is:inline src="/js/jquery.counterup.min.js"></script><script is:inline src="/js/wow.min.js"></script><script is:inline src="/js/magnific-popup.min.js"></script><script is:inline src="/js/nice-select.min.js"></script><script is:inline src="/js/isotope.pkgd.min.js"></script><script is:inline src="/js/jquery.waypoints.js"></script><script is:inline src="/js/script.js"></script>
+  </body>
+</html>

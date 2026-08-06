@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro'
+const faqs = [['Milyen rendszert érdemes választani?', 'A fogyasztás, a helyszín és a célok felmérése után személyre szabott javaslatot készítünk.'], ['Vállalnak teljes körű kivitelezést?', 'Igen, a tervezéstől az eszközök kiválasztásán át a telepítésig segítünk.'], ['Kérhetek helyszíni felmérést?', 'Igen, vegye fel velünk a kapcsolatot és egyeztetünk időpontot.']]
+---
+<Layout title="GYIK | MentaSolar"><section class="page-banner-area"><div class="container"><div class="page-banner__content"><h1>Gyakori kérdések</h1><a href="/">Kezdőlap</a> / GYIK</div></div></section><section class="faq-area pt-120 pb-120"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><img class="radius10 w-100" src="/images/faq/faq-image.jpg" alt="Gyakori kérdések" /></div><div class="col-lg-6"><div class="accordion" id="faq">{faqs.map(([question, answer], i) => <details class="border p-3 mb-3" open={i === 0}><summary><strong>{question}</strong></summary><p class="mt-3 mb-0">{answer}</p></details>)}</div></div></div></div></section></Layout>
