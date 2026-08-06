@@ -2198,6 +2198,12 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   color: var(--paragraph);
   margin-top: 20px;
 }
+.banner-two__content.hero-copy {
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(31, 31, 37, 0.12);
+}
 
 .page-banner {
   background-image: linear-gradient(180deg, #1f1f25 0%, rgba(58, 58, 58, 0.76) 100%), url('../images/banner/page-banner.jpg');
@@ -3595,6 +3601,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .footer-area {
   position: relative;
   padding-top: 140px;
+  background-color: var(--secondary-color);
 }
 .footer__bg {
   position: absolute;
@@ -3846,4 +3853,3 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 }
 
 /* ... (rest of your style.css code) ... */
-

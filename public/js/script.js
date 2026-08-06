@@ -79,6 +79,13 @@ CSS TABLE OF CONTENTS
 	// Service three slider area end here ***
 
 	// Testimonial slider area start here ***
+	var testimonialSlider = document.querySelector(".testimonial__slider");
+	if (testimonialSlider && !testimonialSlider.parentElement.querySelector(".testimonial__arry-prev")) {
+		var testimonialControls = document.createElement("div");
+		testimonialControls.className = "arry-btn mt-40";
+		testimonialControls.innerHTML = '<button class="arry-prev testimonial__arry-prev" aria-label="Előző értékelés"><i class="fa-solid fa-arrow-left"></i></button><button class="arry-next testimonial__arry-next active ml-10" aria-label="Következő értékelés"><i class="fa-solid fa-arrow-right"></i></button>';
+		testimonialSlider.parentElement.appendChild(testimonialControls);
+	}
 	var swiper = new Swiper(".testimonial__slider", {
 		loop: "true",
 		spaceBetween: 30,
