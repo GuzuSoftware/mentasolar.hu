@@ -3641,6 +3641,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   border-radius: 10px;
   background-color: var(--primary-color);
 }
+.contact__content .icon i { color: var(--white); }
 @media (max-width: 575px) {
   .contact__content {
     border-right: none;
