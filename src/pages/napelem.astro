@@ -1,4 +1,29 @@
 ---
-import ProductPage from '../components/ProductPage.astro'
+import Layout from '../layouts/Layout.astro'
+import SolarPageBanner from '../components/SolarPageBanner.astro'
+import solar from '../content/solar.json'
 ---
-<ProductPage title="Napelem rendszerek" image="/images/home/napelem_csomag_img.png" lead="Tervezéstől a kivitelezésig teljes körű napelemes megoldásokat kínálunk lakossági és vállalati igényekre." cards={[{title:'START rendszer', text:'Megbízható belépő rendszer, az Ön fogyasztásához méretezve.', subject:'START rendszer'}, {title:'BOOST rendszer', text:'Nagyobb teljesítményű, bővíthető napelemes megoldás.', subject:'BOOST rendszer'}, {image:'/images/csomag_napelem_3_tiny.jpg', title:'ELIT rendszer', text:'Prémium rendszer kiemelkedő teljesítménnyel.', subject:'ELIT rendszer'}]} />
+
+<Layout title={solar.seoTitle} description={solar.seoDescription}>
+  <SolarPageBanner title="Napelem rendszerek" breadcrumb="Napelem" />
+
+  <section class="solar-hub pt-120 pb-120">
+    <div class="container">
+      <div class="solar-hub__intro">
+        <span class="solar-finder__eyebrow">Napelemes megoldások otthonra</span>
+        <h2>Találjuk meg az Önnek való rendszert</h2>
+        <p>Napelemes rendszer tervezését és kivitelezését az első egyeztetéstől az üzembe helyezésig kísérjük. Válassza ki, hogy új rendszert tervez, vagy a meglévőjét fejlesztené tovább.</p>
+      </div>
+      <div class="solar-hub__choices">
+        <a class="solar-hub-card" href="/napelem/uj-rendszer">
+          <span class="solar-hub-card__graphic solar-hub-card__graphic--new" aria-hidden="true"><i class="fa-solid fa-house"></i><i class="fa-solid fa-solar-panel"></i><i class="fa-solid fa-sun"></i></span>
+          <span class="solar-hub-card__body"><strong>Új rendszert szeretnék</strong><small>Az igényeihez, a tetőhöz és a fogyasztáshoz tervezett, teljes napelemes rendszer.</small><b>Ajánlatok megtekintése <i class="fa-solid fa-arrow-right" /></b></span>
+        </a>
+        <a class="solar-hub-card" href="/napelem/rendszer-bovites">
+          <span class="solar-hub-card__graphic solar-hub-card__graphic--upgrade" aria-hidden="true"><i class="fa-solid fa-solar-panel"></i><i class="fa-solid fa-battery-three-quarters"></i><i class="fa-solid fa-plus"></i></span>
+          <span class="solar-hub-card__body"><strong>Meglévő rendszeremet fejleszteném</strong><small>Invertercsere, energiatároló vagy áramszüneti ellátás a jelenlegi rendszere mellé.</small><b>Bővítési lehetőségek <i class="fa-solid fa-arrow-right" /></b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

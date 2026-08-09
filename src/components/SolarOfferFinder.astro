@@ -1,0 +1,135 @@
+---
+import RoofSurfaceIllustration from './RoofSurfaceIllustration.astro'
+
+interface Props {
+  kind: 'new-system' | 'system-extension'
+  defaultSystemType?: 'grid' | 'off-grid'
+  defaultStorageType?: 'without-storage' | 'with-storage'
+}
+
+const { kind } = Astro.props
+const isNewSystem = kind === 'new-system'
+const roofChoices = [
+  ['tile', 'Cseréptető'],
+  ['trapezoid', 'Trapézlemez'],
+  ['flat', 'Lapostető'],
+  ['shingle', 'Zsindely'],
+  ['metal-tile', 'Cserepeslemez'],
+  ['standing-seam', 'Korcolt bádog'],
+  ['ground', 'Talaj'],
+  ['unknown', 'Nem tudom'],
+] as const
+---
+
+<section class="solar-finder" data-solar-offer-finder data-kind={kind}>
+  <div class="solar-finder__chips" data-chips aria-label="Kiválasztott szűrők" hidden />
+
+  {isNewSystem ? (
+    <>
+      <div class="solar-finder__step" data-step="system">
+        <div class="solar-finder__heading"><span class="solar-finder__eyebrow">1. lépés</span><h2>Hogyan működjön a rendszere?</h2><p>Válassza ki azt a megoldást, amelyik legjobban illeszkedik az ingatlan energiaellátásához.</p></div>
+        <fieldset class="solar-choice-grid solar-choice-grid--photo"><legend class="visually-hidden">Rendszer típusa</legend><label class="solar-choice-card"><input type="radio" name="systemType" value="grid" /><img src="/images/solar/halozati-rendszer.png" alt="Napelemekkel felszerelt, hálózatra kapcsolt családi ház" loading="lazy" decoding="async" /><span class="solar-choice-card__body"><strong>Hálózati rendszer</strong><small>A villamos hálózattal együttműködő megoldás.</small><em>on-grid</em></span></label><label class="solar-choice-card"><input type="radio" name="systemType" value="off-grid" /><img src="/images/solar/szigetuzemu-rendszer.png" alt="Önálló energiaellátású, napelemekkel felszerelt ház" loading="lazy" decoding="async" /><span class="solar-choice-card__body"><strong>Szigetüzemű rendszer</strong><small>Önálló energiaellátás hálózati kapcsolat nélkül.</small><em>off-grid</em></span></label></fieldset>
+      </div>
+
+      <div class="solar-finder__step" data-step="storage" hidden>
+        <div class="solar-finder__heading"><span class="solar-finder__eyebrow">2. lépés</span><h2>Szeretne energiatárolót?</h2><p>Akkumulátorral a nappal megtermelt energia később is felhasználható.</p></div>
+        <fieldset class="solar-choice-grid"><legend class="visually-hidden">Energiatárolás</legend><label class="solar-choice-card solar-choice-card--graphic"><input type="radio" name="storageType" value="without-storage" /><span class="solar-choice-card__graphic solar-choice-card__graphic--sun"><i class="fa-solid fa-sun" /></span><span class="solar-choice-card__body"><strong>Tároló nélkül</strong><small>A megtermelt energiát azonnal használja fel.</small></span></label><label class="solar-choice-card solar-choice-card--graphic"><input type="radio" name="storageType" value="with-storage" /><span class="solar-choice-card__graphic solar-choice-card__graphic--battery"><i class="fa-solid fa-battery-full" /></span><span class="solar-choice-card__body"><strong>Akkumulátorral</strong><small>A felesleges energia később is felhasználható.</small></span></label></fieldset>
+      </div>
+
+      <div class="solar-finder__step" data-step="roof" hidden>
+        <div class="solar-finder__heading"><span class="solar-finder__eyebrow">3. lépés</span><h2>Milyen felületre kerülne napelem?</h2><p>A felület befolyásolja a szükséges tartószerkezetet és az ajánlatot.</p></div>
+        <fieldset class="roof-choice-grid"><legend class="visually-hidden">Felület típusa</legend>{roofChoices.map(([value, label]) => <label class="roof-choice-card"><input type="radio" name="roofType" value={value} /><RoofSurfaceIllustration type={value} /><span>{label}</span></label>)}</fieldset>
+      </div>
+    </>
+  ) : (
+    <div class="solar-finder__step" data-step="extension">
+      <div class="solar-finder__heading"><span class="solar-finder__eyebrow">Válasszon megoldást</span><h2>Meglévő rendszere bővítése</h2><p>Meglévő napelemeihez is választhat korszerű invertert, energiatárolót és tartalékellátást.</p></div>
+      <fieldset class="solar-choice-grid"><legend class="visually-hidden">Bővítési kategória</legend><label class="solar-choice-card solar-choice-card--graphic"><input type="radio" name="extensionType" value="inverter-storage" /><span class="solar-choice-card__graphic solar-choice-card__graphic--battery"><span class="solar-extension__pair"><i class="fa-solid fa-battery-full" /><i class="fa-solid fa-house" /></span></span><span class="solar-choice-card__body"><strong>Energiatárolós bővítés</strong><small>Új hibrid inverter és akkumulátor.</small></span></label><label class="solar-choice-card solar-choice-card--graphic"><input type="radio" name="extensionType" value="full-backup" /><span class="solar-choice-card__graphic solar-choice-card__graphic--backup"><span class="solar-extension__pair"><i class="fa-solid fa-bolt" /><i class="fa-solid fa-house" /></span></span><span class="solar-choice-card__body"><strong>Energiatárolás, áramszüneti ellátással</strong><small>Inverter, akkumulátor és tartalékellátás áramszünet esetén.</small></span></label></fieldset>
+    </div>
+  )}
+
+  <div class="solar-finder__results" data-results hidden aria-live="polite" aria-busy="false"><div class="solar-finder__selection" data-selection /><div class="solar-finder__loading" data-loading hidden>Ajánlatok betöltése…</div><div class="solar-offer-grid" data-offer-grid /></div>
+</section>
+
+<script>
+  type Offer = { id: string; marketingName: string; image: string; summary: string; inverterBrand: string; batteryBrand?: string; panelBrand: string; systemPower: string; batteryCapacity?: string; roofType: string; priceText?: string; highlights?: string[]; example?: boolean }
+  const roofLabels: Record<string, string> = { tile: 'Cseréptető', trapezoid: 'Trapézlemez', flat: 'Lapostető', shingle: 'Zsindely', 'metal-tile': 'Cserepeslemez', 'standing-seam': 'Korcolt bádog', ground: 'Talajra telepített', unknown: 'Felület egyeztetés alatt' }
+  const systemLabels: Record<string, string> = { grid: 'Hálózati rendszer', 'off-grid': 'Szigetüzemű rendszer' }
+  const storageLabels: Record<string, string> = { 'without-storage': 'Tároló nélkül', 'with-storage': 'Akkumulátorral' }
+  const extensionLabels: Record<string, string> = { 'inverter-storage': 'Energiatárolós bővítés', 'full-backup': 'Energiatárolás, áramszüneti ellátással' }
+  const escapeHtml = (value: string) => value.replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;' })[character] ?? character)
+
+  document.querySelectorAll<HTMLElement>('[data-solar-offer-finder]').forEach((root) => {
+    const kind = root.dataset.kind
+    const results = root.querySelector<HTMLElement>('[data-results]')!
+    const grid = root.querySelector<HTMLElement>('[data-offer-grid]')!
+    const loading = root.querySelector<HTMLElement>('[data-loading]')!
+    const selection = root.querySelector<HTMLElement>('[data-selection]')!
+    const chips = root.querySelector<HTMLElement>('[data-chips]')!
+    const steps = { system: root.querySelector<HTMLElement>('[data-step="system"]'), storage: root.querySelector<HTMLElement>('[data-step="storage"]'), roof: root.querySelector<HTMLElement>('[data-step="roof"]'), extension: root.querySelector<HTMLElement>('[data-step="extension"]') }
+    const selectedValue = (name: string) => root.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)?.value
+    const showStep = (step: keyof typeof steps) => { Object.values(steps).forEach((item) => { if (item) item.hidden = item !== steps[step] }); results.hidden = true; chips.hidden = step === 'system' || step === 'extension' }
+    const hideSteps = () => Object.values(steps).forEach((item) => { if (item) item.hidden = true })
+    const clearFrom = (step: keyof typeof steps) => {
+      const names = step === 'system' ? ['systemType', 'storageType', 'roofType'] : step === 'storage' ? ['storageType', 'roofType'] : step === 'roof' ? ['roofType'] : ['extensionType']
+      names.forEach((name) => root.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`).forEach((input) => { input.checked = false }))
+    }
+    const animateActiveStep = () => {
+      const activeStep = Object.values(steps).find((item) => item && !item.hidden)
+      activeStep?.classList.add('is-selecting')
+      return activeStep
+    }
+    const advanceTo = (step: keyof typeof steps) => {
+      const activeStep = animateActiveStep()
+      window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); showStep(step) }, 180)
+    }
+
+    const renderChips = () => {
+      const items: Array<[string, string, string]> = []
+      const systemType = selectedValue('systemType')
+      const storageType = selectedValue('storageType')
+      const roofType = selectedValue('roofType')
+      if (systemType) items.push(['system', systemLabels[systemType], 'Rendszer típusa'])
+      if (storageType && systemType !== 'off-grid') items.push(['storage', storageLabels[storageType], 'Energiatárolás'])
+      if (roofType) items.push(['roof', roofLabels[roofType], 'Felület'])
+      chips.innerHTML = items.map(([step, value, label]) => `<button class="solar-finder__chip" type="button" data-back="${step}" aria-label="${label}: ${value}. Választás módosítása."><small>${label}</small><span>${value}</span><i class="fa-solid fa-pen" aria-hidden="true"></i></button>`).join('')
+      chips.hidden = items.length === 0
+      chips.querySelectorAll<HTMLButtonElement>('[data-back]').forEach((button) => button.addEventListener('click', () => { const step = button.dataset.back as keyof typeof steps; clearFrom(step); renderChips(); showStep(step) }))
+    }
+
+    const renderOffers = (offers: Offer[]) => {
+      if (!offers.length) { grid.innerHTML = '<div class="solar-offer-grid__empty"><strong>Ebben a kategóriában jelenleg nincs közzétett ajánlat.</strong><p>Kérjen egyedi felmérést, és személyre szabott megoldást készítünk.</p><a class="btn-two" href="/kapcsolat">Egyedi ajánlatot kérek</a></div>'; return }
+      grid.innerHTML = offers.map((offer) => {
+        const details = [['Inverter', offer.inverterBrand], ['Napelem panel', offer.panelBrand], ['Teljesítmény', offer.systemPower], ['Akkumulátor', offer.batteryBrand], ['Tároló kapacitása', offer.batteryCapacity]].filter(([, value]) => value)
+        const highlights = offer.highlights?.filter(Boolean).map((item) => `<li><i class="fa-solid fa-check"></i>${escapeHtml(item)}</li>`).join('') ?? ''
+        const contactUrl = `/kapcsolat?ajanlat=${encodeURIComponent(offer.marketingName)}&ajanlatId=${encodeURIComponent(offer.id)}`
+        return `<article class="solar-offer-card">${offer.example ? '<span class="solar-offer-card__badge">Példa tartalom</span>' : ''}<img src="${escapeHtml(offer.image)}" alt="${escapeHtml(offer.marketingName)}" loading="lazy" decoding="async"><div class="solar-offer-card__body"><h3>${escapeHtml(offer.marketingName)}</h3><p>${escapeHtml(offer.summary)}</p>${offer.priceText ? `<p class="solar-offer-card__price">${escapeHtml(offer.priceText)}</p>` : ''}<dl>${details.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value as string)}</dd></div>`).join('')}</dl>${highlights ? `<ul>${highlights}</ul>` : ''}<a class="btn-three" href="${contactUrl}">Érdekel <i class="fa-solid fa-arrow-right ml-10"></i></a></div></article>`
+      }).join('')
+    }
+
+    const loadOffers = async () => {
+      const parameters = new URLSearchParams({ offerType: kind ?? '' })
+      let selectionText = ''
+      if (kind === 'new-system') {
+        const systemType = selectedValue('systemType'); const storageType = selectedValue('storageType'); const roofType = selectedValue('roofType')
+        if (!systemType || !storageType || !roofType) return
+        parameters.set('systemType', systemType); parameters.set('storageType', storageType); parameters.set('roofType', roofType)
+        selectionText = systemType === 'off-grid'
+          ? `${systemLabels[systemType]} • ${roofLabels[roofType]}`
+          : `${systemLabels[systemType]} • ${storageLabels[storageType]} • ${roofLabels[roofType]}`
+      } else {
+        const extensionType = selectedValue('extensionType'); if (!extensionType) return
+        parameters.set('extensionType', extensionType); selectionText = extensionLabels[extensionType]
+      }
+      hideSteps(); results.hidden = false; results.setAttribute('aria-busy', 'true'); loading.hidden = false; selection.textContent = selectionText; grid.replaceChildren()
+      try { const response = await fetch(`/api/solar-offers.json?${parameters.toString()}`); if (!response.ok) throw new Error(); renderOffers((await response.json() as { offers: Offer[] }).offers) }
+      catch { grid.innerHTML = '<div class="solar-offer-grid__empty"><strong>Az ajánlatok most nem tölthetők be.</strong><p>Kérjük, próbálja meg később, vagy kérjen egyedi ajánlatot.</p><a class="btn-two" href="/kapcsolat">Kapcsolatfelvétel</a></div>' }
+      finally { results.setAttribute('aria-busy', 'false'); loading.hidden = true }
+    }
+
+    root.querySelectorAll<HTMLInputElement>('input[name="systemType"]').forEach((input) => input.addEventListener('change', () => { if (input.value === 'off-grid' && input.checked) root.querySelector<HTMLInputElement>('input[name="storageType"][value="with-storage"]')!.checked = true; renderChips(); advanceTo(input.value === 'off-grid' ? 'roof' : 'storage') }))
+    root.querySelectorAll<HTMLInputElement>('input[name="storageType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); advanceTo('roof') }))
+    root.querySelectorAll<HTMLInputElement>('input[name="roofType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); const activeStep = animateActiveStep(); window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); void loadOffers() }, 180) }))
+    root.querySelectorAll<HTMLInputElement>('input[name="extensionType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); const activeStep = animateActiveStep(); window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); void loadOffers() }, 180) }))
+  })
+</script>

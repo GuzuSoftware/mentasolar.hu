@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string
+  breadcrumb: string
+}
+
+const { title, breadcrumb } = Astro.props
+---
+
+<section
+  class="page-banner bg-image pt-120 pb-120"
+  style="background-image: url('/images/banner/napelemes_hero.png'); background-size: cover; background-position: center;"
+>
+  <div class="overlay" />
+  <div class="container">
+    <h1 class="text-white solar-page-banner__title">{title}</h1>
+    <div class="breadcrumb-list">
+      <a href="/" class="text-white">Kezdőlap</a>
+      <span class="text-white"><i class="fa-regular fa-angle-right mx-2" />{breadcrumb}</span>
+    </div>
+  </div>
+</section>

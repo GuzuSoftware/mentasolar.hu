@@ -1,0 +1,18 @@
+{
+  "marketingName": "Minta Otthon Prémium",
+  "published": true,
+  "example": true,
+  "offerType": "new-system",
+  "systemType": "grid",
+  "storageType": "without-storage",
+  "roofType": "any",
+  "extensionType": "inverter-storage",
+  "image": "/images/solar/halozati-rendszer.png",
+  "summary": "Nagyobb fogyasztású otthonokhoz összeállított hálózati mintaajánlat, minőségi komponensekkel.",
+  "inverterBrand": "Fronius",
+  "panelBrand": "REC",
+  "systemPower": "8 kWp",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Nagyobb teljesítmény", "Bővíthető kialakítás"],
+  "order": 20
+}

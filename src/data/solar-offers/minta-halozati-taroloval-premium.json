@@ -1,0 +1,20 @@
+{
+  "marketingName": "Minta Energiatartalék Prémium",
+  "published": true,
+  "example": true,
+  "offerType": "new-system",
+  "systemType": "grid",
+  "storageType": "with-storage",
+  "roofType": "any",
+  "extensionType": "inverter-storage",
+  "image": "/images/solar/szigetuzemu-rendszer.png",
+  "summary": "Nagyobb energiatárolóval összeállított, prémium hálózati rendszer mintaajánlata.",
+  "inverterBrand": "Fronius",
+  "batteryBrand": "BYD Battery-Box",
+  "panelBrand": "REC",
+  "systemPower": "9 kWp",
+  "batteryCapacity": "15 kWh",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Nagy kapacitású tárolás", "Jövőbeni bővítéshez előkészítve"],
+  "order": 20
+}

@@ -1,0 +1,20 @@
+{
+  "marketingName": "Minta Energiatárolós bővítés",
+  "published": true,
+  "example": true,
+  "offerType": "system-extension",
+  "systemType": "grid",
+  "storageType": "with-storage",
+  "roofType": "any",
+  "extensionType": "inverter-storage",
+  "image": "/images/solar/szigetuzemu-rendszer.png",
+  "summary": "Meglévő napelemes rendszer korszerűsítésének mintaajánlata hibrid inverterrel és energiatárolóval.",
+  "inverterBrand": "Huawei",
+  "batteryBrand": "Huawei LUNA",
+  "panelBrand": "Meglévő rendszerhez igazítva",
+  "systemPower": "Meglévő rendszer felmérése után",
+  "batteryCapacity": "10 kWh",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Meglévő rendszerhez illesztve", "Helyszíni műszaki felméréssel"],
+  "order": 10
+}

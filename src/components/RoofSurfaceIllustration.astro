@@ -1,0 +1,18 @@
+---
+interface Props { type: 'tile' | 'trapezoid' | 'flat' | 'shingle' | 'metal-tile' | 'standing-seam' | 'ground' | 'unknown' }
+const { type } = Astro.props
+const images = {
+  tile: { src: '/images/solar/roofs/cserepteto.webp', alt: 'Közelről látható cseréptető részlet' },
+  trapezoid: { src: '/images/solar/roofs/trapezlemez.webp', alt: 'Közelről látható trapézlemez tető részlet' },
+  flat: { src: '/images/solar/roofs/laposteto.webp', alt: 'Attikafalas lapostető részlet' },
+  shingle: { src: '/images/solar/roofs/zsindely.webp', alt: 'Közelről látható zsindelyes tető részlet' },
+  'metal-tile': { src: '/images/solar/roofs/cserepeslemez.webp', alt: 'Közelről látható cserepeslemez tető részlet' },
+  'standing-seam': { src: '/images/solar/roofs/korcolt-badog.webp', alt: 'Közelről látható korcolt bádogtető részlet' },
+  ground: { src: '/images/solar/roofs/talaj.webp', alt: 'Füves udvarban telepített földi napelemtartó szerkezet' },
+  unknown: { src: '/images/solar/roofs/nem-tudom.webp', alt: 'Építés alatt álló, fedetlen tetőszerkezet' },
+} as const
+---
+
+<span class={`roof-surface roof-surface--${type}`}>
+  <img src={images[type].src} alt={images[type].alt} loading="lazy" decoding="async" />
+</span>

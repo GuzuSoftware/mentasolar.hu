@@ -40,8 +40,7 @@ CSS TABLE OF CONTENTS
 	// Preloader area end here ***
 
 	// Header area start here ***
-	// Mobile menu
-	$(".header-area nav").meanmenu();
+	// A mobil navigációt a Layout.astro saját, hozzáférhető vezérlője kezeli.
 
 	// Menu Fixed
 	var fixed_top = $(".header-area");
@@ -214,40 +213,42 @@ CSS TABLE OF CONTENTS
 
 	// Back to top area start here ***
 	var scrollPath = document.querySelector(".scroll-up path");
-	var pathLength = scrollPath.getTotalLength();
-	scrollPath.style.transition = scrollPath.style.WebkitTransition = "none";
-	scrollPath.style.strokeDasharray = pathLength + " " + pathLength;
-	scrollPath.style.strokeDashoffset = pathLength;
-	scrollPath.getBoundingClientRect();
-	scrollPath.style.transition = scrollPath.style.WebkitTransition =
-		"stroke-dashoffset 10ms linear";
-	var updatescroll = function () {
-		var scroll = $(window).scrollTop();
-		var height = $(document).height() - $(window).height();
-		var scroll = pathLength - (scroll * pathLength) / height;
-		scrollPath.style.strokeDashoffset = scroll;
-	};
-	updatescroll();
-	$(window).scroll(updatescroll);
-	var offset = 50;
-	var duration = 950;
-	jQuery(window).on("scroll", function () {
-		if (jQuery(this).scrollTop() > offset) {
-			jQuery(".scroll-up").addClass("active-scroll");
-		} else {
-			jQuery(".scroll-up").removeClass("active-scroll");
-		}
-	});
-	jQuery(".scroll-up").on("click", function (event) {
-		event.preventDefault();
-		jQuery("html, body").animate(
-			{
-				scrollTop: 0,
-			},
-			duration
-		);
-		return false;
-	});
+	if (scrollPath) {
+		var pathLength = scrollPath.getTotalLength();
+		scrollPath.style.transition = scrollPath.style.WebkitTransition = "none";
+		scrollPath.style.strokeDasharray = pathLength + " " + pathLength;
+		scrollPath.style.strokeDashoffset = pathLength;
+		scrollPath.getBoundingClientRect();
+		scrollPath.style.transition = scrollPath.style.WebkitTransition =
+			"stroke-dashoffset 10ms linear";
+		var updatescroll = function () {
+			var scroll = $(window).scrollTop();
+			var height = $(document).height() - $(window).height();
+			var scroll = pathLength - (scroll * pathLength) / height;
+			scrollPath.style.strokeDashoffset = scroll;
+		};
+		updatescroll();
+		$(window).scroll(updatescroll);
+		var offset = 50;
+		var duration = 950;
+		jQuery(window).on("scroll", function () {
+			if (jQuery(this).scrollTop() > offset) {
+				jQuery(".scroll-up").addClass("active-scroll");
+			} else {
+				jQuery(".scroll-up").removeClass("active-scroll");
+			}
+		});
+		jQuery(".scroll-up").on("click", function (event) {
+			event.preventDefault();
+			jQuery("html, body").animate(
+				{
+					scrollTop: 0,
+				},
+				duration
+			);
+			return false;
+		});
+	}
 	// Back to top area end here ***
 
 	// WOW Animatin area start here ***

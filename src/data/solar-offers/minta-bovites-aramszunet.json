@@ -1,0 +1,20 @@
+{
+  "marketingName": "Minta Áramszüneti tartalék",
+  "published": true,
+  "example": true,
+  "offerType": "system-extension",
+  "systemType": "grid",
+  "storageType": "with-storage",
+  "roofType": "any",
+  "extensionType": "full-backup",
+  "image": "/images/solar/szigetuzemu-rendszer.png",
+  "summary": "Meglévő rendszerhez tervezett bővítési mintaajánlat energiatárolással és áramszüneti ellátás előkészítésével.",
+  "inverterBrand": "Fronius",
+  "batteryBrand": "BYD Battery-Box",
+  "panelBrand": "Meglévő rendszerhez igazítva",
+  "systemPower": "Meglévő rendszer felmérése után",
+  "batteryCapacity": "15 kWh",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Kijelölt körök áramszüneti ellátása", "Egyedi helyszíni tervezéssel"],
+  "order": 10
+}

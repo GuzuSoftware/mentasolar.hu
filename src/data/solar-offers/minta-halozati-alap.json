@@ -1,0 +1,18 @@
+{
+  "marketingName": "Minta Otthon Alap",
+  "published": true,
+  "example": true,
+  "offerType": "new-system",
+  "systemType": "grid",
+  "storageType": "without-storage",
+  "roofType": "any",
+  "extensionType": "inverter-storage",
+  "image": "/images/solar/halozati-rendszer.png",
+  "summary": "Költségtudatos, hálózati napelemes rendszer családi házakhoz. A végleges méretet helyszíni felmérés után pontosítjuk.",
+  "inverterBrand": "Huawei",
+  "panelBrand": "Trina Solar",
+  "systemPower": "5 kWp",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Személyre szabott méretezés", "Teljes körű kivitelezés"],
+  "order": 10
+}

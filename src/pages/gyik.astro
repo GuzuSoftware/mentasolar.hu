@@ -1,5 +1,55 @@
 ---
 import Layout from '../layouts/Layout.astro'
-const faqs = [['Milyen rendszert érdemes választani?', 'A fogyasztás, a helyszín és a célok felmérése után személyre szabott javaslatot készítünk.'], ['Vállalnak teljes körű kivitelezést?', 'Igen, a tervezéstől az eszközök kiválasztásán át a telepítésig segítünk.'], ['Kérhetek helyszíni felmérést?', 'Igen, vegye fel velünk a kapcsolatot és egyeztetünk időpontot.']]
+
+type Faq = { question: string; answer: string; order: number }
+const faqModules = import.meta.glob<{ default: Faq }>('../data/faqs/*.json', { eager: true })
+const faqs = Object.values(faqModules)
+  .map(({ default: faq }) => faq)
+  .sort((first, second) => first.order - second.order || first.question.localeCompare(second.question, 'hu'))
 ---
-<Layout title="GYIK | MentaSolar"><section class="page-banner-area"><div class="container"><div class="page-banner__content"><h1>Gyakori kérdések</h1><a href="/">Kezdőlap</a> / GYIK</div></div></section><section class="faq-area pt-120 pb-120"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><img class="radius10 w-100" src="/images/faq/faq-image.jpg" alt="Gyakori kérdések" /></div><div class="col-lg-6"><div class="accordion" id="faq">{faqs.map(([question, answer], i) => <details class="border p-3 mb-3" open={i === 0}><summary><strong>{question}</strong></summary><p class="mt-3 mb-0">{answer}</p></details>)}</div></div></div></div></section></Layout>
+
+<Layout title="Gyakran Ismételt Kérdések | Mentasolar.hu">
+  <section class="faq-two-area pt-120 pb-120">
+    <div class="container">
+      <h2 class="mb-60 text-center text-capitalize">
+        Gyakran Ismételt <br />
+        Kérdések
+      </h2>
+
+      <div class="faq-two__item">
+        <div class="accordion" id="faqAccordion">
+          {faqs.map((faq, index) => {
+            const headingId = `faq-heading-${index}`
+            const collapseId = `faq-collapse-${index}`
+            const isOpen = index === 0
+
+            return (
+              <div class="accordion-item">
+                <h2 class="accordion-header" id={headingId}>
+                  <button
+                    class:list={['accordion-button', { collapsed: !isOpen }]}
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#${collapseId}`}
+                    aria-expanded={isOpen ? 'true' : 'false'}
+                    aria-controls={collapseId}
+                  >
+                    {faq.question}
+                  </button>
+                </h2>
+                <div
+                  id={collapseId}
+                  class:list={['accordion-collapse', 'collapse', { show: isOpen }]}
+                  aria-labelledby={headingId}
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body"><p>{faq.answer}</p></div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

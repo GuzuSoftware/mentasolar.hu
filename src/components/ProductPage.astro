@@ -1,7 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro'
 interface Card { image?: string; title: string; text: string; subject: string }
-interface Props { title: string; lead: string; image: string; cards: Card[] }
-const { title, lead, image, cards } = Astro.props
+interface Props {
+  title: string
+  lead: string
+  image: string
+  cards: Card[]
+  bannerImage?: string
+  breadcrumbLabel?: string
+}
+const { title, lead, image, cards, bannerImage, breadcrumbLabel = title } = Astro.props
 ---
-<Layout title={`${title} | MentaSolar`}><section class="page-banner-area"><div class="container"><div class="page-banner__content"><h1>{title}</h1><a href="/">Kezdőlap</a> / {title}</div></div></section><section class="service-details-area pt-120 pb-120"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><img class="radius10 w-100" src={image} alt={title} /></div><div class="col-lg-6"><div class="section-header"><h2>{title}</h2></div><p>{lead}</p><a class="btn-two mt-25" href="/kapcsolat">Kérek ajánlatot</a></div></div><div class="row g-4 mt-50">{cards.map((card) => <div class="col-md-4"><article class="border radius10 p-4 h-100 d-flex flex-column">{card.image && <img class="w-100 radius10 mb-20" src={card.image} alt={card.title} />}<h3>{card.title}</h3><p>{card.text}</p><a class="btn-three mt-auto" href={`mailto:info@mentasolar.hu?subject=${encodeURIComponent(card.subject)}`}>Érdekel</a></article></div>)}</div></div></section></Layout>
+<Layout title={`${title} | MentaSolar`}>
+  {
+    bannerImage ? (
+      <section
+        class="page-banner bg-image pt-120 pb-120"
+        style={`background-image: url('${bannerImage}'); background-size: cover; background-position: center;`}
+      >
+        <div class="overlay" />
+        <div class="container">
+          <h2 class="text-white">{title}</h2>
+          <div class="breadcrumb-list">
+            <a href="/" class="text-white">Kezdőlap</a>
+            <span class="text-white"><i class="fa-regular fa-angle-right mx-2" />{breadcrumbLabel}</span>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="page-banner-area">
+        <div class="container">
+          <div class="page-banner__content"><h1>{title}</h1><a href="/">Kezdőlap</a> / {breadcrumbLabel}</div>
+        </div>
+      </section>
+    )
+  }
+  <section class="service-details-area pt-120 pb-120"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><img class="radius10 w-100" src={image} alt={title} /></div><div class="col-lg-6"><div class="section-header"><h2>{title}</h2></div><p>{lead}</p><a class="btn-two mt-25" href="/kapcsolat">Kérek ajánlatot</a></div></div><div class="row g-4 mt-50">{cards.map((card) => <div class="col-md-4"><article class="border radius10 p-4 h-100 d-flex flex-column">{card.image && <img class="w-100 radius10 mb-20" src={card.image} alt={card.title} />}<h3>{card.title}</h3><p>{card.text}</p><a class="btn-three mt-auto" href={`mailto:info@mentasolar.hu?subject=${encodeURIComponent(card.subject)}`}>Érdekel</a></article></div>)}</div></div></section>
+</Layout>

@@ -1,0 +1,20 @@
+{
+  "marketingName": "Minta Energiatartalék",
+  "published": true,
+  "example": true,
+  "offerType": "new-system",
+  "systemType": "grid",
+  "storageType": "with-storage",
+  "roofType": "any",
+  "extensionType": "inverter-storage",
+  "image": "/images/solar/szigetuzemu-rendszer.png",
+  "summary": "Hálózatra kapcsolt rendszer akkumulátoros tárolással, a megtermelt energia jobb helyben használatához.",
+  "inverterBrand": "Huawei",
+  "batteryBrand": "Huawei LUNA",
+  "panelBrand": "Trina Solar",
+  "systemPower": "6 kWp",
+  "batteryCapacity": "10 kWh",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Nappali termelés eltárolása", "Okos energiafelhasználás"],
+  "order": 10
+}

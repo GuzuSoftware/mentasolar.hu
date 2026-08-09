@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SolarOfferFinder from '../../components/SolarOfferFinder.astro'
+import SolarPageBanner from '../../components/SolarPageBanner.astro'
+import solar from '../../content/solar.json'
+---
+
+<Layout title={solar.extensionSeoTitle} description={solar.extensionSeoDescription}>
+  <SolarPageBanner title="Napelem rendszer bővítése" breadcrumb="Rendszerbővítés" />
+  <section class="solar-offer-page solar-offer-page--extension pt-120 pb-120"><div class="container"><SolarOfferFinder kind="system-extension" /></div></section>
+</Layout>

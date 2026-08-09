@@ -1,0 +1,5 @@
+{
+  "question": "Ha van napelemes rendszerem, nem kell tartanom az áramszünettől?",
+  "answer": "Az áramszolgáltatói hálózatra kötött rendszerek esetében nem lesz áramforrás az áramszünet alatt, mivel biztonsági okokból a rendszer automatikusan lekapcsol. Azonban akkumulátorral kiegészített, úgynevezett hibrid rendszerrel az akkumulátorokban tárolt energia áramszünet idején is biztosítja az energiaellátást, amennyiben a töltöttségi szint elegendő ehhez. Az akkumulátorok előzetes méretezésével kapcsolatban segítséget nyújtunk, hogy minden helyzetre felkészült lehessen.",
+  "order": 4
+}

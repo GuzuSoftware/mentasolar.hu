@@ -1,0 +1,20 @@
+{
+  "marketingName": "Minta Sziget Otthon",
+  "published": true,
+  "example": true,
+  "offerType": "new-system",
+  "systemType": "off-grid",
+  "storageType": "with-storage",
+  "roofType": "any",
+  "extensionType": "inverter-storage",
+  "image": "/images/solar/szigetuzemu-rendszer.png",
+  "summary": "Önálló energiaellátásra tervezett rendszer mintaajánlata olyan helyszínekhez, ahol nincs vagy bizonytalan a hálózat.",
+  "inverterBrand": "Victron Energy",
+  "batteryBrand": "Pylontech",
+  "panelBrand": "JA Solar",
+  "systemPower": "4 kWp",
+  "batteryCapacity": "9,6 kWh",
+  "priceText": "Irányár egyeztetés szerint",
+  "highlights": ["Hálózattól független működés", "Egyedi fogyasztásra méretezve"],
+  "order": 10
+}
