@@ -1,8 +1,10 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
-const storage = process.env.NODE_ENV === "development"
-  ? { kind: "local" as const }
-  : { kind: "github" as const, repo: "GuzuSoftware/mentasolar.hu" };
+// A helyi fejlesztői szerver mindig belépés nélküli, fájlrendszeres adminmódot
+// használ. A GitHubos tárolás kizárólag Netlify környezetben szükséges.
+const storage = process.env.NETLIFY
+  ? { kind: "github" as const, repo: "GuzuSoftware/mentasolar.hu" }
+  : { kind: "local" as const };
 
 export default config({
   storage,
