@@ -1,10 +1,10 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
-// A helyi fejlesztői szerver mindig belépés nélküli, fájlrendszeres adminmódot
-// használ. A GitHubos tárolás kizárólag Netlify környezetben szükséges.
-const storage = process.env.NETLIFY
-  ? { kind: "github" as const, repo: "GuzuSoftware/mentasolar.hu" }
-  : { kind: "local" as const };
+// A konfiguráció a böngészőben is fut: az Astro/Vite DEV jelzője ott is
+// elérhető. Helyben fájlrendszeres, az éles buildben GitHubos tárolást használ.
+const storage = import.meta.env.DEV
+  ? { kind: "local" as const }
+  : { kind: "github" as const, repo: "GuzuSoftware/mentasolar.hu" };
 
 export default config({
   storage,
