@@ -28,13 +28,13 @@ const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = '
       <div class="container">
         <div class="header__main">
           <a href="/" class="logo"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a>
-          <div class="main-menu"><nav><ul><li><a href="/">Kezdőlap</a></li><li><a href="/gyik">GYIK</a></li><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav></div>
+          <div class="main-menu"><nav><ul><li><a href="/">Kezdőlap</a></li><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/gyik">GYIK</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav></div>
           <button class="mobile-nav-toggle d-block d-lg-none" type="button" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Navigáció megnyitása"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
         </div>
       </div>
       <button class="mobile-navigation-backdrop" type="button" aria-label="Navigáció bezárása" hidden></button>
       <div class="mobile-navigation" id="mobile-navigation" hidden>
-        <div class="container"><nav aria-label="Mobil navigáció"><ul><li><a href="/">Kezdőlap</a></li><li><a href="/gyik">GYIK</a></li><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav><div class="mobile-navigation__contact" aria-label="Elérhetőségek"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-phone" aria-hidden="true"></i><span>{site.phone}</span></a><a href={`mailto:${site.email}`}><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>{site.email}</span></a><a href="https://maps.google.com/?q=46.081515,18.259501" target="_blank" rel="noreferrer"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{site.address}</span></a></div></div>
+        <div class="container"><nav aria-label="Mobil navigáció"><ul><li><a href="/">Kezdőlap</a></li><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/gyik">GYIK</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav><div class="mobile-navigation__contact" aria-label="Elérhetőségek"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-phone" aria-hidden="true"></i><span>{site.phone}</span></a><a href={`mailto:${site.email}`}><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>{site.email}</span></a><a href="https://maps.google.com/?q=46.081515,18.259501" target="_blank" rel="noreferrer"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{site.address}</span></a></div></div>
       </div>
     </header>
     <script is:inline>
