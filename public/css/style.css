@@ -4183,7 +4183,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-offer-card__body { display: flex; height: 100%; flex-direction: column; padding: 23px 25px 25px; }
 .solar-offer-card h3 { font-size: 24px; line-height: 31px; }
 .solar-offer-card__body > p { margin: 10px 0 6px; }
-.solar-offer-card__body > p:not(.solar-offer-card__price) { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.solar-offer-card__body > p:not(.solar-offer-card__price) { overflow-wrap: anywhere; }
 .solar-offer-card__price { display: grid; gap: 4px; margin: 6px 0 10px; padding: 12px 14px; border-radius: 9px; background: #fff2e7; }
 .solar-offer-card__price-label { display: inline-flex; align-items: center; gap: 5px; color: #bd5a17; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
 .solar-offer-card__price strong { color: #a94c0d; font-family: var(--exo); font-size: 20px; line-height: 1.2; }
