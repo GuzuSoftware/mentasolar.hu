@@ -3949,6 +3949,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 /* ... (rest of your style.css code) ... */
 
 /* Napelemes ajánlatválasztó */
+.solar-hub { padding-top: 32px; }
 .solar-page-banner__title {
   font-size: 45px;
   line-height: 62px;
@@ -4203,6 +4204,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-offer-grid__empty strong { display: block; color: var(--heading-color); font-family: var(--exo); font-size: 23px; }
 .solar-offer-grid__empty p { margin: 9px auto 22px; max-width: 620px; }
 @media (max-width: 767px) {
+  .solar-hub { padding-top: 24px; }
   .solar-page-banner__title { font-size: 34px; line-height: 44px; }
   .solar-offer-page--new-system,
   .climate-offer-page { padding-top: 55px; padding-bottom: 55px; }
