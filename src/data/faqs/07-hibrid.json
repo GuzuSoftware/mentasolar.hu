@@ -1,0 +1,5 @@
+{
+  "question": "Használható akkumulátor az inverteremhez?",
+  "answer": "Amennyiben az inverter adattábláján látható a hibrid felirat, akkor igen. A pontos típus alapján megtalálható, hogy pontosan milyen energiatárolók kapcsolhatók hozzá. A kompatibilitást mindig ellenőrizni kell, még azonos márkájú akkumulátorok vezérlése sem biztos.",
+  "order": 7
+}

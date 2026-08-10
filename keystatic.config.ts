@@ -18,7 +18,10 @@ export default config({
       schema: {
         question: fields.slug({
           name: { label: "Kérdés", validation: { isRequired: true } },
-          slug: { label: "Azonosító" },
+          slug: {
+            label: "Azonosító",
+            description: "Új kérdés létrehozásakor adja meg. Mentés után a technikai azonosító nem módosítható.",
+          },
         }),
         answer: fields.text({
           label: "Válasz",
@@ -41,7 +44,10 @@ export default config({
       schema: {
         marketingName: fields.slug({
           name: { label: "Csomag marketingneve", validation: { isRequired: true } },
-          slug: { label: "Azonosító" },
+          slug: {
+            label: "Azonosító",
+            description: "Új ajánlat létrehozásakor adja meg. Mentés után a technikai azonosító nem módosítható.",
+          },
         }),
         published: fields.checkbox({ label: "Megjelenjen az oldalon", defaultValue: false }),
         example: fields.checkbox({ label: "Példa tartalom", description: "Bekapcsolva a látogatók számára is látszik a „Példa” jelölés.", defaultValue: false }),
@@ -107,7 +113,10 @@ export default config({
       schema: {
         marketingName: fields.slug({
           name: { label: "Csomag marketingneve", validation: { isRequired: true } },
-          slug: { label: "Azonosító" },
+          slug: {
+            label: "Azonosító",
+            description: "Új ajánlat létrehozásakor adja meg. Mentés után a technikai azonosító nem módosítható.",
+          },
         }),
         published: fields.checkbox({ label: "Megjelenjen az oldalon", defaultValue: false }),
         image: fields.image({
@@ -137,7 +146,13 @@ export default config({
       format: "json",
       columns: ["marketingName", "brand", "published", "order"],
       schema: {
-        marketingName: fields.slug({ name: { label: "Csomag marketingneve", validation: { isRequired: true } }, slug: { label: "Azonosító" } }),
+        marketingName: fields.slug({
+          name: { label: "Csomag marketingneve", validation: { isRequired: true } },
+          slug: {
+            label: "Azonosító",
+            description: "Új ajánlat létrehozásakor adja meg. Mentés után a technikai azonosító nem módosítható.",
+          },
+        }),
         published: fields.checkbox({ label: "Megjelenjen az oldalon", defaultValue: false }),
         image: fields.image({ label: "Csomag képe", description: "Ajánlott: 1600 × 1000 px, fekvő kép. A termék teljes egészében, körben elegendő üres térrel legyen látható.", directory: "public/images/charger-offers", publicPath: "/images/charger-offers/", validation: { isRequired: true } }),
         summary: fields.text({ label: "Rövid leírás", multiline: true, validation: { isRequired: true } }),
