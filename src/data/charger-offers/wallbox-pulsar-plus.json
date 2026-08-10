@@ -1,12 +1,32 @@
 {
   "marketingName": "Wallbox Pulsar Plus",
   "published": true,
-  "image": "/images/wallbox_tolto_img.jpg",
+  "image": "/images/charger-offers/wallbox-pulsar-plus/image.webp",
   "summary": "Kompakt, modern töltőmegoldás intelligens vezérléssel.",
   "brand": "Wallbox",
   "priceText": "239 198 Ft + ÁFA",
-  "highlights": ["22 kW töltési teljesítmény", "5 m beépített kábel"],
-  "technicalDetails": ["Teljesítmény: 22 kW", "Kábelhossz: 5 m", "Garancia: 3 év", "Mobilalkalmazás: igen", "WiFi: igen"],
-  "features": { "type2": true, "type1": false, "ip54": false, "ip65": true, "wifi": true, "cable5m": true, "cable6m": false, "bluetooth": true, "smart": true, "rfid": true },
+  "highlights": [
+    "22 kW töltési teljesítmény",
+    "5 m beépített kábel"
+  ],
+  "technicalDetails": [
+    "Teljesítmény: 22 kW",
+    "Kábelhossz: 5 m",
+    "Garancia: 3 év",
+    "Mobilalkalmazás: igen",
+    "WiFi: igen"
+  ],
+  "features": {
+    "type2": true,
+    "type1": false,
+    "ip54": false,
+    "ip65": true,
+    "wifi": true,
+    "cable5m": true,
+    "cable6m": false,
+    "bluetooth": true,
+    "smart": true,
+    "rfid": true
+  },
   "order": 3
 }

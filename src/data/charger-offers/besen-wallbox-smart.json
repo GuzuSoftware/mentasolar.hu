@@ -1,12 +1,31 @@
 {
   "marketingName": "Besen WALLBOX SMART",
   "published": true,
-  "image": "/images/besen_tolto_img.jpg",
+  "image": "/images/charger-offers/besen-wallbox-smart/image.webp",
   "summary": "Intelligens falitöltő mindennapos otthoni és kisebb üzleti használatra.",
   "brand": "Besen",
   "priceText": "175 900 Ft + ÁFA",
-  "highlights": ["22 kW töltési teljesítmény", "6 m beépített kábel"],
-  "technicalDetails": ["Teljesítmény: 22 kW", "Kábelhossz: 6 m", "Garancia: 2 év", "Mobilalkalmazás: igen"],
-  "features": { "type2": true, "type1": false, "ip54": true, "ip65": false, "wifi": false, "cable5m": false, "cable6m": true, "bluetooth": false, "smart": true, "rfid": false },
+  "highlights": [
+    "22 kW töltési teljesítmény",
+    "6 m beépített kábel"
+  ],
+  "technicalDetails": [
+    "Teljesítmény: 22 kW",
+    "Kábelhossz: 6 m",
+    "Garancia: 2 év",
+    "Mobilalkalmazás: igen"
+  ],
+  "features": {
+    "type2": true,
+    "type1": false,
+    "ip54": true,
+    "ip65": false,
+    "wifi": false,
+    "cable5m": false,
+    "cable6m": true,
+    "bluetooth": false,
+    "smart": true,
+    "rfid": false
+  },
   "order": 1
 }
