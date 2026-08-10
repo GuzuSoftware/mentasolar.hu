@@ -4156,7 +4156,9 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   .climate-offer-card__body { padding: 21px; }
   .climate-offer-card h3 { font-size: 23px; line-height: 30px; }
   .climate-offer-card__actions { align-items: flex-start; flex-direction: column-reverse; gap: 6px; }
-  .climate-offer-slider__arrow--previous { left: -13px; }.climate-offer-slider__arrow--next { right: -13px; }
+  .climate-offer-slider__arrow { display: none; }
+  .climate-offer-card { opacity: 0; transform: translateY(18px); transition: opacity .42s ease, transform .42s ease, border-color var(--transition), box-shadow var(--transition); }
+  .climate-offer-card.is-revealed { opacity: 1; transform: translateY(0); }
   .climate-modal__content { padding: 17px 18px 20px; }
   .climate-modal__image-zoom { height: 118px; margin-bottom: 10px; }
   .climate-modal h2 { font-size: 21px; line-height: 27px; }
