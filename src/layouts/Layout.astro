@@ -23,6 +23,9 @@ const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = '
     <title>{title}</title>
   </head>
   <body>
+    <div id="loading" role="status" aria-label="Az oldal betöltése folyamatban">
+      <div id="loading-center"><div id="loading-center-absolute"><div class="loading-icon"><img class="loading-logo" src="/images/preloader.svg" alt="" /></div></div></div>
+    </div>
     <div class="header-top d-none d-lg-block"><div class="container"><div class="header-top-wrp"><ul class="info"><li><i class="fa-solid fa-paper-plane"></i> <a href={`mailto:${site.email}`}>{site.email}</a></li><li class="bor-left ms-4 ps-4"><i class="fa-solid fa-location-dot"></i> {site.address}</li></ul><ul class="link-info"><li class="bor-right"><a href={site.facebook} aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li><li><a href={site.instagram} aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li></ul></div></div></div>
     <header class="header-area">
       <div class="container">
