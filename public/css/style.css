@@ -3115,10 +3115,10 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .charger-offers__intro { max-width: 680px; margin: 0 auto 42px; text-align: center; }
 .charger-offers__intro p { color: var(--paragraph); }
 .charger-offer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.charger-offer-card { display: flex; overflow: hidden; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--white); box-shadow: 0 9px 24px rgba(24, 45, 31, .11); cursor: pointer; transition: var(--transition); }
+.charger-offer-card { display: flex; overflow: visible; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--white); box-shadow: 0 9px 24px rgba(24, 45, 31, .11); cursor: pointer; transition: var(--transition); }
 .charger-offer-card:hover { border-color: rgba(59, 137, 91, .55); box-shadow: 0 16px 34px rgba(24, 45, 31, .16); transform: translateY(-4px); }
 .charger-offer-card:focus-visible { outline: 3px solid rgba(59, 137, 91, .4); outline-offset: 3px; }
-.charger-offer-card > img { width: 100%; height: 180px; padding: 12px; object-fit: contain; background: #f7faf8; mix-blend-mode: multiply; }
+.charger-offer-card > img { width: 100%; height: 180px; padding: 12px; border-radius: 13px 13px 0 0; object-fit: contain; background: #f7faf8; mix-blend-mode: multiply; }
 .charger-offer-card__body { display: flex; height: 100%; flex-direction: column; padding: 20px 21px 22px; }
 .charger-offer-card__brand, .charger-modal__brand { margin-bottom: 7px; color: var(--primary-color); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .charger-offer-card h2 { margin-bottom: 9px; font-size: 21px; line-height: 28px; }
@@ -3971,10 +3971,10 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .climate-offer-slider__arrow:disabled { cursor: default; opacity: .35; }
 .climate-offer-slider__arrow--previous { left: -21px; }.climate-offer-slider__arrow--next { right: -21px; }
 @media (min-width: 768px) { .climate-offer-slider[data-mobile-only-pagination] .climate-offer-slider__arrow { display: none; } }
-.climate-offer-card { display: flex; overflow: hidden; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--white); box-shadow: 0 9px 24px rgba(24, 45, 31, .11); cursor: pointer; transition: var(--transition); }
+.climate-offer-card { display: flex; overflow: visible; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--white); box-shadow: 0 9px 24px rgba(24, 45, 31, .11); cursor: pointer; transition: var(--transition); }
 .climate-offer-card:hover { border-color: rgba(59, 137, 91, .55); box-shadow: 0 16px 34px rgba(24, 45, 31, .16); transform: translateY(-4px); }
 .climate-offer-card:focus-visible { outline: 3px solid rgba(59, 137, 91, .4); outline-offset: 3px; }
-.climate-offer-card > img { width: 100%; height: 165px; padding: 12px; object-fit: contain; background: #f7faf8; mix-blend-mode: multiply; }
+.climate-offer-card > img { width: 100%; height: 165px; padding: 12px; border-radius: 13px 13px 0 0; object-fit: contain; background: #f7faf8; mix-blend-mode: multiply; }
 .climate-offer-card__body { display: flex; height: 100%; flex-direction: column; padding: 20px 21px 22px; }
 .climate-offer-card__brand, .climate-modal__brand { margin-bottom: 7px; color: var(--primary-color); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .climate-offer-card h3 { margin-bottom: 9px; font-size: 21px; line-height: 28px; }
@@ -4172,11 +4172,11 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-finder__selection { margin-bottom: 25px; text-align: center; color: var(--primary-color); font-family: var(--exo); font-size: 20px; font-weight: 700; }
 .solar-finder__loading { padding: 28px; text-align: center; }
 .solar-offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
-.solar-offer-card { display: flex; overflow: hidden; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--white); box-shadow: 0 9px 24px rgba(24, 45, 31, .11); transition: var(--transition); }
+.solar-offer-card { display: flex; overflow: visible; flex-direction: column; border: 1px solid var(--border); border-radius: 14px; background: var(--white); box-shadow: 0 9px 24px rgba(24, 45, 31, .11); transition: var(--transition); }
 .solar-offer-card:hover { border-color: rgba(59, 137, 91, .55); box-shadow: 0 16px 34px rgba(24, 45, 31, .16); transform: translateY(-4px); }
 .solar-offer-card { position: relative; }
 .solar-offer-card__badge { position: absolute; z-index: 2; top: 13px; left: 13px; padding: 5px 10px; border-radius: 999px; color: var(--heading-color); background: rgba(255,255,255,.94); box-shadow: 0 2px 10px rgba(0,0,0,.12); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.solar-offer-card > img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+.solar-offer-card > img { width: 100%; aspect-ratio: 16 / 7; border-radius: 13px 13px 0 0; object-fit: cover; }
 .solar-offer-card__body { display: flex; height: 100%; flex-direction: column; padding: 23px 25px 25px; }
 .solar-offer-card h3 { font-size: 24px; line-height: 31px; }
 .solar-offer-card__body > p { margin: 10px 0 14px; }
