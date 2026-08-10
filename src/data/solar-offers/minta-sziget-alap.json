@@ -5,7 +5,6 @@
   "offerType": "new-system",
   "systemType": "off-grid",
   "storageType": "with-storage",
-  "roofType": "any",
   "extensionType": "inverter-storage",
   "image": "/images/solar/szigetuzemu-rendszer.png",
   "summary": "Önálló energiaellátásra tervezett rendszer mintaajánlata olyan helyszínekhez, ahol nincs vagy bizonytalan a hálózat.",

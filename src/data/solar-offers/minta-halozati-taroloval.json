@@ -5,7 +5,6 @@
   "offerType": "new-system",
   "systemType": "grid",
   "storageType": "with-storage",
-  "roofType": "any",
   "extensionType": "inverter-storage",
   "image": "/images/solar-offers/minta-halozati-taroloval/image.webp",
   "summary": "Hálózatra kapcsolt rendszer, a nappali többlet energia tárolásával. Ajánlott átlagos fogyasztású háztartásoknak.\nAz ajánlat a tartószerkezet és a telepítés irányárát is tartalmazza.",

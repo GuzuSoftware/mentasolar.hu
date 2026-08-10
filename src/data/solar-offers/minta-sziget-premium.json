@@ -5,7 +5,6 @@
   "offerType": "new-system",
   "systemType": "off-grid",
   "storageType": "with-storage",
-  "roofType": "any",
   "extensionType": "inverter-storage",
   "image": "/images/solar/szigetuzemu-rendszer.png",
   "summary": "Nagyobb energiaigényhez és hosszabb tartalékidőhöz készített szigetüzemű mintaajánlat.",

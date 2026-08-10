@@ -6,7 +6,6 @@ type SolarOffer = {
   offerType: 'new-system' | 'system-extension'
   systemType: 'grid' | 'off-grid'
   storageType: 'without-storage' | 'with-storage'
-  roofType: 'tile' | 'trapezoid' | 'flat' | 'shingle' | 'metal-tile' | 'standing-seam' | 'ground' | 'any'
   extensionType: 'inverter-storage' | 'full-backup'
   image: string
   summary: string
@@ -32,20 +31,12 @@ export const GET: APIRoute = ({ url }) => {
   const offerType = url.searchParams.get('offerType')
   const systemType = url.searchParams.get('systemType')
   const storageType = url.searchParams.get('storageType')
-  const roofType = url.searchParams.get('roofType')
   const extensionType = url.searchParams.get('extensionType')
 
   const filteredOffers = offers
     .filter((offer) => offer.published && offer.offerType === offerType)
     .filter((offer) => offerType !== 'new-system' || offer.systemType === systemType)
     .filter((offer) => offerType !== 'new-system' || offer.storageType === storageType)
-    .filter(
-      (offer) =>
-        offerType !== 'new-system' ||
-        roofType === 'unknown' ||
-        offer.roofType === 'any' ||
-        offer.roofType === roofType,
-    )
     .filter((offer) => offerType !== 'system-extension' || offer.extensionType === extensionType)
     .sort((first, second) => first.order - second.order || first.marketingName.localeCompare(second.marketingName, 'hu'))
 

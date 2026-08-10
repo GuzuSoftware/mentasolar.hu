@@ -71,21 +71,6 @@ export default config({
             { label: "Akkumulátorral", value: "with-storage" },
           ],
         }),
-        roofType: fields.select({
-          label: "Tetőtípus",
-          description: "Rendszerbővítésnél nem számít.",
-          defaultValue: "tile",
-          options: [
-            { label: "Cseréptető", value: "tile" },
-            { label: "Trapézlemez", value: "trapezoid" },
-            { label: "Lapostető", value: "flat" },
-            { label: "Zsindely", value: "shingle" },
-            { label: "Cserepeslemez", value: "metal-tile" },
-            { label: "Korcolt bádog", value: "standing-seam" },
-            { label: "Talajra telepített", value: "ground" },
-            { label: "Minden felülethez használható", value: "any" },
-          ],
-        }),
         extensionType: fields.select({
           label: "Bővítési kategória",
           description: "Új rendszernél nem számít.",

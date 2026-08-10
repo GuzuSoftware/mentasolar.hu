@@ -5,7 +5,6 @@
   "offerType": "new-system",
   "systemType": "grid",
   "storageType": "without-storage",
-  "roofType": "any",
   "extensionType": "inverter-storage",
   "image": "/images/solar-offers/minta-halozati-alap/image.webp",
   "summary": "Hálózati, háromfázisú napelemes rendszer, modern fekete keretes megjelenéssel, átlagos fogyasztású családi házakhoz. \nAz ajánlat a tartószerkezet és a telepítés irányárát is tartalmazza.",

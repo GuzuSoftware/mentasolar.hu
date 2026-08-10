@@ -1,6 +1,4 @@
 ---
-import RoofSurfaceIllustration from './RoofSurfaceIllustration.astro'
-
 interface Props {
   kind: 'new-system' | 'system-extension'
   defaultSystemType?: 'grid' | 'off-grid'
@@ -9,16 +7,6 @@ interface Props {
 
 const { kind } = Astro.props
 const isNewSystem = kind === 'new-system'
-const roofChoices = [
-  ['tile', 'Cseréptető'],
-  ['trapezoid', 'Trapézlemez'],
-  ['flat', 'Lapostető'],
-  ['shingle', 'Zsindely'],
-  ['metal-tile', 'Cserepeslemez'],
-  ['standing-seam', 'Korcolt bádog'],
-  ['ground', 'Talaj'],
-  ['unknown', 'Nem tudom'],
-] as const
 ---
 
 <section class="solar-finder" data-solar-offer-finder data-kind={kind}>
@@ -35,11 +23,6 @@ const roofChoices = [
         <div class="solar-finder__heading"><span class="solar-finder__eyebrow">2. lépés</span><h2>Szeretne energiatárolót?</h2><p>Akkumulátorral a nappal megtermelt energia később is felhasználható.</p></div>
         <fieldset class="solar-choice-grid"><legend class="visually-hidden">Energiatárolás</legend><label class="solar-choice-card solar-choice-card--graphic"><input type="radio" name="storageType" value="without-storage" /><span class="solar-choice-card__graphic solar-choice-card__graphic--sun"><i class="fa-solid fa-sun" /></span><span class="solar-choice-card__body"><strong>Tároló nélkül</strong><small>A megtermelt energiát azonnal használja fel.</small></span></label><label class="solar-choice-card solar-choice-card--graphic"><input type="radio" name="storageType" value="with-storage" /><span class="solar-choice-card__graphic solar-choice-card__graphic--battery"><i class="fa-solid fa-battery-full" /></span><span class="solar-choice-card__body"><strong>Akkumulátorral</strong><small>A felesleges energia később is felhasználható.</small></span></label></fieldset>
       </div>
-
-      <div class="solar-finder__step" data-step="roof" hidden>
-        <div class="solar-finder__heading"><span class="solar-finder__eyebrow">3. lépés</span><h2>Milyen felületre kerülne napelem?</h2><p>A felület befolyásolja a szükséges tartószerkezetet és az ajánlatot.</p></div>
-        <fieldset class="roof-choice-grid"><legend class="visually-hidden">Felület típusa</legend>{roofChoices.map(([value, label]) => <label class="roof-choice-card"><input type="radio" name="roofType" value={value} /><RoofSurfaceIllustration type={value} /><span>{label}</span></label>)}</fieldset>
-      </div>
     </>
   ) : (
     <div class="solar-finder__step" data-step="extension">
@@ -51,8 +34,7 @@ const roofChoices = [
 </section>
 
 <script>
-  type Offer = { id: string; marketingName: string; image: string; summary: string; inverterBrand: string; batteryBrand?: string; panelBrand: string; systemPower: string; batteryCapacity?: string; roofType: string; priceText?: string; highlights?: string[]; example?: boolean }
-  const roofLabels: Record<string, string> = { tile: 'Cseréptető', trapezoid: 'Trapézlemez', flat: 'Lapostető', shingle: 'Zsindely', 'metal-tile': 'Cserepeslemez', 'standing-seam': 'Korcolt bádog', ground: 'Talajra telepített', unknown: 'Felület egyeztetés alatt' }
+  type Offer = { id: string; marketingName: string; image: string; summary: string; inverterBrand: string; batteryBrand?: string; panelBrand: string; systemPower: string; batteryCapacity?: string; priceText?: string; highlights?: string[]; example?: boolean }
   const systemLabels: Record<string, string> = { grid: 'Hálózati rendszer', 'off-grid': 'Szigetüzemű rendszer' }
   const storageLabels: Record<string, string> = { 'without-storage': 'Tároló nélkül', 'with-storage': 'Akkumulátorral' }
   const extensionLabels: Record<string, string> = { 'inverter-storage': 'Energiatárolós bővítés', 'full-backup': 'Energiatárolás, áramszüneti ellátással' }
@@ -67,12 +49,12 @@ const roofChoices = [
     const selection = root.querySelector<HTMLElement>('[data-selection]')!
     const chips = root.querySelector<HTMLElement>('[data-chips]')!
     const offerPage = root.closest<HTMLElement>('.solar-offer-page')
-    const steps = { system: root.querySelector<HTMLElement>('[data-step="system"]'), storage: root.querySelector<HTMLElement>('[data-step="storage"]'), roof: root.querySelector<HTMLElement>('[data-step="roof"]'), extension: root.querySelector<HTMLElement>('[data-step="extension"]') }
+    const steps = { system: root.querySelector<HTMLElement>('[data-step="system"]'), storage: root.querySelector<HTMLElement>('[data-step="storage"]'), extension: root.querySelector<HTMLElement>('[data-step="extension"]') }
     const selectedValue = (name: string) => root.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)?.value
     const showStep = (step: keyof typeof steps) => { Object.values(steps).forEach((item) => { if (item) item.hidden = item !== steps[step] }); results.hidden = true; offerPage?.classList.remove('is-showing-results'); chips.hidden = step === 'system' || step === 'extension' }
     const hideSteps = () => Object.values(steps).forEach((item) => { if (item) item.hidden = true })
     const clearFrom = (step: keyof typeof steps) => {
-      const names = step === 'system' ? ['systemType', 'storageType', 'roofType'] : step === 'storage' ? ['storageType', 'roofType'] : step === 'roof' ? ['roofType'] : ['extensionType']
+      const names = step === 'system' ? ['systemType', 'storageType'] : step === 'storage' ? ['storageType'] : ['extensionType']
       names.forEach((name) => root.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`).forEach((input) => { input.checked = false }))
     }
     const animateActiveStep = () => {
@@ -89,10 +71,8 @@ const roofChoices = [
       const items: Array<[string, string, string]> = []
       const systemType = selectedValue('systemType')
       const storageType = selectedValue('storageType')
-      const roofType = selectedValue('roofType')
       if (systemType) items.push(['system', systemLabels[systemType], 'Rendszer típusa'])
       if (storageType && systemType !== 'off-grid') items.push(['storage', storageLabels[storageType], 'Energiatárolás'])
-      if (roofType) items.push(['roof', roofLabels[roofType], 'Felület'])
       chips.innerHTML = items.map(([step, value, label]) => `<button class="solar-finder__chip" type="button" data-back="${step}" aria-label="${label}: ${value}. Választás módosítása."><small>${label}</small><span>${value}</span><i class="fa-solid fa-pen" aria-hidden="true"></i></button>`).join('')
       chips.hidden = items.length === 0
       chips.querySelectorAll<HTMLButtonElement>('[data-back]').forEach((button) => button.addEventListener('click', () => { const step = button.dataset.back as keyof typeof steps; clearFrom(step); renderChips(); showStep(step) }))
@@ -112,12 +92,10 @@ const roofChoices = [
       const parameters = new URLSearchParams({ offerType: kind ?? '' })
       let selectionText = ''
       if (kind === 'new-system') {
-        const systemType = selectedValue('systemType'); const storageType = selectedValue('storageType'); const roofType = selectedValue('roofType')
-        if (!systemType || !storageType || !roofType) return
-        parameters.set('systemType', systemType); parameters.set('storageType', storageType); parameters.set('roofType', roofType)
-        selectionText = systemType === 'off-grid'
-          ? `${systemLabels[systemType]} • ${roofLabels[roofType]}`
-          : `${systemLabels[systemType]} • ${storageLabels[storageType]} • ${roofLabels[roofType]}`
+        const systemType = selectedValue('systemType'); const storageType = selectedValue('storageType')
+        if (!systemType || !storageType) return
+        parameters.set('systemType', systemType); parameters.set('storageType', storageType)
+        selectionText = systemType === 'off-grid' ? systemLabels[systemType] : `${systemLabels[systemType]} • ${storageLabels[storageType]}`
       } else {
         const extensionType = selectedValue('extensionType'); if (!extensionType) return
         parameters.set('extensionType', extensionType); selectionText = extensionLabels[extensionType]
@@ -128,9 +106,8 @@ const roofChoices = [
       finally { results.setAttribute('aria-busy', 'false'); loading.hidden = true }
     }
 
-    root.querySelectorAll<HTMLInputElement>('input[name="systemType"]').forEach((input) => input.addEventListener('change', () => { if (input.value === 'off-grid' && input.checked) root.querySelector<HTMLInputElement>('input[name="storageType"][value="with-storage"]')!.checked = true; renderChips(); advanceTo(input.value === 'off-grid' ? 'roof' : 'storage') }))
-    root.querySelectorAll<HTMLInputElement>('input[name="storageType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); advanceTo('roof') }))
-    root.querySelectorAll<HTMLInputElement>('input[name="roofType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); const activeStep = animateActiveStep(); window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); void loadOffers() }, 180) }))
+    root.querySelectorAll<HTMLInputElement>('input[name="systemType"]').forEach((input) => input.addEventListener('change', () => { if (input.value === 'off-grid' && input.checked) { root.querySelector<HTMLInputElement>('input[name="storageType"][value="with-storage"]')!.checked = true; renderChips(); const activeStep = animateActiveStep(); window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); void loadOffers() }, 180); return } renderChips(); advanceTo('storage') }))
+    root.querySelectorAll<HTMLInputElement>('input[name="storageType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); const activeStep = animateActiveStep(); window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); void loadOffers() }, 180) }))
     root.querySelectorAll<HTMLInputElement>('input[name="extensionType"]').forEach((input) => input.addEventListener('change', () => { renderChips(); const activeStep = animateActiveStep(); window.setTimeout(() => { activeStep?.classList.remove('is-selecting'); void loadOffers() }, 180) }))
   })
   const closeSolarPriceTooltips = () => document.querySelectorAll('.offer-price-tooltip.is-open').forEach((tooltip) => { tooltip.classList.remove('is-open'); tooltip.querySelector('button')?.setAttribute('aria-expanded', 'false') })

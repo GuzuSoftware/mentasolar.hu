@@ -5,7 +5,6 @@
   "offerType": "system-extension",
   "systemType": "grid",
   "storageType": "with-storage",
-  "roofType": "any",
   "extensionType": "full-backup",
   "image": "/images/solar-offers/minta-bovites-aramszunet-2/image.webp",
   "summary": "Teljes körű áramszüneti ellátást biztosító rendszer. Tartalmazza az inverter cseréjét, az energiatárolós bővítést, a full-backup kialakítását és autótöltő csatlakozási lehetőséget is.",

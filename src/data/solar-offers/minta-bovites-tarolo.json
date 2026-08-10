@@ -5,7 +5,6 @@
   "offerType": "system-extension",
   "systemType": "grid",
   "storageType": "with-storage",
-  "roofType": "any",
   "extensionType": "inverter-storage",
   "image": "/images/solar-offers/minta-bovites-tarolo/image.webp",
   "summary": "Meglévő napelemes rendszer korszerűsítéséhez, inverter csere és akkumulátor modul kiegészítés.",
