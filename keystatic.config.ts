@@ -1,7 +1,11 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
+const storage = process.env.NODE_ENV === "development"
+  ? { kind: "local" as const }
+  : { kind: "github" as const, repo: "GuzuSoftware/mentasolar.hu" };
+
 export default config({
-  storage: { kind: "github", repo: "GuzuSoftware/mentasolar.hu" },
+  storage,
   collections: {
     faqs: collection({
       label: "Gyakori kérdések",
