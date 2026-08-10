@@ -3996,6 +3996,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .climate-modal { width: min(630px, calc(100% - 32px)); max-height: none; padding: 0; overflow: visible; color: var(--heading-color); background: var(--white); border: 0; border-radius: 15px; box-shadow: 0 24px 65px rgba(10, 29, 18, .34); }
 .climate-modal,
 .charger-modal { position: fixed; inset: 50% auto auto 50%; margin: 0; transform: translate(-50%, -50%); }
+.climate-modal:has(.climate-modal__image-zoom.is-zoomed),
+.charger-modal:has(.charger-modal__image-zoom.is-zoomed) { inset: 0; width: 100vw; height: 100dvh; margin: 0; padding: 0; overflow: visible; background: transparent; border: 0; box-shadow: none; transform: none; }
 .climate-modal::backdrop { background: rgba(10, 29, 18, .58); }
 .climate-modal__content { position: relative; padding: 22px 34px 26px; }
 .climate-modal__image-zoom { height: 230px; margin: 0 0 16px; overflow: hidden; cursor: zoom-in; background: #f7faf8; border-radius: 10px; }
