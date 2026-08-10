@@ -1,0 +1,65 @@
+---
+interface ChargerOffer {
+  marketingName: string
+  published: boolean
+  image: string
+  summary: string
+  brand: string
+  priceText?: string
+  highlights?: string[]
+  technicalDetails?: string[]
+  features?: Record<string, boolean>
+  order: number
+}
+
+const offerModules = import.meta.glob<{ default: ChargerOffer }>('../data/charger-offers/*.json', { eager: true })
+const offers = Object.entries(offerModules)
+  .map(([path, module]) => ({ id: path.split('/').pop()?.replace(/\.json$/, '') ?? path, ...module.default }))
+  .filter((offer) => offer.published)
+  .sort((first, second) => first.order - second.order || first.marketingName.localeCompare(second.marketingName, 'hu'))
+
+const featureDefinitions = [
+  ['type2', 'Type 2', 'fa-plug-circle-bolt'], ['type1', 'Type 1', 'fa-plug'], ['ip54', 'IP54', 'fa-shield-halved'], ['ip65', 'IP65', 'fa-shield-halved'], ['wifi', 'WiFi', 'fa-wifi'], ['cable5m', '5 m kábel', 'fa-ruler-horizontal'], ['cable6m', '6 m kábel', 'fa-ruler-horizontal'], ['bluetooth', 'Bluetooth', 'fa-bluetooth-b'], ['smart', 'Smart', 'fa-microchip'], ['rfid', 'RFID', 'fa-id-card'],
+] as const
+const priceInfo = 'A feltüntetett ár tájékoztató jellegű. A végleges ajánlatot a helyszín, a szükséges elektromos kiépítés és a kiválasztott kiegészítők alapján pontosítjuk.'
+---
+
+<section class="charger-offers" aria-label="Autótöltő ajánlatok">
+  <div class="charger-offers__intro"><span class="solar-finder__eyebrow">Autótöltő ajánlatok</span><p>Otthoni és üzleti töltési megoldások szakértő telepítéssel. Válasszon a rendelkezésre álló csomagok közül.</p></div>
+  <div class="charger-offer-grid">
+    {offers.map((offer) => {
+      const contactUrl = `/kapcsolat?ajanlat=${encodeURIComponent(offer.marketingName)}&ajanlatId=${encodeURIComponent(offer.id)}`
+      const activeFeatures = featureDefinitions.filter(([key]) => offer.features?.[key])
+      return <article class="charger-offer-card" data-charger-card={offer.id} tabindex="0" aria-label={`${offer.marketingName} részletei`}>
+        <img src={offer.image} alt={offer.marketingName} loading="lazy" decoding="async" />
+        <div class="charger-offer-card__body">
+          <p class="charger-offer-card__brand">{offer.brand}</p><h2>{offer.marketingName}</h2><p>{offer.summary}</p>
+          {offer.priceText && <p class="charger-offer-card__price"><span>CSOMAGÁR <span class="charger-tooltip"><button type="button" aria-expanded="false" aria-label="Információ az árról"><i class="fa-solid fa-circle-info" aria-hidden="true" /></button><span class="charger-tooltip__bubble" role="tooltip">{priceInfo}</span></span></span><strong>{offer.priceText}</strong></p>}
+          {activeFeatures.length > 0 && <ul class="charger-offer-card__features">{activeFeatures.map(([, label, icon]) => <li title={label}><i class:list={['fa-solid', icon]} aria-hidden="true" /><span>{label}</span></li>)}</ul>}
+          {offer.highlights?.length && <ul class="charger-offer-card__highlights">{offer.highlights.filter(Boolean).map((highlight) => <li><i class="fa-solid fa-check" aria-hidden="true" />{highlight}</li>)}</ul>}
+          <div class="charger-offer-card__actions"><button class="charger-offer-card__info" type="button" data-charger-open={offer.id}><i class="fa-solid fa-circle-info" aria-hidden="true" /> Részletek</button><a class="btn-three" href={contactUrl}>Érdekel <i class="fa-solid fa-arrow-right ml-10" aria-hidden="true" /></a></div>
+        </div>
+        <dialog class="charger-modal" data-charger-modal={offer.id} aria-labelledby={`${offer.id}-modal-title`}>
+          <div class="charger-modal__content"><img class="charger-modal__image" src={offer.image} alt={offer.marketingName} /><button class="charger-modal__close" type="button" data-charger-close aria-label="Részletek bezárása"><i class="fa-solid fa-xmark" aria-hidden="true" /></button><p class="charger-modal__brand">{offer.brand}</p><h2 id={`${offer.id}-modal-title`}>{offer.marketingName}</h2><p class="charger-modal__lead">{offer.summary}</p>
+            {activeFeatures.length > 0 && <div class="charger-modal__features" aria-label="Kiemelt jellemzők">{activeFeatures.map(([, label, icon]) => <span><i class:list={['fa-solid', icon]} aria-hidden="true" />{label}</span>)}</div>}
+            {offer.technicalDetails?.filter(Boolean).length && <div class="charger-modal__technical"><h3>Műszaki adatok</h3><ul>{offer.technicalDetails.filter(Boolean).map((detail) => <li><i class="fa-solid fa-check" aria-hidden="true" />{detail}</li>)}</ul></div>}
+            <a class="btn-two" href={contactUrl}>Érdekel <i class="fa-solid fa-arrow-right ml-10" aria-hidden="true" /></a>
+          </div>
+        </dialog>
+      </article>
+    })}
+  </div>
+</section>
+
+<script>
+  const closeChargerTooltips = () => document.querySelectorAll('.charger-tooltip.is-open').forEach((tooltip) => { tooltip.classList.remove('is-open'); tooltip.querySelector('button')?.setAttribute('aria-expanded', 'false') })
+  const openChargerModal = (id) => { closeChargerTooltips(); const modal = document.querySelector(`[data-charger-modal="${id}"]`); if (modal instanceof HTMLDialogElement) modal.showModal() }
+  document.querySelectorAll('[data-charger-open]').forEach((button) => button.addEventListener('click', () => openChargerModal(button.getAttribute('data-charger-open'))))
+  document.querySelectorAll('[data-charger-card]').forEach((card) => {
+    card.addEventListener('click', (event) => { if (!event.target.closest('a, button, .charger-modal')) openChargerModal(card.getAttribute('data-charger-card')) })
+    card.addEventListener('keydown', (event) => { if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest('a, button')) { event.preventDefault(); openChargerModal(card.getAttribute('data-charger-card')) } })
+  })
+  document.querySelectorAll('[data-charger-modal]').forEach((modal) => { modal.querySelector('[data-charger-close]')?.addEventListener('click', () => modal.close()); modal.addEventListener('click', (event) => { if (!event.target.closest('.charger-modal__content')) modal.close() }) })
+  document.querySelectorAll('.charger-tooltip button').forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); const tooltip = button.closest('.charger-tooltip'); const shouldOpen = !tooltip?.classList.contains('is-open'); closeChargerTooltips(); if (shouldOpen && tooltip) { tooltip.classList.add('is-open'); button.setAttribute('aria-expanded', 'true') } }))
+  document.addEventListener('click', closeChargerTooltips)
+</script>

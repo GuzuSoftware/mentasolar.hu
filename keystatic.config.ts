@@ -139,6 +139,27 @@ export default config({
         order: fields.integer({ label: "Sorrend", defaultValue: 1, validation: { isRequired: true, min: 1 } }),
       },
     }),
+    chargerOffers: collection({
+      label: "Autótöltő ajánlatok",
+      slugField: "marketingName",
+      path: "src/data/charger-offers/*",
+      format: "json",
+      columns: ["marketingName", "brand", "published", "order"],
+      schema: {
+        marketingName: fields.slug({ name: { label: "Csomag marketingneve", validation: { isRequired: true } }, slug: { label: "Azonosító" } }),
+        published: fields.checkbox({ label: "Megjelenjen az oldalon", defaultValue: false }),
+        image: fields.image({ label: "Csomag képe", description: "Ajánlott: 1600 × 1000 px, fekvő kép. A termék teljes egészében, körben elegendő üres térrel legyen látható.", directory: "public/images/charger-offers", publicPath: "/images/charger-offers/", validation: { isRequired: true } }),
+        summary: fields.text({ label: "Rövid leírás", multiline: true, validation: { isRequired: true } }),
+        brand: fields.text({ label: "Márkanév", validation: { isRequired: true } }),
+        priceText: fields.text({ label: "Csomagár", description: "Például: 175 900 Ft + ÁFA. Opcionális." }),
+        highlights: fields.array(fields.text({ label: "Tulajdonság" }), { label: "Kártyán megjelenő további tulajdonságok" }),
+        technicalDetails: fields.array(fields.text({ label: "Műszaki adat" }), { label: "Műszaki adatok a részletező modalhoz", description: "Szabadon megadható címkék, például: 22 kW, 2 év garancia, háromfázisú kivitel." }),
+        features: fields.object({
+          type2: fields.checkbox({ label: "Type 2" }), type1: fields.checkbox({ label: "Type 1" }), ip54: fields.checkbox({ label: "IP54" }), ip65: fields.checkbox({ label: "IP65" }), wifi: fields.checkbox({ label: "WiFi" }), cable5m: fields.checkbox({ label: "5 m kábel" }), cable6m: fields.checkbox({ label: "6 m kábel" }), bluetooth: fields.checkbox({ label: "Bluetooth" }), smart: fields.checkbox({ label: "Smart" }), rfid: fields.checkbox({ label: "RFID" }),
+        }, { label: "Gyakori jellemzők", description: "Jelölje be az ajánlatra jellemző elemeket. Ezek kis ikonként is megjelennek a kártyán." }),
+        order: fields.integer({ label: "Sorrend", defaultValue: 1, validation: { isRequired: true, min: 1 } }),
+      },
+    }),
   },
   singletons: {
     site: singleton({
@@ -194,6 +215,17 @@ export default config({
         seoDescription: fields.text({ label: "Klíma oldal meta leírása", multiline: true, validation: { isRequired: true } }),
         primaryKeyword: fields.text({ label: "Elsődleges keresőkifejezés", description: "Például: klíma szereléssel. Szerkesztési segítség; nem meta keywords mező." }),
         secondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "További keresőkifejezések", description: "Például: klíma telepítés, Midea klíma vagy Fisher klíma." }),
+      },
+    }),
+    charger: singleton({
+      label: "Autótöltő oldal és SEO",
+      path: "src/content/charger",
+      format: "json",
+      schema: {
+        seoTitle: fields.text({ label: "Autótöltő oldal SEO-címe", validation: { isRequired: true } }),
+        seoDescription: fields.text({ label: "Autótöltő oldal meta leírása", multiline: true, validation: { isRequired: true } }),
+        primaryKeyword: fields.text({ label: "Elsődleges keresőkifejezés", description: "Például: autótöltő telepítés. Szerkesztési segítség; nem meta keywords mező." }),
+        secondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "További keresőkifejezések", description: "Például: fali autótöltő, Type 2 töltő, Wallbox telepítés." }),
       },
     }),
   },

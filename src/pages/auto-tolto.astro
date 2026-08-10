@@ -1,4 +1,11 @@
 ---
-import ProductPage from '../components/ProductPage.astro'
+import Layout from '../layouts/Layout.astro'
+import SolarPageBanner from '../components/SolarPageBanner.astro'
+import ChargerOfferGrid from '../components/ChargerOfferGrid.astro'
+import charger from '../content/charger.json'
 ---
-<ProductPage title="Elektromos autó töltők" image="/images/home/autotolto_csomag_img.png" lead="Otthoni és üzleti töltőrendszerek értékesítése és professzionális telepítése." cards={[{image:'/images/besen_tolto_img.jpg', title:'Besen WALLBOX SMART', text:'Intelligens falitöltő mindennapos használatra.', subject:'Besen WALLBOX SMART'}, {image:'/images/tesla_tolto_img.jpg', title:'Tesla GEN3', text:'Kényelmes otthoni töltési lehetőség.', subject:'Tesla GEN3'}, {image:'/images/wallbox_tolto_img.jpg', title:'Wallbox Pulsar Plus', text:'Kompakt, modern töltőmegoldás.', subject:'Wallbox Pulsar Plus'}]} />
+
+<Layout title={charger.seoTitle} description={charger.seoDescription}>
+  <SolarPageBanner title="Elektromos autótöltők" breadcrumb="Autótöltő" />
+  <section class="charger-offer-page pt-120 pb-120"><div class="container"><ChargerOfferGrid /></div></section>
+</Layout>

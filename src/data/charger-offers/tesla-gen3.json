@@ -1,0 +1,12 @@
+{
+  "marketingName": "Tesla GEN3",
+  "published": true,
+  "image": "/images/tesla_tolto_img.jpg",
+  "summary": "Kényelmes, hálózatra kapcsolható töltési lehetőség mindennapi használatra.",
+  "brand": "Tesla",
+  "priceText": "225 985 Ft + ÁFA",
+  "highlights": ["22 kW töltési teljesítmény", "7,5 m beépített kábel"],
+  "technicalDetails": ["Teljesítmény: 22 kW", "Kábelhossz: 7,5 m", "Garancia: 4 év", "Mobilalkalmazás: igen", "WiFi: igen"],
+  "features": { "type2": true, "type1": false, "ip54": false, "ip65": true, "wifi": true, "cable5m": false, "cable6m": false, "bluetooth": false, "smart": true, "rfid": false },
+  "order": 2
+}
