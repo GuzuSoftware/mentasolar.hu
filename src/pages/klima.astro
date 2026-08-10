@@ -1,4 +1,11 @@
 ---
-import ProductPage from '../components/ProductPage.astro'
+import Layout from '../layouts/Layout.astro'
+import SolarPageBanner from '../components/SolarPageBanner.astro'
+import ClimateOfferGrid from '../components/ClimateOfferGrid.astro'
+import climate from '../content/climate.json'
 ---
-<ProductPage title="Klíma berendezések" image="/images/home/klima_csomag_img.png" lead="Energiatakarékos hűtő-fűtő klímaberendezéseket értékesítünk és telepítünk, az igények pontos felmérésével." cards={[{image:'/images/klima_mdv_img.jpg', title:'MDV One', text:'Hatékony, modern klímamegoldás.', subject:'MDV One'}, {image:'/images/klima_fisher_img.jpg', title:'Fisher Comfort Plus', text:'Komfortos hűtés és fűtés egész évben.', subject:'Fisher Comfort Plus'}, {image:'/images/klima_midea_img.jpg', title:'MIDEA Xtreme Save Black', text:'Prémium megjelenés és energiatakarékos működés.', subject:'MIDEA Xtreme Save Black'}]} />
+
+<Layout title={climate.seoTitle} description={climate.seoDescription}>
+  <SolarPageBanner title="Klíma berendezések" breadcrumb="Klíma" />
+  <section class="climate-offer-page pt-120 pb-120"><div class="container"><ClimateOfferGrid /></div></section>
+</Layout>

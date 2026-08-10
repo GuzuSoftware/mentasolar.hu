@@ -1,0 +1,98 @@
+---
+interface ClimateOffer {
+  marketingName: string
+  published: boolean
+  image: string
+  summary: string
+  brand: string
+  power: string
+  priceText?: string
+  highlights?: string[]
+  warranty: string
+  coolingEnergyClass: string
+  heatingEnergyClass: string
+  seer: string
+  scop: string
+  order: number
+}
+
+const offerModules = import.meta.glob<{ default: ClimateOffer }>('../data/climate-offers/*.json', { eager: true })
+const offers = Object.entries(offerModules)
+  .map(([path, module]) => ({ id: path.split('/').pop()?.replace(/\.json$/, '') ?? path, ...module.default }))
+  .filter((offer) => offer.published)
+  .sort((first, second) => first.order - second.order || first.marketingName.localeCompare(second.marketingName, 'hu'))
+const offersPerPage = 3
+
+const explanations = {
+  power: 'A feltüntetett érték a készülék névleges, maximális leadható teljesítménye. Nem azt jelenti, hogy a klíma folyamatosan ennyi villamos energiát fogyaszt: a tényleges fogyasztás az üzemmódtól, a beállított hőmérséklettől és a körülményektől is függ.',
+  warranty: 'A gyártó által vállalt jótállási idő. Egyes márkáknál a hosszabbított garancia feltétele lehet az előírt, rendszeres karbantartás.',
+  coolingEnergyClass: 'A készülék hűtési üzemmódban mért energiahatékonysági besorolása. A jobb besorolás jellemzően kevesebb energiafelhasználást jelez.',
+  heatingEnergyClass: 'A készülék fűtési üzemmódban mért energiahatékonysági besorolása, jellemzően átlagos magyarországi éghajlatra megadva.',
+  seer: 'Szezonális hűtési hatásfok. Minél nagyobb a SEER érték, annál kevesebb villamos energia szükséges ugyanannyi hűtési teljesítményhez egy teljes szezonban.',
+  scop: 'Szezonális fűtési hatásfok. A magasabb SCOP érték azt jelzi, hogy a készülék a fűtési szezonban hatékonyabban alakítja át a villamos energiát hővé.',
+}
+const labels = { power: 'Teljesítmény', warranty: 'Garancia', coolingEnergyClass: 'Hűtési energiaosztály', heatingEnergyClass: 'Fűtési energiaosztály', seer: 'SEER', scop: 'SCOP' }
+const icons = { power: 'fa-bolt', warranty: 'fa-shield', coolingEnergyClass: 'fa-snowflake', heatingEnergyClass: 'fa-fire', seer: 'fa-chart-line', scop: 'fa-chart-line' }
+const energyScale = ['A+++', 'A++', 'A+', 'A', 'B', 'C', 'D']
+const scorePosition = (value: string, minimum: number, maximum: number) => Math.max(0, Math.min(100, ((Number(value.replace(',', '.')) - minimum) / (maximum - minimum)) * 100))
+const priceInfo = 'A csomagár tájékoztató jellegű, helyszíni felmérés után pontosítandó. Az ár tartalmazza a szerelési anyagokat is 3 méter csövezési hosszig.'
+const showSliderControls = offers.length > 1
+---
+
+<section class="climate-offers" aria-label="Klíma csomagajánlatok">
+  <div class="climate-offers__intro"><span class="solar-finder__eyebrow">Klíma csomagajánlatok</span><p>A csomagok igény szerint bővíthetők, és a helyszíni felmérés alapján pontosítjuk őket.</p></div>
+  <div class="climate-offer-slider" data-climate-slider data-mobile-only-pagination={offers.length <= offersPerPage || undefined}>
+    {showSliderControls && <button class="climate-offer-slider__arrow climate-offer-slider__arrow--previous" type="button" data-climate-previous aria-label="Előző ajánlatok"><i class="fa-solid fa-angle-left" aria-hidden="true" /></button>}
+    <div class="climate-offer-grid">
+    {offers.map((offer, index) => {
+      const properties = [
+        ['power', offer.power], ['warranty', offer.warranty], ['coolingEnergyClass', offer.coolingEnergyClass], ['heatingEnergyClass', offer.heatingEnergyClass], ['seer', offer.seer], ['scop', offer.scop],
+      ] as const
+      const contactUrl = `/kapcsolat?ajanlat=${encodeURIComponent(offer.marketingName)}&ajanlatId=${encodeURIComponent(offer.id)}`
+      return <article class="climate-offer-card" data-climate-card={offer.id} data-climate-index={index} hidden={index >= offersPerPage} tabindex="0" aria-label={`${offer.marketingName} részletei`}>
+        <img src={offer.image} alt={offer.marketingName} loading="lazy" decoding="async" />
+        <div class="climate-offer-card__body">
+          <p class="climate-offer-card__brand">{offer.brand}</p><h3>{offer.marketingName}</h3><p>{offer.summary}</p>
+          {offer.priceText && <p class="climate-offer-card__price"><span class="climate-offer-card__price-label">Csomagár, szereléssel együtt <span class="climate-tooltip"><button type="button" aria-expanded="false" aria-label="Információ a csomagárról"><i class="fa-solid fa-circle-info" aria-hidden="true" /></button><span class="climate-tooltip__bubble" role="tooltip">{priceInfo}</span></span></span><strong>{offer.priceText} <small>(bruttó)</small></strong></p>}
+          <ul class="climate-offer-card__highlights"><li><i class="fa-solid fa-check" aria-hidden="true" />{offer.power}</li>{offer.highlights?.filter(Boolean).map((highlight) => <li><i class="fa-solid fa-check" aria-hidden="true" />{highlight}</li>)}</ul>
+          <div class="climate-offer-card__actions"><button class="climate-offer-card__info" type="button" data-climate-open={offer.id}><i class="fa-solid fa-circle-info" aria-hidden="true" /> Részletek</button><a class="btn-three" href={contactUrl}>Érdekel <i class="fa-solid fa-arrow-right ml-10" aria-hidden="true" /></a></div>
+        </div>
+        <dialog class="climate-modal" data-climate-modal={offer.id} aria-labelledby={`${offer.id}-modal-title`}>
+          <div class="climate-modal__content"><div class="climate-modal__image-zoom" data-climate-image-zoom><img class="climate-modal__image" src={offer.image} alt={offer.marketingName} /></div><button class="climate-modal__close" type="button" data-climate-close aria-label="Részletek bezárása"><i class="fa-solid fa-xmark" aria-hidden="true" /></button><p class="climate-modal__brand">{offer.brand}</p><h2 id={`${offer.id}-modal-title`}>{offer.marketingName}</h2><p class="climate-modal__lead">{offer.summary}</p><h3>Alapinformációk</h3>
+            <dl class="climate-modal__properties">{properties.map(([key, value]) => <div><dt><i class:list={['fa-solid', icons[key]]} aria-hidden="true" /><span class="climate-tooltip"><button type="button" aria-expanded="false">{labels[key]}<i class="fa-solid fa-circle-question" aria-hidden="true" /></button><span class="climate-tooltip__bubble" role="tooltip">{explanations[key]}</span></span></dt><dd>{value}</dd>{(key === 'coolingEnergyClass' || key === 'heatingEnergyClass') && <div class="climate-energy-scale" aria-label={`Energiaosztály: ${value}`}>{energyScale.map((level) => <span class:list={{ 'is-current': level === value }}>{level}</span>)}</div>}{(key === 'seer' || key === 'scop') && <div class="climate-score"><span>Alacsony</span><div class="climate-score__rail"><i style={`--score-position: ${scorePosition(value, key === 'seer' ? 4.6 : 3.4, key === 'seer' ? 9 : 5.3)}%`} /></div><span>Magas</span></div>}</div>)}</dl>
+            <a class="btn-two" href={contactUrl}>Érdekel <i class="fa-solid fa-arrow-right ml-10" aria-hidden="true" /></a>
+          </div>
+        </dialog>
+      </article>
+    })}
+    </div>
+    {showSliderControls && <button class="climate-offer-slider__arrow climate-offer-slider__arrow--next" type="button" data-climate-next aria-label="Következő ajánlatok"><i class="fa-solid fa-angle-right" aria-hidden="true" /></button>}
+  </div>
+</section>
+
+<script>
+  const closeTooltips = () => document.querySelectorAll('.climate-tooltip.is-open').forEach((tooltip) => { tooltip.classList.remove('is-open'); tooltip.querySelector('button')?.setAttribute('aria-expanded', 'false') })
+  const openClimateModal = (id) => { closeTooltips(); const modal = document.querySelector(`[data-climate-modal="${id}"]`); if (modal instanceof HTMLDialogElement) modal.showModal() }
+  document.querySelectorAll('[data-climate-open]').forEach((button) => button.addEventListener('click', () => openClimateModal(button.getAttribute('data-climate-open'))))
+  document.querySelectorAll('[data-climate-card]').forEach((card) => {
+    card.addEventListener('click', (event) => { if (!event.target.closest('a, button, .climate-modal')) openClimateModal(card.getAttribute('data-climate-card')) })
+    card.addEventListener('keydown', (event) => { if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest('a, button')) { event.preventDefault(); openClimateModal(card.getAttribute('data-climate-card')) } })
+  })
+  document.querySelectorAll('[data-climate-modal]').forEach((modal) => { modal.querySelector('[data-climate-close]')?.addEventListener('click', () => modal.close()); modal.addEventListener('click', (event) => { if (!event.target.closest('.climate-modal__content')) modal.close() }) })
+  document.querySelectorAll('[data-climate-slider]').forEach((slider) => {
+    const cards = [...slider.querySelectorAll('[data-climate-index]')]
+    const previous = slider.querySelector('[data-climate-previous]')
+    const next = slider.querySelector('[data-climate-next]')
+    if (!(previous instanceof HTMLButtonElement) || !(next instanceof HTMLButtonElement)) return
+    let page = 0
+    const cardsPerPage = () => window.innerWidth <= 767 ? 1 : 3
+    const renderPage = () => { const size = cardsPerPage(); const pages = Math.ceil(cards.length / size); page = Math.min(page, pages - 1); cards.forEach((card, index) => { card.hidden = index < page * size || index >= (page + 1) * size }); previous.disabled = page === 0; next.disabled = page === pages - 1 }
+    previous?.addEventListener('click', () => { page = Math.max(0, page - 1); renderPage() })
+    next?.addEventListener('click', () => { page += 1; renderPage() })
+    window.addEventListener('resize', () => { page = 0; renderPage() })
+    renderPage()
+  })
+  document.querySelectorAll('[data-climate-image-zoom]').forEach((image) => image.addEventListener('click', () => image.classList.toggle('is-zoomed')))
+  document.querySelectorAll('.climate-tooltip button').forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); const tooltip = button.closest('.climate-tooltip'); const shouldOpen = !tooltip?.classList.contains('is-open'); closeTooltips(); if (shouldOpen && tooltip) { tooltip.classList.add('is-open'); button.setAttribute('aria-expanded', 'true') } }))
+  document.addEventListener('click', closeTooltips)
+</script>

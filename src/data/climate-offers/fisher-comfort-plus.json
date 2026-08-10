@@ -1,0 +1,16 @@
+{
+  "marketingName": "Fisher Comfort Plus",
+  "published": true,
+  "image": "/images/climate-offers/fisher-comfort-plus.jpg",
+  "summary": "Komfortos hűtéshez és energiatakarékos fűtéshez, egész éves használatra.",
+  "brand": "Fisher",
+  "power": "3,5 kW névleges teljesítmény",
+  "priceText": "396 000 Ft",
+  "highlights": ["WiFi", "Turbó üzemmód", "Időzítő", "Csepptálca fűtés", "Éjszakai üzemmód", "Iongenerátor", "Energiatakarékos fűtés"],
+  "warranty": "3 év gyártói garancia",
+  "coolingEnergyClass": "A++",
+  "heatingEnergyClass": "A+",
+  "seer": "6,5",
+  "scop": "4,1",
+  "order": 2
+}

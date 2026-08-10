@@ -1,0 +1,16 @@
+{
+  "marketingName": "MDV One",
+  "published": true,
+  "image": "/images/climate-offers/mdv-one.jpg",
+  "summary": "Kedvező árú, megbízható hűtő-fűtő megoldás kisebb helyiségekhez.",
+  "brand": "MDV",
+  "power": "2,6 kW névleges teljesítmény",
+  "priceText": "314 000 Ft",
+  "highlights": ["WiFi", "Turbó üzemmód", "Időzítő", "Csepptálca fűtés"],
+  "warranty": "3 év gyártói garancia",
+  "coolingEnergyClass": "A++",
+  "heatingEnergyClass": "A+",
+  "seer": "6,1",
+  "scop": "4,0",
+  "order": 1
+}

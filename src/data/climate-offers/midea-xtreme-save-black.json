@@ -1,0 +1,16 @@
+{
+  "marketingName": "MIDEA Xtreme Save Black",
+  "published": true,
+  "image": "/images/climate-offers/midea-xtreme-save-black.jpg",
+  "summary": "Prémium, sötét kivitelű klímaberendezés energiatakarékos működéssel és modern vezérléssel.",
+  "brand": "Midea",
+  "power": "5,3 kW névleges teljesítmény",
+  "priceText": "463 000 Ft",
+  "highlights": ["WiFi", "Turbó üzemmód", "Időzítő", "Csepptálca fűtés", "Karterfűtés", "Éjszakai üzemmód", "ECO mód", "UV fertőtlenítés", "Kültéri portalanító funkció", "Energiatakarékos fűtés", "Fokozatmentes ventilátor"],
+  "warranty": "3 év gyártói garancia",
+  "coolingEnergyClass": "A++",
+  "heatingEnergyClass": "A+",
+  "seer": "6,8",
+  "scop": "4,2",
+  "order": 3
+}
