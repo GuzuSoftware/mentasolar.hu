@@ -3959,8 +3959,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   margin: 0 auto 50px;
   text-align: center;
 }
-.solar-offer-page--new-system,
-.solar-offer-page--extension { padding-top: 72px; padding-bottom: 72px; }
+.solar-offer-page--new-system { padding-top: 72px; padding-bottom: 72px; }
+.solar-offer-page--extension { padding-top: 40px; padding-bottom: 72px; }
 .climate-offer-page { padding-top: 72px; padding-bottom: 72px; }
 .climate-offers__intro { max-width: 760px; margin: 0 auto 30px; text-align: center; }
 .climate-offers__intro p { color: var(--paragraph); }
@@ -4204,8 +4204,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 @media (max-width: 767px) {
   .solar-page-banner__title { font-size: 34px; line-height: 44px; }
   .solar-offer-page--new-system,
-  .solar-offer-page--extension,
   .climate-offer-page { padding-top: 55px; padding-bottom: 55px; }
+  .solar-offer-page--extension { padding-top: 32px; padding-bottom: 55px; }
   .solar-hub__choices, .solar-choice-grid, .solar-offer-grid, .climate-offer-grid { grid-template-columns: 1fr; }
   .climate-offers__intro { margin-bottom: 32px; }
   .climate-offer-card__body { padding: 21px; }
