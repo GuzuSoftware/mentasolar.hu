@@ -1,5 +1,5 @@
 {
-  "marketingName": "Prémium energiatároló rendszer",
+  "marketingName": "Gazdaságos energiatároló rendszer",
   "published": true,
   "example": false,
   "offerType": "system-extension",
@@ -7,19 +7,18 @@
   "storageType": "with-storage",
   "roofType": "any",
   "extensionType": "full-backup",
-  "image": "/images/solar-offers/minta-bovites-aramszunet/image.webp",
+  "image": "/images/solar-offers/minta-bovites-aramszunet-3/image.webp",
   "summary": "Teljes körű áramszüneti ellátást biztosító rendszer. Tartalmazza az inverter cseréjét, az energiatárolós bővítést és a full-backup kialakítását.",
-  "inverterBrand": "Fronius Symo GEN24 10.0 Plus",
-  "batteryBrand": "BYD Battery-Box Premium HVM 5x2,76 kWh",
+  "inverterBrand": "Sigen Hybrid 10.0 TP2",
+  "batteryBrand": "SigenStor BAT 10 kWh",
   "panelBrand": "Igény esetén bővítjük",
   "systemPower": "Meglévő rendszer felmérése után",
-  "batteryCapacity": "14 kWh",
-  "priceText": "2 615 000 Ft",
+  "batteryCapacity": "10 kWh",
+  "priceText": "1 890 000 Ft",
   "highlights": [
     "Automatikus átkapcsolás",
     "Teljes áramszüneti ellátás",
-    "Energiamanagement rendszer",
-    "Magyar nyelvű alkalmazás"
+    "Energiamanagement rendszer"
   ],
   "order": 10
 }

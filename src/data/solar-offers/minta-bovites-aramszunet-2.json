@@ -1,0 +1,25 @@
+{
+  "marketingName": "Kényelmes energiatároló rendszer",
+  "published": true,
+  "example": false,
+  "offerType": "system-extension",
+  "systemType": "grid",
+  "storageType": "with-storage",
+  "roofType": "any",
+  "extensionType": "full-backup",
+  "image": "/images/solar-offers/minta-bovites-aramszunet-2/image.webp",
+  "summary": "Teljes körű áramszüneti ellátást biztosító rendszer. Tartalmazza az inverter cseréjét, az energiatárolós bővítést, a full-backup kialakítását és autótöltő csatlakozási lehetőséget is.",
+  "inverterBrand": "SigenStor EC 10.0 TP",
+  "batteryBrand": "SigenStor BAT 10 kWh",
+  "panelBrand": "Igény esetén bővítjük",
+  "systemPower": "Meglévő rendszer felmérése után",
+  "batteryCapacity": "10 kWh",
+  "priceText": "2 135 000 Ft",
+  "highlights": [
+    "Automatikus átkapcsolás",
+    "Teljes áramszüneti ellátás",
+    "Energiamanagement rendszer",
+    "Integrált DC autótöltés"
+  ],
+  "order": 10
+}
