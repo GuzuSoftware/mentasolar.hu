@@ -4179,7 +4179,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-offer-card:hover { border-color: rgba(59, 137, 91, .55); box-shadow: 0 16px 34px rgba(24, 45, 31, .16); transform: translateY(-4px); }
 .solar-offer-card { position: relative; }
 .solar-offer-card__badge { position: absolute; z-index: 2; top: 13px; left: 13px; padding: 5px 10px; border-radius: 999px; color: var(--heading-color); background: rgba(255,255,255,.94); box-shadow: 0 2px 10px rgba(0,0,0,.12); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.solar-offer-card > img { width: 100%; aspect-ratio: 16 / 7; border-radius: 13px 13px 0 0; object-fit: contain; background: #f7faf8; }
+.solar-offer-card > img { width: 100%; aspect-ratio: 16 / 7; border-radius: 13px 13px 0 0; object-fit: cover; }
 .solar-offer-card__body { display: flex; height: 100%; flex-direction: column; padding: 23px 25px 25px; }
 .solar-offer-card h3 { font-size: 24px; line-height: 31px; }
 .solar-offer-card__body > p { margin: 10px 0 6px; }

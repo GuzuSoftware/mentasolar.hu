@@ -95,7 +95,7 @@ export default config({
         }),
         image: fields.image({
           label: "Csomag képe",
-          description: "Ajánlott: 1200 × 800 px, fekvő kép. A termék teljes egészében, körben elegendő üres térrel legyen látható.",
+          description: "Ajánlott: 1600 × 700 px (16:7), fekvő kép. Ez az arány tölti ki pontosan az ajánlatkártya teljes szélességű képrészét.",
           directory: "public/images/solar-offers",
           publicPath: "/images/solar-offers/",
           validation: { isRequired: true },
