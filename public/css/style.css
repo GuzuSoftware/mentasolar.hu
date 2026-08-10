@@ -3960,7 +3960,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   text-align: center;
 }
 .solar-offer-page--new-system { padding-top: 72px; padding-bottom: 72px; }
-.solar-offer-page--extension { padding-top: 16px; padding-bottom: 72px; }
+.solar-offer-page--extension { padding-top: 72px; padding-bottom: 72px; }
+.solar-offer-page--extension.is-showing-results { padding-top: 24px; }
 .climate-offer-page { padding-top: 72px; padding-bottom: 72px; }
 .climate-offers__intro { max-width: 760px; margin: 0 auto 30px; text-align: center; }
 .climate-offers__intro p { color: var(--paragraph); }
@@ -4169,7 +4170,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .roof-surface { display: block; height: 83px; overflow: hidden; border-radius: 8px; background: var(--sub-bg); }
 .roof-surface img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
 .roof-choice-card:hover .roof-surface img { transform: scale(1.06); }
-.solar-finder__results { margin-top: 58px; }
+.solar-finder__results { margin-top: 20px; }
 .solar-finder__selection { margin-bottom: 25px; text-align: center; color: var(--primary-color); font-family: var(--exo); font-size: 20px; font-weight: 700; }
 .solar-finder__loading { padding: 28px; text-align: center; }
 .solar-offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
@@ -4205,7 +4206,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   .solar-page-banner__title { font-size: 34px; line-height: 44px; }
   .solar-offer-page--new-system,
   .climate-offer-page { padding-top: 55px; padding-bottom: 55px; }
-  .solar-offer-page--extension { padding-top: 16px; padding-bottom: 55px; }
+  .solar-offer-page--extension { padding-top: 55px; padding-bottom: 55px; }
+  .solar-offer-page--extension.is-showing-results { padding-top: 20px; }
   .solar-hub__choices, .solar-choice-grid, .solar-offer-grid, .climate-offer-grid { grid-template-columns: 1fr; }
   .climate-offers__intro { margin-bottom: 32px; }
   .climate-offer-card__body { padding: 21px; }

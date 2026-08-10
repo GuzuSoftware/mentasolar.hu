@@ -66,9 +66,10 @@ const roofChoices = [
     const loading = root.querySelector<HTMLElement>('[data-loading]')!
     const selection = root.querySelector<HTMLElement>('[data-selection]')!
     const chips = root.querySelector<HTMLElement>('[data-chips]')!
+    const offerPage = root.closest<HTMLElement>('.solar-offer-page')
     const steps = { system: root.querySelector<HTMLElement>('[data-step="system"]'), storage: root.querySelector<HTMLElement>('[data-step="storage"]'), roof: root.querySelector<HTMLElement>('[data-step="roof"]'), extension: root.querySelector<HTMLElement>('[data-step="extension"]') }
     const selectedValue = (name: string) => root.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)?.value
-    const showStep = (step: keyof typeof steps) => { Object.values(steps).forEach((item) => { if (item) item.hidden = item !== steps[step] }); results.hidden = true; chips.hidden = step === 'system' || step === 'extension' }
+    const showStep = (step: keyof typeof steps) => { Object.values(steps).forEach((item) => { if (item) item.hidden = item !== steps[step] }); results.hidden = true; offerPage?.classList.remove('is-showing-results'); chips.hidden = step === 'system' || step === 'extension' }
     const hideSteps = () => Object.values(steps).forEach((item) => { if (item) item.hidden = true })
     const clearFrom = (step: keyof typeof steps) => {
       const names = step === 'system' ? ['systemType', 'storageType', 'roofType'] : step === 'storage' ? ['storageType', 'roofType'] : step === 'roof' ? ['roofType'] : ['extensionType']
@@ -121,7 +122,7 @@ const roofChoices = [
         const extensionType = selectedValue('extensionType'); if (!extensionType) return
         parameters.set('extensionType', extensionType); selectionText = extensionLabels[extensionType]
       }
-      hideSteps(); results.hidden = false; results.setAttribute('aria-busy', 'true'); loading.hidden = false; selection.textContent = selectionText; grid.replaceChildren()
+      hideSteps(); results.hidden = false; offerPage?.classList.add('is-showing-results'); results.setAttribute('aria-busy', 'true'); loading.hidden = false; selection.textContent = selectionText; grid.replaceChildren()
       try { const response = await fetch(`/api/solar-offers.json?${parameters.toString()}`); if (!response.ok) throw new Error(); renderOffers((await response.json() as { offers: Offer[] }).offers) }
       catch { grid.innerHTML = '<div class="solar-offer-grid__empty"><strong>Az ajánlatok most nem tölthetők be.</strong><p>Kérjük, próbálja meg később, vagy kérjen egyedi ajánlatot.</p><a class="btn-two" href="/kapcsolat">Kapcsolatfelvétel</a></div>' }
       finally { results.setAttribute('aria-busy', 'false'); loading.hidden = true }
