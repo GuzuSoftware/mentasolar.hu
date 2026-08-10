@@ -3092,6 +3092,15 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .testimonial-two__rating-review .rating-review-part {
   padding: 30px 40px;
 }
+.testimonials-compact { padding-top: 72px !important; padding-bottom: 72px !important; }
+.testimonials-compact .testimonial-two__item { padding: 32px 34px 28px; }
+.testimonials-compact .testimonial-two__item .coma { top: 35px; right: 36px; }
+.testimonials-compact .testimonial-two__item p { margin-top: 18px !important; }
+@media (max-width: 767px) {
+  .testimonials-compact { padding-top: 48px !important; padding-bottom: 48px !important; }
+  .testimonials-compact .testimonial-two__item { padding: 26px 22px 22px; }
+  .testimonials-compact .testimonial-two__item .coma { top: 22px; right: 22px; }
+}
 
 .blog__image {
   overflow: hidden;
