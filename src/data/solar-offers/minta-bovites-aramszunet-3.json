@@ -1,5 +1,5 @@
 {
-  "marketingName": "Gazdaságos energiatároló rendszer",
+  "marketingName": "Gazdaságos energiatároló és back-up bővítés",
   "published": true,
   "example": false,
   "offerType": "system-extension",
@@ -18,7 +18,8 @@
   "highlights": [
     "Automatikus átkapcsolás",
     "Teljes áramszüneti ellátás",
-    "Energiamanagement rendszer"
+    "Energiamanagement rendszer",
+    "Temperált akkumulátor (kültérre is)"
   ],
   "order": 10
 }

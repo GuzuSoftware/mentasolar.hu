@@ -1,5 +1,5 @@
 {
-  "marketingName": "Prémium energiatároló rendszer",
+  "marketingName": "Prémium energiatároló és back-up bővítés",
   "published": true,
   "example": false,
   "offerType": "system-extension",
@@ -19,7 +19,8 @@
     "Automatikus átkapcsolás",
     "Teljes áramszüneti ellátás",
     "Energiamanagement rendszer",
-    "Magyar nyelvű alkalmazás"
+    "Magyar nyelvű alkalmazás",
+    "Temperált akkumulátor (kültérre is)"
   ],
   "order": 10
 }

@@ -1,5 +1,5 @@
 {
-  "marketingName": "Gazdaságos energiatároló bővítés",
+  "marketingName": "Prémium energiatároló bővítés",
   "published": true,
   "example": false,
   "offerType": "system-extension",
@@ -7,18 +7,18 @@
   "storageType": "with-storage",
   "roofType": "any",
   "extensionType": "inverter-storage",
-  "image": "/images/solar-offers/minta-bovites-tarolo/image.webp",
+  "image": "/images/solar-offers/minta-bovites-tarolo-1/image.webp",
   "summary": "Meglévő napelemes rendszer korszerűsítéséhez, inverter csere és akkumulátor modul kiegészítés.",
-  "inverterBrand": "Fox ESS P3 Smart 10.0 E",
-  "batteryBrand": "Fox MIRA M12 11,52 kWh",
-  "panelBrand": "Meglévő rendszerhez igazítva",
+  "inverterBrand": "Sigen Hybrid 10.0 TP2",
+  "batteryBrand": "SigenStor BAT 10 kWh",
+  "panelBrand": "Igény esetén bővítjük",
   "systemPower": "Meglévő rendszer felmérése után",
-  "batteryCapacity": "11,5 kWh",
-  "priceText": "1 205 000 Ft",
+  "batteryCapacity": "10 kWh",
+  "priceText": "1 490 000 Ft",
   "highlights": [
-    "Kiegészítő eszközzel bővíthető",
+    "Könnyen bővíthető",
     "Temperált akkumulátor (kültérre is)",
-    "Akku modulba integrált töltésvezérlő",
+    "További 3 akku modullal bővíthető ugyanazon toronyban",
     "Teljes áramszüneti ellátásra fejleszthető"
   ],
   "order": 10
