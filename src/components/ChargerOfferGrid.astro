@@ -40,7 +40,7 @@ const priceInfo = 'A feltüntetett ár tájékoztató jellegű. A végleges ajá
           <div class="charger-offer-card__actions"><button class="charger-offer-card__info" type="button" data-charger-open={offer.id}><i class="fa-solid fa-circle-info" aria-hidden="true" /> Részletek</button><a class="btn-three" href={contactUrl}>Érdekel <i class="fa-solid fa-arrow-right ml-10" aria-hidden="true" /></a></div>
         </div>
         <dialog class="charger-modal" data-charger-modal={offer.id} aria-labelledby={`${offer.id}-modal-title`}>
-          <div class="charger-modal__content"><img class="charger-modal__image" src={offer.image} alt={offer.marketingName} /><button class="charger-modal__close" type="button" data-charger-close aria-label="Részletek bezárása"><i class="fa-solid fa-xmark" aria-hidden="true" /></button><p class="charger-modal__brand">{offer.brand}</p><h2 id={`${offer.id}-modal-title`}>{offer.marketingName}</h2><p class="charger-modal__lead">{offer.summary}</p>
+          <div class="charger-modal__content"><div class="charger-modal__image-zoom" data-charger-image-zoom><img class="charger-modal__image" src={offer.image} alt={offer.marketingName} /></div><button class="charger-modal__close" type="button" data-charger-close aria-label="Részletek bezárása"><i class="fa-solid fa-xmark" aria-hidden="true" /></button><p class="charger-modal__brand">{offer.brand}</p><h2 id={`${offer.id}-modal-title`}>{offer.marketingName}</h2><p class="charger-modal__lead">{offer.summary}</p>
             {activeFeatures.length > 0 && <div class="charger-modal__features" aria-label="Kiemelt jellemzők">{activeFeatures.map(([, label, icon, iconStyle]) => <span><i class:list={[iconStyle, icon]} aria-hidden="true" />{label}</span>)}</div>}
             {offer.technicalDetails?.filter(Boolean).length && <div class="charger-modal__technical"><h3>Műszaki adatok</h3><ul>{offer.technicalDetails.filter(Boolean).map((detail) => <li><i class="fa-solid fa-check" aria-hidden="true" />{detail}</li>)}</ul></div>}
             <a class="btn-two" href={contactUrl}>Érdekel <i class="fa-solid fa-arrow-right ml-10" aria-hidden="true" /></a>
@@ -60,6 +60,7 @@ const priceInfo = 'A feltüntetett ár tájékoztató jellegű. A végleges ajá
     card.addEventListener('keydown', (event) => { if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest('a, button')) { event.preventDefault(); openChargerModal(card.getAttribute('data-charger-card')) } })
   })
   document.querySelectorAll('[data-charger-modal]').forEach((modal) => { modal.querySelector('[data-charger-close]')?.addEventListener('click', () => modal.close()); modal.addEventListener('click', (event) => { if (!event.target.closest('.charger-modal__content')) modal.close() }) })
+  document.querySelectorAll('[data-charger-image-zoom]').forEach((image) => image.addEventListener('click', () => image.classList.toggle('is-zoomed')))
   document.querySelectorAll('.charger-tooltip button').forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); const tooltip = button.closest('.charger-tooltip'); const shouldOpen = !tooltip?.classList.contains('is-open'); closeChargerTooltips(); if (shouldOpen && tooltip) { tooltip.classList.add('is-open'); button.setAttribute('aria-expanded', 'true') } }))
   document.addEventListener('click', closeChargerTooltips)
 </script>
