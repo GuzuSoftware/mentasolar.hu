@@ -4177,12 +4177,12 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-offer-card:hover { border-color: rgba(59, 137, 91, .55); box-shadow: 0 16px 34px rgba(24, 45, 31, .16); transform: translateY(-4px); }
 .solar-offer-card { position: relative; }
 .solar-offer-card__badge { position: absolute; z-index: 2; top: 13px; left: 13px; padding: 5px 10px; border-radius: 999px; color: var(--heading-color); background: rgba(255,255,255,.94); box-shadow: 0 2px 10px rgba(0,0,0,.12); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.solar-offer-card > img { width: 100%; aspect-ratio: 16 / 7; border-radius: 13px 13px 0 0; object-fit: cover; }
+.solar-offer-card > img { width: 100%; aspect-ratio: 16 / 7; border-radius: 13px 13px 0 0; object-fit: contain; background: #f7faf8; }
 .solar-offer-card__body { display: flex; height: 100%; flex-direction: column; padding: 23px 25px 25px; }
 .solar-offer-card h3 { font-size: 24px; line-height: 31px; }
-.solar-offer-card__body > p { margin: 10px 0 14px; }
+.solar-offer-card__body > p { margin: 10px 0 6px; }
 .solar-offer-card__body > p:not(.solar-offer-card__price) { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-.solar-offer-card__price { display: grid; gap: 4px; margin: 12px 0; padding: 12px 14px; border-radius: 9px; background: #fff2e7; }
+.solar-offer-card__price { display: grid; gap: 4px; margin: 6px 0 10px; padding: 12px 14px; border-radius: 9px; background: #fff2e7; }
 .solar-offer-card__price-label { display: inline-flex; align-items: center; gap: 5px; color: #bd5a17; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
 .solar-offer-card__price strong { color: #a94c0d; font-family: var(--exo); font-size: 20px; line-height: 1.2; }
 .offer-price-tooltip { position: relative; display: inline-block; }
@@ -4197,7 +4197,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-offer-card ul { margin: 0 0 17px; }
 .solar-offer-card li { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 4px; color: var(--heading-color); font-size: 14px; line-height: 22px; }
 .solar-offer-card li i { margin-top: 5px; color: var(--primary-color); font-size: 11px; }
-.solar-offer-card .btn-three { margin-top: auto; align-self: flex-start; }
+.solar-offer-card .btn-three { align-self: flex-start; margin-top: auto; padding: 12px 22px; }
 .solar-offer-grid__empty { grid-column: 1 / -1; padding: 50px 30px; border-radius: 12px; background: var(--sub-bg); text-align: center; }
 .solar-offer-grid__empty strong { display: block; color: var(--heading-color); font-family: var(--exo); font-size: 23px; }
 .solar-offer-grid__empty p { margin: 9px auto 22px; max-width: 620px; }
