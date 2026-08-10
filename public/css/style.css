@@ -1975,6 +1975,13 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   font-weight: 600;
   padding: 30px 0;
 }
+.header__main .main-menu > nav > ul > li > span {
+  display: inline-block;
+  padding: 30px 0;
+  color: var(--heading-color);
+  font-weight: 600;
+}
+.header__main .main-menu > nav > ul > li > span i { font-size: 12px; transition: var(--transition); }
 .header__main .main-menu ul li a i {
   font-size: 12px;
   transition: var(--transition);
@@ -2023,6 +2030,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
   transform: rotate(-180deg);
   color: var(--primary-color);
 }
+.header__main .main-menu > nav > ul > li:hover > span { color: var(--primary-color); }
+.header__main .main-menu > nav > ul > li:hover > span i { transform: rotate(-180deg); color: var(--primary-color); }
 @media (max-width: 991px) {
   .header__main {
     padding: 15px 0;
