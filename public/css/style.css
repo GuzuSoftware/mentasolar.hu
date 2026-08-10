@@ -3997,8 +3997,8 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .climate-modal__image-zoom { height: 230px; margin: 0 0 16px; overflow: hidden; cursor: zoom-in; background: #f7faf8; border-radius: 10px; }
 .climate-modal__image { display: block; width: 100%; height: 100%; margin: 0; object-fit: contain; mix-blend-mode: multiply; transition: transform .22s ease; }
 .climate-modal__image-zoom:hover .climate-modal__image { transform: scale(1.025); }
-.climate-modal__image-zoom.is-zoomed { position: fixed; z-index: 10; inset: 0; display: flex; width: 100vw; height: 100dvh; align-items: center; justify-content: center; margin: 0; padding: clamp(24px, 6vh, 64px) clamp(20px, 7vw, 110px); cursor: zoom-out; background: rgba(10, 29, 18, .88); border-radius: 0; }
-.climate-modal__image-zoom.is-zoomed .climate-modal__image { width: 100%; height: 100%; max-height: 88dvh; object-fit: contain; background: #f7faf8; border-radius: 12px; box-shadow: 0 14px 48px rgba(0,0,0,.34); transform: none; }
+.climate-modal__image-zoom.is-zoomed { position: fixed; z-index: 10; inset: 0; display: flex; width: 100vw; height: 100dvh; align-items: center; justify-content: center; margin: 0; padding: clamp(24px, 6vh, 64px) clamp(20px, 7vw, 110px); cursor: zoom-out; background: rgba(0, 0, 0, .82); border-radius: 0; }
+.climate-modal__image-zoom.is-zoomed .climate-modal__image { width: 100%; height: 100%; max-height: 88dvh; object-fit: contain; background: #f7faf8; border-radius: 12px; box-shadow: 0 14px 48px rgba(0,0,0,.34); mix-blend-mode: normal; transform: none; }
 .climate-modal__close { position: absolute; top: 16px; right: 16px; display: grid; width: 38px; height: 38px; place-items: center; color: var(--heading-color); background: var(--sub-bg); border: 0; border-radius: 50%; font-size: 18px; transition: var(--transition); }
 .climate-modal__close:hover, .climate-modal__close:focus-visible { color: var(--white); background: var(--primary-color); }
 .climate-modal h2 { max-width: calc(100% - 38px); margin-bottom: 8px; font-size: 25px; line-height: 32px; }
