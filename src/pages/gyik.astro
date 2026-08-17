@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import site from '../content/site.json'
 
 type Faq = { question: string; answer: string; order: number }
 const faqModules = import.meta.glob<{ default: Faq }>('../data/faqs/*.json', { eager: true })
@@ -8,13 +9,10 @@ const faqs = Object.values(faqModules)
   .sort((first, second) => first.order - second.order || first.question.localeCompare(second.question, 'hu'))
 ---
 
-<Layout title="Gyakran Ismételt Kérdések | Mentasolar.hu">
+<Layout seo={site.faqSeo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'GYIK', url: '/gyik' }]}>
   <section class="faq-two-area pt-120 pb-120">
     <div class="container">
-      <h2 class="mb-60 text-center text-capitalize">
-        Gyakran Ismételt <br />
-        Kérdések
-      </h2>
+      <h1 class="faq-page__title mb-60 text-center">{site.faqHeading}</h1>
 
       <div class="faq-two__item">
         <div class="accordion" id="faqAccordion">

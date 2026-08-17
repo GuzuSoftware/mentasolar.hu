@@ -1,6 +1,22 @@
 {
-  "seoTitle": "Elektromos autótöltő telepítéssel | MentaSolar",
-  "seoDescription": "Otthoni és üzleti elektromos autótöltők értékesítése és telepítése. Besen, Tesla és Wallbox töltőmegoldások szakértő kivitelezéssel.",
-  "primaryKeyword": "autótöltő telepítés",
-  "secondaryKeywords": ["elektromos autótöltő", "fali autótöltő", "Type 2 autótöltő", "Wallbox telepítés", "Tesla töltő"]
+  "seo": {
+    "title": "Elektromos autótöltő – vásárlás és telepítés | MentaSolar",
+    "description": "Otthoni és üzleti wallboxok és elektromos autótöltők online értékesítése, valamint szakszerű telepítése Pécsen, Pécs környékén és Baranyában.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "primaryKeyword": "elektromos autótöltő",
+  "secondaryKeywords": ["wallbox", "otthoni autótöltő", "autótöltő vásárlás", "elektromos autótöltő telepítés Pécs", "wallbox telepítés Pécs", "autótöltő Baranya"],
+  "pageTitle": "Elektromos autótöltők otthonra és vállalkozásoknak",
+  "heroSubtitle": "Online értékesítés • telepítés Pécsen és Baranyában",
+  "offerIntro": "Nézd meg a legnépszerűbb készülékeket. Bátran egyeztess velünk az egyedi szempontokról, jármű-kompatibilitásról!",
+  "infoTitle": "Tudnivalók az autótöltő kiválasztásáról",
+  "intro": [
+    "Az otthoni vagy üzleti elektromos autótöltő kiválasztásánál a jármű mellett az ingatlan villamos hálózatát, a rendelkezésre álló teljesítményt, a fázisszámot és a kívánt töltési teljesítményt is figyelembe kell venni.",
+    "Elektromos autótöltőink online is elérhetők, a helyszíni felmérést és szakszerű telepítést pedig Pécsen, Pécs környékén és Baranya vármegyében vállaljuk."
+  ]
 }

@@ -5,7 +5,7 @@ import SolarPageBanner from '../../components/SolarPageBanner.astro'
 import solar from '../../content/solar.json'
 ---
 
-<Layout title={solar.extensionSeoTitle} description={solar.extensionSeoDescription}>
-  <SolarPageBanner title="Napelem rendszer bővítése" breadcrumb="Rendszerbővítés" />
-  <section class="solar-offer-page solar-offer-page--extension pt-120 pb-120"><div class="container"><SolarOfferFinder kind="system-extension" /></div></section>
+<Layout seo={solar.extensionSeo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Napelem', url: '/napelem' }, { name: 'Rendszerbővítés', url: '/napelem/rendszer-bovites' }]}>
+  <SolarPageBanner title={solar.extensionTitle} subtitle={solar.extensionHeroSubtitle} breadcrumb="Rendszerbővítés" />
+  <section class="solar-offer-page solar-offer-page--extension pt-120 pb-120"><div class="container"><SolarOfferFinder kind="system-extension" /><div class="solar-offer-page__intro solar-service-seo-intro"><h2>{solar.extensionInfoTitle}</h2>{solar.extensionIntro.map((paragraph) => <p>{paragraph}</p>)}</div></div></section>
 </Layout>

@@ -12,6 +12,12 @@ interface ChargerOffer {
   order: number
 }
 
+interface Props {
+  intro: string
+}
+
+const { intro } = Astro.props
+
 const offerModules = import.meta.glob<{ default: ChargerOffer }>('../data/charger-offers/*.json', { eager: true })
 const offers = Object.entries(offerModules)
   .map(([path, module]) => ({ id: path.split('/').pop()?.replace(/\.json$/, '') ?? path, ...module.default }))
@@ -25,7 +31,7 @@ const priceInfo = 'A feltüntetett ár tájékoztató jellegű. A végleges ajá
 ---
 
 <section class="charger-offers" aria-label="Autótöltő ajánlatok">
-  <div class="charger-offers__intro"><span class="solar-finder__eyebrow">Autótöltő ajánlatok</span><p>Otthoni és üzleti töltési megoldások szakértő telepítéssel. Válasszon a rendelkezésre álló csomagok közül.</p></div>
+  <div class="charger-offers__intro solar-offer-brief-intro"><span class="solar-finder__eyebrow">Autótöltő ajánlatok</span><p>{intro}</p></div>
   <div class="charger-offer-grid">
     {offers.map((offer) => {
       const contactUrl = `/kapcsolat?ajanlat=${encodeURIComponent(offer.marketingName)}&ajanlatId=${encodeURIComponent(offer.id)}`

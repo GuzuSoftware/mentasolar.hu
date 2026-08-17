@@ -5,7 +5,7 @@ import ChargerOfferGrid from '../components/ChargerOfferGrid.astro'
 import charger from '../content/charger.json'
 ---
 
-<Layout title={charger.seoTitle} description={charger.seoDescription}>
-  <SolarPageBanner title="Elektromos autótöltők" breadcrumb="Autótöltő" />
-  <section class="charger-offer-page pt-120 pb-120"><div class="container"><ChargerOfferGrid /></div></section>
+<Layout seo={charger.seo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Autótöltő', url: '/auto-tolto' }]}>
+  <SolarPageBanner title={charger.pageTitle} subtitle={charger.heroSubtitle} breadcrumb="Autótöltő" />
+  <section class="charger-offer-page pt-120 pb-120"><div class="container"><ChargerOfferGrid intro={charger.offerIntro} /><div class="solar-offer-page__intro solar-service-seo-intro"><h2>{charger.infoTitle}</h2>{charger.intro.map((paragraph) => <p>{paragraph}</p>)}</div></div></section>
 </Layout>

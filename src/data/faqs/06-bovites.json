@@ -1,5 +1,5 @@
 {
   "question": "Honnan tudom, hogy bővíthető-e a napelemes rendszerem?",
-  "answer": "Az inverter adattábláján található a pontos típus. Erre interneten rákeresve megtalálható az eszköz adatlapja, amiben fel van tüntetve a maximális bemeneti teljesítmény (ez legtöbb esetben nagyobb, mint az inverter papíron feltüntetett, névleges teljesítménye - akár plusz 50% is lehet). A már felszerelt napelem panelek összes teljesítménye ezt nem haladhatja meg.\n",
+  "answer": "Az inverter adattábláján található a pontos típus. Erre interneten rákeresve megtalálható az eszköz adatlapja, amiben fel van tüntetve a maximális bemeneti teljesítmény (ez legtöbb esetben nagyobb, mint az inverter papíron feltüntetett, névleges teljesítménye - akár plusz 50% is lehet). A már felszerelt napelempanelek összes teljesítménye ezt nem haladhatja meg.\n",
   "order": 6
 }

@@ -2,9 +2,10 @@
 interface Props {
   title: string
   breadcrumb: string
+  subtitle?: string
 }
 
-const { title, breadcrumb } = Astro.props
+const { title, breadcrumb, subtitle } = Astro.props
 ---
 
 <section
@@ -14,6 +15,7 @@ const { title, breadcrumb } = Astro.props
   <div class="overlay" />
   <div class="container">
     <h1 class="text-white solar-page-banner__title">{title}</h1>
+    {subtitle && <p class="solar-page-banner__subtitle">{subtitle}</p>}
     <div class="breadcrumb-list">
       <a href="/" class="text-white">Kezdőlap</a>
       <span class="text-white"><i class="fa-regular fa-angle-right mx-2" />{breadcrumb}</span>

@@ -5,7 +5,7 @@ import ClimateOfferGrid from '../components/ClimateOfferGrid.astro'
 import climate from '../content/climate.json'
 ---
 
-<Layout title={climate.seoTitle} description={climate.seoDescription}>
-  <SolarPageBanner title="Klíma berendezések" breadcrumb="Klíma" />
-  <section class="climate-offer-page pt-120 pb-120"><div class="container"><ClimateOfferGrid /></div></section>
+<Layout seo={climate.seo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Klíma', url: '/klima' }]}>
+  <SolarPageBanner title={climate.pageTitle} subtitle={climate.heroSubtitle} breadcrumb="Klíma" />
+  <section class="climate-offer-page pt-120 pb-120"><div class="container"><ClimateOfferGrid intro={climate.offerIntro} /><div class="solar-offer-page__intro solar-service-seo-intro"><h2>{climate.infoTitle}</h2>{climate.intro.map((paragraph) => <p>{paragraph}</p>)}</div></div></section>
 </Layout>

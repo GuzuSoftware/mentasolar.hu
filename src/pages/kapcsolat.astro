@@ -3,9 +3,13 @@ import Layout from '../layouts/Layout.astro'
 import site from '../content/site.json'
 ---
 
-<Layout title="Kapcsolat | MentaSolar">
+<Layout seo={site.contactSeo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Kapcsolat', url: '/kapcsolat' }]}>
   <section class="contact-area pt-120 pb-120">
     <div class="container">
+      <div class="contact-page__intro text-center">
+        <h1 class="contact-page__title">{site.contactHeading}</h1>
+        <p>{site.contactIntro}</p>
+      </div>
       <div class="row g-4">
         <div class="col-lg-6">
           <div class="contact__item bor radius10">
@@ -21,7 +25,7 @@ import site from '../content/site.json'
                 <div class="col-sm-6">
                   <div class="contact__content">
                     <div class="icon mb-20"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
-                    <h4 class="text-capitalize">Email cím</h4>
+                    <h4 class="text-capitalize">E-mail-cím</h4>
                     <a href={`mailto:${site.email}`}>{site.email}</a>
                   </div>
                 </div>
@@ -36,6 +40,11 @@ import site from '../content/site.json'
           <div class="contact__map mt-25">
             <iframe title="MentaSolar térkép" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1163.5816758472527!2d18.258503228969264!3d46.08142448925324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4742b1f5eb782d9d%3A0x5ed1cef0d6744f2b!2sMentaSolar!5e0!3m2!1shu!2shu!4v1742467861597!5m2!1shu!2shu" loading="lazy"></iframe>
           </div>
+          <aside class="contact-webshop-cta mt-25" aria-label="MentaSolar webshop">
+            <h3>Telepítő vagy szakmai vásárló?</h3>
+            <p>Napelemes, energiatárolási és kapcsolódó villamossági termékeket telepítők és szakmai vásárlók számára a MentaSolar webshopban érhet el.</p>
+            <a href="https://shop.mentasolar.hu/">MentaSolar webshop megnyitása <i class="fa-solid fa-arrow-right" aria-hidden="true" /></a>
+          </aside>
         </div>
         <div class="col-lg-6">
           <div class="subscribe__item contact__form">

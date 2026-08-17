@@ -1,7 +1,87 @@
 ---
 import site from '../content/site.json'
-interface Props { title?: string; description?: string }
-const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = 'Professzionális napelem- és klímamegoldások.' } = Astro.props
+
+interface SeoData {
+  title?: string | null
+  description?: string | null
+  canonical?: string | null
+  ogTitle?: string | null
+  ogDescription?: string | null
+  ogImage?: string | null
+  robotsIndex?: boolean | null
+  robotsFollow?: boolean | null
+}
+
+interface Props {
+  title?: string
+  description?: string
+  seo?: SeoData
+  breadcrumbs?: Array<{ name: string; url: string }>
+}
+
+const {
+  title: pageTitle,
+  description: pageDescription,
+  seo,
+  breadcrumbs,
+} = Astro.props
+
+const defaultTitle = 'MentaSolar – Napelem és Klíma Megoldások'
+const defaultDescription = 'Professzionális napelem- és klímamegoldások.'
+const siteUrl = Astro.site ?? new URL('https://mentasolar.hu')
+const textOrNull = (value?: string | null) => value?.trim() || null
+const title = textOrNull(seo?.title) ?? textOrNull(pageTitle) ?? defaultTitle
+const description = textOrNull(seo?.description) ?? textOrNull(pageDescription) ?? defaultDescription
+const canonicalInput = textOrNull(seo?.canonical)
+const canonicalUrl = new URL(canonicalInput ?? Astro.url.pathname, siteUrl).toString()
+const robotsIndex = seo?.robotsIndex ?? true
+const robotsFollow = seo?.robotsFollow ?? true
+const robots = `${robotsIndex ? 'index' : 'noindex'}, ${robotsFollow ? 'follow' : 'nofollow'}`
+const ogTitle = textOrNull(seo?.ogTitle) ?? title
+const ogDescription = textOrNull(seo?.ogDescription) ?? description
+const ogImage = textOrNull(seo?.ogImage)
+const ogImageUrl = ogImage ? new URL(ogImage, siteUrl).toString() : null
+const businessId = new URL('/#business', siteUrl).toString()
+const structuredData: Record<string, unknown>[] = []
+
+if (Astro.url.pathname === '/') {
+  structuredData.push({
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': businessId,
+    name: 'MentaSolar',
+    legalName: 'Vision Manager Zrt.',
+    url: siteUrl.toString(),
+    description: site.heroText,
+    telephone: site.phone,
+    email: site.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Mohácsi út 1.',
+      postalCode: '7630',
+      addressLocality: 'Pécs',
+      addressCountry: 'HU',
+    },
+    sameAs: [site.facebook, site.instagram],
+  })
+}
+
+if (breadcrumbs?.length) {
+  structuredData.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: breadcrumb.name,
+      item: new URL(breadcrumb.url, siteUrl).toString(),
+    })),
+  })
+}
+
+const structuredDataJson = structuredData.length
+  ? JSON.stringify(structuredData).replace(/</g, '\\u003c')
+  : null
 ---
 <!doctype html>
 <html lang="hu">
@@ -9,8 +89,19 @@ const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = '
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content={robots} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MentaSolar" />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    {structuredDataJson && <script type="application/ld+json" set:html={structuredDataJson} />}
     <link rel="icon" href="/images/favicon.png" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/all.min.css" />
@@ -31,13 +122,13 @@ const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = '
       <div class="container">
         <div class="header__main">
           <a href="/" class="logo"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a>
-          <div class="main-menu"><nav><ul><li><a href="/">Kezdőlap</a></li><li><span>Szolgáltatások <i class="fa-solid fa-angle-down"></i></span><ul class="sub-menu"><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/auto-tolto">Autótöltő</a></li></ul></li><li><a href="/gyik">GYIK</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav></div>
+          <div class="main-menu"><nav><ul><li><a href="/">Kezdőlap</a></li><li><span>Szolgáltatások <i class="fa-solid fa-angle-down"></i></span><ul class="sub-menu"><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/auto-tolto">Autótöltő</a></li></ul></li><li><a href="/gyik">GYIK</a></li><li><a href="https://shop.mentasolar.hu/">Webshop</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav></div>
           <button class="mobile-nav-toggle d-block d-lg-none" type="button" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Navigáció megnyitása"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
         </div>
       </div>
       <button class="mobile-navigation-backdrop" type="button" aria-label="Navigáció bezárása" hidden></button>
       <div class="mobile-navigation" id="mobile-navigation" hidden>
-        <div class="container"><nav aria-label="Mobil navigáció"><ul><li><a href="/">Kezdőlap</a></li><li class="mobile-navigation__services"><button class="mobile-services-toggle" type="button" aria-controls="mobile-services" aria-expanded="false">Szolgáltatások <i class="fa-solid fa-angle-down" aria-hidden="true"></i></button><ul id="mobile-services" hidden><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/auto-tolto">Autótöltő</a></li></ul></li><li><a href="/gyik">GYIK</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav><div class="mobile-navigation__contact" aria-label="Elérhetőségek"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-phone" aria-hidden="true"></i><span>{site.phone}</span></a><a href={`mailto:${site.email}`}><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>{site.email}</span></a><a href="https://maps.google.com/?q=46.081515,18.259501" target="_blank" rel="noreferrer"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{site.address}</span></a></div></div>
+        <div class="container"><nav aria-label="Mobil navigáció"><ul><li><a href="/">Kezdőlap</a></li><li class="mobile-navigation__services"><button class="mobile-services-toggle" type="button" aria-controls="mobile-services" aria-expanded="false">Szolgáltatások <i class="fa-solid fa-angle-down" aria-hidden="true"></i></button><ul id="mobile-services" hidden><li><a href="/napelem">Napelem</a></li><li><a href="/klima">Klíma</a></li><li><a href="/auto-tolto">Autótöltő</a></li></ul></li><li><a href="/gyik">GYIK</a></li><li><a href="https://shop.mentasolar.hu/">Webshop</a></li><li><a href="/kapcsolat">Kapcsolat</a></li></ul></nav><div class="mobile-navigation__contact" aria-label="Elérhetőségek"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-phone" aria-hidden="true"></i><span>{site.phone}</span></a><a href={`mailto:${site.email}`}><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>{site.email}</span></a><a href="https://maps.google.com/?q=46.081515,18.259501" target="_blank" rel="noreferrer"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{site.address}</span></a></div></div>
       </div>
     </header>
     <script is:inline>
@@ -54,7 +145,7 @@ const { title = 'MentaSolar – Napelem és Klíma Megoldások', description = '
       window.addEventListener('resize', () => { if (window.innerWidth >= 992 && !mobileNavigation.hidden) closeMobileNavigation(); });
     </script>
     <main><slot /></main>
-    <footer class="footer-area"><div class="footer__bg"></div><div class="container"><div class="footer__wrp pt-80 pb-80"><div class="row g-4"><div class="col-lg-3 col-md-6"><div class="footer__item"><div class="logo"><a class="d-block" href="/"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a></div><p class="mt-30 black-para">MentaSolar – Használja fel a Nap erejét!</p><div class="social-icons mt-30"><a href={site.facebook} aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href={site.instagram} aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div></div><div class="col-lg-1 d-none d-lg-block"></div><div class="col-lg-2 col-md-6"><div class="footer__item service"><h4 class="text-white mb-30">Szolgáltatások</h4><ul><li class="mb-15"><a href="/napelem"><i class="fa-solid fa-angle-right"></i> Napelem</a></li><li class="mb-15"><a href="/klima"><i class="fa-solid fa-angle-right"></i> Klíma</a></li><li class="mb-15"><a href="/auto-tolto"><i class="fa-solid fa-angle-right"></i> Autótöltő</a></li></ul></div></div><div class="col-lg-3 col-md-6"><div class="footer__item find"><h4 class="text-white mb-30">Kapcsolat</h4><ul><li class="mb-20"><a href="https://maps.google.com/?q=46.081515,18.259501" target="_blank"><i class="fa-solid fa-circle pr-10"></i> {site.address}</a></li><li class="mb-20"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-circle pr-10"></i>{site.phone}</a></li><li><a href={`mailto:${site.email}`}><i class="fa-solid fa-circle pr-10"></i>{site.email}</a></li></ul></div></div></div></div></div><div class="footer__copy-text"><div class="container"><div class="d-flex copy-text align-items-center justify-content-between"><p>© {new Date().getFullYear()} MentaSolar – Vision Manager Zrt. Minden jog fenntartva!</p><ul><li><a href="/kapcsolat" class="primary-hover">Kapcsolat</a></li></ul></div></div></div></footer>
+    <footer class="footer-area"><div class="footer__bg"></div><div class="container"><div class="footer__wrp pt-80 pb-80"><div class="row g-4"><div class="col-lg-3 col-md-6"><div class="footer__item"><div class="logo"><a class="d-block" href="/"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a></div><p class="mt-30 black-para">MentaSolar – Használja fel a Nap erejét!</p><div class="social-icons mt-30"><a href={site.facebook} aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href={site.instagram} aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div></div><div class="col-lg-1 d-none d-lg-block"></div><div class="col-lg-2 col-md-6"><div class="footer__item service"><h4 class="text-white mb-30">Szolgáltatások</h4><ul><li class="mb-15"><a href="/napelem"><i class="fa-solid fa-angle-right"></i> Napelem</a></li><li class="mb-15"><a href="/klima"><i class="fa-solid fa-angle-right"></i> Klíma</a></li><li class="mb-15"><a href="/auto-tolto"><i class="fa-solid fa-angle-right"></i> Autótöltő</a></li><li class="mb-15"><a href="https://shop.mentasolar.hu/"><i class="fa-solid fa-angle-right"></i> Webshop</a></li></ul></div></div><div class="col-lg-3 col-md-6"><div class="footer__item find"><h4 class="text-white mb-30">Kapcsolat</h4><ul><li class="mb-20"><a href="https://maps.google.com/?q=46.081515,18.259501" target="_blank"><i class="fa-solid fa-circle pr-10"></i> {site.address}</a></li><li class="mb-20"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-circle pr-10"></i>{site.phone}</a></li><li><a href={`mailto:${site.email}`}><i class="fa-solid fa-circle pr-10"></i>{site.email}</a></li></ul></div></div></div></div></div><div class="footer__copy-text"><div class="container"><div class="d-flex copy-text align-items-center justify-content-between"><p>© {new Date().getFullYear()} MentaSolar – Vision Manager Zrt. Minden jog fenntartva!</p><ul><li><a href="/kapcsolat" class="primary-hover">Kapcsolat</a></li></ul></div></div></div></footer>
     <script is:inline src="/js/jquery-3.7.1.min.js"></script><script is:inline src="/js/bootstrap.min.js"></script><script is:inline src="/js/jquery.meanmenu.js"></script><script is:inline src="/js/swiper-bundle.min.js"></script><script is:inline src="/js/jquery.counterup.min.js"></script><script is:inline src="/js/wow.min.js"></script><script is:inline src="/js/magnific-popup.min.js"></script><script is:inline src="/js/nice-select.min.js"></script><script is:inline src="/js/isotope.pkgd.min.js"></script><script is:inline src="/js/jquery.waypoints.js"></script><script is:inline src="/js/script.js"></script>
   </body>
 </html>

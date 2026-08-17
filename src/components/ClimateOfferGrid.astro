@@ -16,6 +16,12 @@ interface ClimateOffer {
   order: number
 }
 
+interface Props {
+  intro: string
+}
+
+const { intro } = Astro.props
+
 const offerModules = import.meta.glob<{ default: ClimateOffer }>('../data/climate-offers/*.json', { eager: true })
 const offers = Object.entries(offerModules)
   .map(([path, module]) => ({ id: path.split('/').pop()?.replace(/\.json$/, '') ?? path, ...module.default }))
@@ -40,7 +46,7 @@ const showSliderControls = offers.length > 1
 ---
 
 <section class="climate-offers" aria-label="Klíma csomagajánlatok">
-  <div class="climate-offers__intro"><span class="solar-finder__eyebrow">Klíma csomagajánlatok</span><p>A csomagok igény szerint bővíthetők, és a helyszíni felmérés alapján pontosítjuk őket.</p></div>
+  <div class="climate-offers__intro solar-offer-brief-intro"><span class="solar-finder__eyebrow">Klíma csomagajánlatok</span><p>{intro}</p></div>
   <div class="climate-offer-slider" data-climate-slider data-mobile-only-pagination={offers.length <= offersPerPage || undefined}>
     {showSliderControls && <button class="climate-offer-slider__arrow climate-offer-slider__arrow--previous" type="button" data-climate-previous aria-label="Előző ajánlatok"><i class="fa-solid fa-angle-left" aria-hidden="true" /></button>}
     <div class="climate-offer-grid">

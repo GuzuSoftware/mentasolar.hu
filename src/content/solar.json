@@ -1,10 +1,63 @@
 {
   "defaultSystemType": "grid",
   "defaultStorageType": "without-storage",
-  "seoTitle": "Napelem rendszerek otthonra | MentaSolar",
-  "seoDescription": "Napelemes rendszer tervezése és kivitelezése hálózati vagy szigetüzemű megoldással, energiatárolóval vagy anélkül.",
-  "primaryKeyword": "napelemes rendszer",
-  "secondaryKeywords": ["napelem szerelés", "napelemes rendszer telepítés", "hibrid inverter", "energiatároló", "napelem akkumulátor"],
-  "extensionSeoTitle": "Napelem rendszer bővítése és energiatároló | MentaSolar",
-  "extensionSeoDescription": "Meglévő napelemes rendszer bővítése invertercserével, akkumulátorral és teljes tartalékellátással."
+  "hubTitle": "Napelemes rendszerek",
+  "hubHeroSubtitle": "Tervezés és kivitelezés Pécsen és Baranyában",
+  "offerIntro": "Nézd meg példa ajánlatainkat, amelyeket különböző igényekre állítottunk össze. Ezek pontosan mutatják a költségeket, de nem minősülnek konkrét ajánlattételnek. Bátran kérj tőlünk egyedi tervezést!",
+  "hubInfoTitle": "Találjuk meg az Önnek való rendszert",
+  "hubIntro": [
+    "Új napelemes rendszer, meglévő rendszer bővítése vagy energiatároló utólagos beépítése előtt ugyanaz a kérdés a legfontosabb: mire kell a rendszernek képesnek lennie? A MentaSolar Pécsen és Baranyában vállal felmérést, tervezést és kivitelezést hálózati, hibrid és szigetüzemű rendszerekhez.",
+    "A tervezésnél nemcsak az éves fogyasztást vizsgáljuk, hanem az invertert, az energiatárolási igényt, a későbbi bővíthetőséget és azt is, hogy szükség van-e áramszünet esetén backup ellátásra vagy teljes energiafüggetlenségre."
+  ],
+  "newSystemTitle": "Új napelemes rendszer",
+  "newSystemHeroSubtitle": "Tervezés és kivitelezés Pécsen és Baranyában",
+  "newSystemInfoTitle": "Tudnivalók az új napelemes rendszer tervezéséről",
+  "newSystemIntro": [
+    "Egy új napelemes rendszer tervezésénél nemcsak azt kell eldönteni, hány napelem kerüljön a tetőre. A fogyasztás, a jövőben tervezett nagyobb fogyasztók, az inverter típusa, az energiatárolás és az áramszüneti működés igénye együtt határozza meg, milyen rendszer lesz hosszú távon megfelelő.",
+    "Pécsen és Baranyában hálózatra kapcsolt, hibrid inverteres, energiatárolós és teljes energiafüggetlenségre tervezett rendszerek kialakításában is segítünk. Ha fontos az áramszünet alatti ellátás, már a tervezéskor meg kell határozni, hogy részleges backup vagy a nagyobb fogyasztókat is kiszolgáló megoldás szükséges."
+  ],
+  "extensionTitle": "Napelemes rendszer bővítése és invertercsere",
+  "extensionHeroSubtitle": "Felmérés és bővítés Pécsen és Baranyában",
+  "extensionInfoTitle": "Tudnivalók a napelemes rendszer bővítéséről",
+  "extensionIntro": [
+    "Egy meglévő napelemes rendszer többféleképpen fejleszthető. Lehet cél a termelési teljesítmény növelése további napelemekkel, az elavult vagy már nem megfelelő inverter cseréje, energiatároló utólagos csatlakoztatása, illetve áramszünet esetén használható backup funkció kialakítása.",
+    "A bővíthetőség mindig a meglévő rendszer műszaki adottságaitól függ. Vizsgálni kell többek között az inverter típusát és teljesítményét, a napelem-stringek kialakítását, a meglévő panelek és az új elemek kompatibilitását, a fázisszámot, valamint azt, hogy az inverter támogat-e energiatárolót vagy szükséges-e hibrid inverterre cserélni.",
+    "Pécsen és Baranyában meglévő napelemes rendszerek felmérését, teljesítménybővítését, invertercseréjét és energiatárolós fejlesztését is vállaljuk."
+  ],
+  "seo": {
+    "title": "Napelem Pécsen – tervezés és kivitelezés | MentaSolar",
+    "description": "Napelemes rendszerek tervezése, kivitelezése és bővítése Pécsen és Baranyában, hibrid inverterrel, energiatárolóval, backup vagy szigetüzemű megoldással.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "newSystemSeo": {
+    "title": "Új napelemes rendszer tervezése Pécsen | MentaSolar",
+    "description": "Új napelemes rendszer Pécsen és Baranyában: fogyasztáshoz méretezett napelem, hibrid inverter, energiatároló, backup és szigetüzemű lehetőségek.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "primaryKeyword": "napelem Pécs",
+  "secondaryKeywords": ["napelemes rendszer Pécs", "napelem Baranya", "napelem telepítés Pécs", "napelem kivitelezés Pécs", "hibrid inverter", "energiatároló", "backup rendszer", "energiafüggetlenség"],
+  "newSystemPrimaryKeyword": "új napelemes rendszer",
+  "newSystemSecondaryKeywords": ["hibrid inverter", "napelem energiatárolóval", "backup rendszer", "szigetüzemű napelem", "energiafüggetlenség", "napelemes rendszer Pécs"],
+  "extensionSeo": {
+    "title": "Napelemes rendszer bővítés, invertercsere | MentaSolar",
+    "description": "Meglévő napelemes rendszer bővítése Pécsen és Baranyában: plusz panelek, invertercsere, hibrid inverter, energiatároló-bővítés és backup lehetőségek.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "extensionPrimaryKeyword": "napelemes rendszer bővítés",
+  "extensionSecondaryKeywords": ["invertercsere", "hibrid inverter", "energiatároló bővítés", "napelem bővítés", "napelem rendszer bővítés", "backup rendszer", "napelem bővítés Pécs"]
 }

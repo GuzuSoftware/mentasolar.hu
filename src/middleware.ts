@@ -27,14 +27,25 @@ const immutableSlugScript = String.raw`<script>
 export const onRequest = defineMiddleware(async (context, next) => {
   const response = await next();
   const { pathname } = context.url;
+  const isAdminOrApiRoute = pathname === "/keystatic" || pathname.startsWith("/keystatic/") || pathname.startsWith("/api/");
   const isExistingKeystaticItem = /^\/keystatic\/collection\/[^/]+\/item\/[^/]+$/.test(pathname);
+  const headers = new Headers(response.headers);
+
+  if (isAdminOrApiRoute) {
+    headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
 
   if (!isExistingKeystaticItem || !response.headers.get("content-type")?.includes("text/html")) {
-    return response;
+    if (!isAdminOrApiRoute) return response;
+
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
   }
 
   const html = await response.text();
-  const headers = new Headers(response.headers);
   headers.delete("content-length");
 
   // A Keystatic Astro-integráció egy HTML-fragmentet ad vissza, ezért nincs

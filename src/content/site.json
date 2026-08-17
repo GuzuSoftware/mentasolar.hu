@@ -1,10 +1,45 @@
 {
   "heroEyebrow": "Szolgáltatásaink",
-  "heroTitle": "Használja fel a Nap erejét",
+  "heroTitle": "Napelem, klíma és autótöltő megoldások",
+  "heroSubtitle": "Értékesítés • kivitelezés Pécsen és Baranyában",
   "heroText": "Napelemes, autótöltő és hűtő-fűtő klíma megoldások értékesítése, tervezése és kivitelezése.",
+  "homeLocalIntro": "A MentaSolar Pécsről kínál energetikai és komfortmegoldásokat lakossági és üzleti ügyfelek számára. Napelemes rendszerek tervezését és kivitelezését, hűtő-fűtő klímák telepítését, valamint elektromos autótöltők helyszíni telepítését Pécsen, Pécs környékén és Baranya vármegyében vállaljuk.",
+  "faqHeading": "Gyakori kérdések a napelemes rendszerekről",
+  "contactHeading": "Kapcsolat és ajánlatkérés",
+  "contactIntro": "Napelemes rendszerrel, klímatelepítéssel vagy elektromos autótöltővel kapcsolatban kérjen személyre szabott ajánlatot. Pécsi központunkból Pécsen, Pécs környékén és Baranya vármegyében végzünk helyszíni kivitelezési munkákat.",
   "phone": "+36 20 352 5301",
   "email": "info@mentasolar.hu",
   "address": "7630 Pécs, Mohácsi út 1.",
   "facebook": "https://www.facebook.com/mentasolar",
-  "instagram": "https://www.instagram.com/mentasolarhungary/"
+  "instagram": "https://www.instagram.com/mentasolarhungary/",
+  "seo": {
+    "title": "Napelem, klíma és autótöltő Pécsen | MentaSolar",
+    "description": "Napelemes rendszerek, hűtő-fűtő klímák és elektromos autótöltők értékesítése, tervezése és kivitelezése Pécsen, Pécs környékén és Baranyában.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "faqSeo": {
+    "title": "Napelemes rendszer GYIK | MentaSolar",
+    "description": "Közérthető válaszok napelemes rendszerekről, energiatárolásról, telepítésről, rendszerbővítésről és a MentaSolar szolgáltatásaival kapcsolatos kérdésekről.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "contactSeo": {
+    "title": "Kapcsolat és ajánlatkérés | MentaSolar Pécs",
+    "description": "Kérjen személyre szabott ajánlatot napelemes rendszerre, klímára vagy elektromos autótöltőre. MentaSolar, 7630 Pécs, Mohácsi út 1.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  }
 }

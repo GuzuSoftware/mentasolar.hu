@@ -6,6 +6,41 @@ const storage = import.meta.env.DEV
   ? { kind: "local" as const }
   : { kind: "github" as const, repo: "GuzuSoftware/mentasolar.hu" };
 
+const seoFields = () => ({
+  title: fields.text({ label: "SEO-cím" }),
+  description: fields.text({
+    label: "Meta leírás",
+    multiline: true,
+  }),
+  canonical: fields.text({
+    label: "Canonical URL felülírása",
+    description: "Opcionális. Üresen hagyva az oldal saját https://mentasolar.hu/... canonical URL-je készül.",
+  }),
+  ogTitle: fields.text({
+    label: "Open Graph cím",
+    description: "Opcionális. Üresen hagyva a SEO-cím kerül megosztásra.",
+  }),
+  ogDescription: fields.text({
+    label: "Open Graph leírás",
+    multiline: true,
+    description: "Opcionális. Üresen hagyva a meta leírás kerül megosztásra.",
+  }),
+  ogImage: fields.image({
+    label: "Open Graph megosztási kép",
+    description: "Opcionális. Csak feltöltött kép esetén jelenik meg og:image és twitter:image metaadat.",
+    directory: "public/images/seo",
+    publicPath: "/images/seo/",
+  }),
+  robotsIndex: fields.checkbox({
+    label: "Indexelhető oldal",
+    defaultValue: true,
+  }),
+  robotsFollow: fields.checkbox({
+    label: "Linkek követhetők",
+    defaultValue: true,
+  }),
+});
+
 export default config({
   storage,
   collections: {
@@ -175,12 +210,20 @@ export default config({
       schema: {
         heroEyebrow: fields.text({ label: "Nyitó címke" }),
         heroTitle: fields.text({ label: "Nyitó főcím" }),
+        heroSubtitle: fields.text({ label: "Nyitó helyi szolgáltatási sor" }),
         heroText: fields.text({ label: "Nyitó szöveg", multiline: true }),
+        homeLocalIntro: fields.text({ label: "Főoldali helyi bevezető", multiline: true }),
+        faqHeading: fields.text({ label: "GYIK főcím" }),
+        contactHeading: fields.text({ label: "Kapcsolat főcím" }),
+        contactIntro: fields.text({ label: "Kapcsolat bevezető", multiline: true }),
         phone: fields.text({ label: "Telefonszám" }),
         email: fields.text({ label: "E-mail-cím" }),
         address: fields.text({ label: "Cím" }),
         facebook: fields.url({ label: "Facebook" }),
         instagram: fields.url({ label: "Instagram" }),
+        seo: fields.object(seoFields(), { label: "Főoldal SEO" }),
+        faqSeo: fields.object(seoFields(), { label: "GYIK SEO" }),
+        contactSeo: fields.object(seoFields(), { label: "Kapcsolat SEO" }),
       },
     }),
     solar: singleton({
@@ -204,12 +247,28 @@ export default config({
             { label: "Akkumulátorral", value: "with-storage" },
           ],
         }),
-        seoTitle: fields.text({ label: "Napelem oldal SEO-címe", validation: { isRequired: true } }),
-        seoDescription: fields.text({ label: "Napelem oldal meta leírása", multiline: true, validation: { isRequired: true } }),
-        primaryKeyword: fields.text({ label: "Elsődleges keresőkifejezés", description: "Szerkesztési segítség; nem meta keywords mező." }),
-        secondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "További keresőkifejezések", description: "Például: napelem szerelés, inverter márka, energiatároló márka. Az ajánlatkártyákon a megadott márkák látható szövegként is szerepelnek." }),
-        extensionSeoTitle: fields.text({ label: "Rendszerbővítés SEO-címe", validation: { isRequired: true } }),
-        extensionSeoDescription: fields.text({ label: "Rendszerbővítés meta leírása", multiline: true, validation: { isRequired: true } }),
+        hubTitle: fields.text({ label: "Napelem oldal főcíme" }),
+        hubHeroSubtitle: fields.text({ label: "Napelem oldal helyi szolgáltatási sora" }),
+        offerIntro: fields.text({ label: "Napelemes ajánlatok rövid bevezetője", multiline: true }),
+        hubInfoTitle: fields.text({ label: "Napelem oldal információs blokkjának címe" }),
+        hubIntro: fields.array(fields.text({ label: "Bekezdés", multiline: true }), { label: "Napelem oldal bevezetője" }),
+        newSystemTitle: fields.text({ label: "Új rendszer oldal főcíme" }),
+        newSystemHeroSubtitle: fields.text({ label: "Új rendszer oldal helyi szolgáltatási sora" }),
+        newSystemInfoTitle: fields.text({ label: "Új rendszer információs blokkjának címe" }),
+        newSystemIntro: fields.array(fields.text({ label: "Bekezdés", multiline: true }), { label: "Új rendszer oldal bevezetője" }),
+        extensionTitle: fields.text({ label: "Rendszerbővítés oldal főcíme" }),
+        extensionHeroSubtitle: fields.text({ label: "Rendszerbővítés oldal helyi szolgáltatási sora" }),
+        extensionInfoTitle: fields.text({ label: "Rendszerbővítés információs blokkjának címe" }),
+        extensionIntro: fields.array(fields.text({ label: "Bekezdés", multiline: true }), { label: "Rendszerbővítés oldal bevezetője" }),
+        seo: fields.object(seoFields(), { label: "Napelem oldal SEO" }),
+        primaryKeyword: fields.text({ label: "Napelem oldal elsődleges keresőkifejezése", description: "Szerkesztési segítség; nem meta keywords mező." }),
+        secondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "Napelem oldal további keresőkifejezései", description: "Szerkesztési segítség; nem meta keywords mező." }),
+        newSystemSeo: fields.object(seoFields(), { label: "Új napelemes rendszer SEO" }),
+        newSystemPrimaryKeyword: fields.text({ label: "Új rendszer elsődleges keresőkifejezése", description: "Szerkesztési segítség; nem meta keywords mező." }),
+        newSystemSecondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "Új rendszer további keresőkifejezései", description: "Szerkesztési segítség; nem meta keywords mező." }),
+        extensionSeo: fields.object(seoFields(), { label: "Rendszerbővítés SEO" }),
+        extensionPrimaryKeyword: fields.text({ label: "Rendszerbővítés elsődleges keresőkifejezése", description: "Szerkesztési segítség; nem meta keywords mező." }),
+        extensionSecondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "Rendszerbővítés további keresőkifejezései", description: "Szerkesztési segítség; nem meta keywords mező." }),
       },
     }),
     climate: singleton({
@@ -217,8 +276,12 @@ export default config({
       path: "src/content/climate",
       format: "json",
       schema: {
-        seoTitle: fields.text({ label: "Klíma oldal SEO-címe", validation: { isRequired: true } }),
-        seoDescription: fields.text({ label: "Klíma oldal meta leírása", multiline: true, validation: { isRequired: true } }),
+        pageTitle: fields.text({ label: "Klíma oldal főcíme" }),
+        heroSubtitle: fields.text({ label: "Klíma oldal helyi szolgáltatási sora" }),
+        offerIntro: fields.text({ label: "Klíma ajánlatok rövid bevezetője", multiline: true }),
+        infoTitle: fields.text({ label: "Klíma információs blokkjának címe" }),
+        intro: fields.array(fields.text({ label: "Bekezdés", multiline: true }), { label: "Klíma oldal bevezetője" }),
+        seo: fields.object(seoFields(), { label: "Klíma oldal SEO" }),
         primaryKeyword: fields.text({ label: "Elsődleges keresőkifejezés", description: "Például: klíma szereléssel. Szerkesztési segítség; nem meta keywords mező." }),
         secondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "További keresőkifejezések", description: "Például: klíma telepítés, Midea klíma vagy Fisher klíma." }),
       },
@@ -228,8 +291,12 @@ export default config({
       path: "src/content/charger",
       format: "json",
       schema: {
-        seoTitle: fields.text({ label: "Autótöltő oldal SEO-címe", validation: { isRequired: true } }),
-        seoDescription: fields.text({ label: "Autótöltő oldal meta leírása", multiline: true, validation: { isRequired: true } }),
+        pageTitle: fields.text({ label: "Autótöltő oldal főcíme" }),
+        heroSubtitle: fields.text({ label: "Autótöltő oldal helyi szolgáltatási sora" }),
+        offerIntro: fields.text({ label: "Autótöltő ajánlatok rövid bevezetője", multiline: true }),
+        infoTitle: fields.text({ label: "Autótöltő információs blokkjának címe" }),
+        intro: fields.array(fields.text({ label: "Bekezdés", multiline: true }), { label: "Autótöltő oldal bevezetője" }),
+        seo: fields.object(seoFields(), { label: "Autótöltő oldal SEO" }),
         primaryKeyword: fields.text({ label: "Elsődleges keresőkifejezés", description: "Például: autótöltő telepítés. Szerkesztési segítség; nem meta keywords mező." }),
         secondaryKeywords: fields.array(fields.text({ label: "Keresőkifejezés" }), { label: "További keresőkifejezések", description: "Például: fali autótöltő, Type 2 töltő, Wallbox telepítés." }),
       },

@@ -4,15 +4,14 @@ import SolarPageBanner from '../components/SolarPageBanner.astro'
 import solar from '../content/solar.json'
 ---
 
-<Layout title={solar.seoTitle} description={solar.seoDescription}>
-  <SolarPageBanner title="Napelem rendszerek" breadcrumb="Napelem" />
+<Layout seo={solar.seo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Napelem', url: '/napelem' }]}>
+  <SolarPageBanner title={solar.hubTitle} subtitle={solar.hubHeroSubtitle} breadcrumb="Napelem" />
 
   <section class="solar-hub pt-120 pb-120">
     <div class="container">
-      <div class="solar-hub__intro">
-        <span class="solar-finder__eyebrow">Napelemes megoldások otthonra</span>
-        <h2>Találjuk meg az Önnek való rendszert</h2>
-        <p>Napelemes rendszer tervezését és kivitelezését az első egyeztetéstől az üzembe helyezésig kísérjük. Válassza ki, hogy új rendszert tervez, vagy a meglévőjét fejlesztené tovább.</p>
+      <div class="solar-offer-brief-intro">
+        <span class="solar-finder__eyebrow">Napelemes csomagajánlatok</span>
+        <p>{solar.offerIntro}</p>
       </div>
       <div class="solar-hub__choices">
         <a class="solar-hub-card" href="/napelem/uj-rendszer">
@@ -23,6 +22,10 @@ import solar from '../content/solar.json'
           <span class="solar-hub-card__graphic solar-hub-card__graphic--upgrade" aria-hidden="true"><i class="fa-solid fa-solar-panel"></i><i class="fa-solid fa-battery-three-quarters"></i><i class="fa-solid fa-plus"></i></span>
           <span class="solar-hub-card__body"><strong>Meglévő rendszeremet fejleszteném</strong><small>Invertercsere, energiatároló vagy áramszüneti ellátás a jelenlegi rendszere mellé.</small><b>Bővítési lehetőségek <i class="fa-solid fa-arrow-right" /></b></span>
         </a>
+      </div>
+      <div class="solar-hub__intro solar-service-seo-intro">
+        <h2>{solar.hubInfoTitle}</h2>
+        {solar.hubIntro.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </div>
   </section>

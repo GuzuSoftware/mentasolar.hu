@@ -1,6 +1,22 @@
 {
-  "seoTitle": "Klíma szereléssel és telepítéssel | MentaSolar",
-  "seoDescription": "Hűtő-fűtő klíma csomagok szereléssel együtt. MDV, Fisher és Midea klímaberendezések felméréssel, telepítéssel és beüzemeléssel.",
-  "primaryKeyword": "klíma szereléssel",
-  "secondaryKeywords": ["klíma telepítés", "hűtő-fűtő klíma", "Midea klíma", "Fisher klíma", "MDV klíma"]
+  "seo": {
+    "title": "Klímaszerelés Pécsen és Baranyában | MentaSolar",
+    "description": "Hűtő-fűtő klímák értékesítése, felmérése, telepítése és beüzemelése Pécsen, Pécs környékén és Baranyában, Midea, Fisher és MDV készülékekkel.",
+    "canonical": "",
+    "ogTitle": "",
+    "ogDescription": "",
+    "ogImage": null,
+    "robotsIndex": true,
+    "robotsFollow": true
+  },
+  "primaryKeyword": "klímaszerelés Pécs",
+  "secondaryKeywords": ["klíma Pécs", "klíma telepítés Pécs", "klíma Baranya", "hűtő-fűtő klíma Pécs"],
+  "pageTitle": "Klímaszerelés és telepítés",
+  "heroSubtitle": "Felmérés, telepítés és beüzemelés Pécsen és Baranyában",
+  "offerIntro": "Nézd meg példa ajánlatainkat, amelyeket különböző igényekre állítottunk össze. Ezek pontosan mutatják a költségeket, de nem minősülnek konkrét ajánlattételnek. Bátran egyeztess velünk az egyedi szempontokról!",
+  "infoTitle": "Tudnivalók a klíma kiválasztásáról",
+  "intro": [
+    "A megfelelő klíma kiválasztása nemcsak a készülék teljesítményéről szól. Fontos a helyiség mérete és kialakítása, a készülék elhelyezése, a csövezés lehetősége és az is, hogy a klímát csak hűtésre vagy fűtésre is szeretnék használni.",
+    "A MentaSolar hűtő-fűtő klímák értékesítését, helyszíni felmérését, telepítését és beüzemelését végzi Pécsen, Pécs környékén és Baranya vármegyében."
+  ]
 }
