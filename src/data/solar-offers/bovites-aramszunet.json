@@ -6,7 +6,7 @@
   "systemType": "grid",
   "storageType": "with-storage",
   "extensionType": "full-backup",
-  "image": "/images/solar-offers/minta-bovites-aramszunet/image.webp",
+  "image": "/images/solar-offers/bovites-aramszunet/image.webp",
   "summary": "Teljes körű áramszüneti ellátást biztosító rendszer. Tartalmazza az inverter cseréjét, az energiatárolós bővítést és a full-backup kialakítását.",
   "inverterBrand": "Fronius Symo GEN24 10.0 Plus",
   "batteryBrand": "BYD Battery-Box Premium HVM 5x2,76 kWh",

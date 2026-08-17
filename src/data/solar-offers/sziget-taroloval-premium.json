@@ -1,0 +1,29 @@
+{
+  "marketingName": "Teljes energiafüggetlenség",
+  "published": true,
+  "example": false,
+  "offerType": "new-system",
+  "systemType": "off-grid",
+  "storageType": "with-storage",
+  "extensionType": "full-backup",
+  "image": "/images/solar-offers/sziget-taroloval-premium/image.webp",
+  "summary": "Nagyobb energiatárolóval összeállított, prémium hálózati rendszer, bőséges tartalékkal. \nAz ajánlat a tartószerkezet és a telepítés irányárát is tartalmazza.",
+  "inverterBrand": "Sigenergy Sigen Hybrid 8.0 TP2",
+  "batteryBrand": "2 db Sigenergy SigenStor BAT 10.0",
+  "panelBrand": "22 db Leapton 450W black frame",
+  "systemPower": "10 kWp",
+  "batteryCapacity": "20 kWh",
+  "priceText": "4 190 000",
+  "highlights": [
+    "Energiamanagement rendszer",
+    "Temperált akkumulátor (kültérre is)",
+    "Nagy kapacitású tárolás",
+    "Teljesen szolgáltatófüggetlen rendszer",
+    "Dupla üveges, jégeső-álló napelemek",
+    "Prémium hatásfokú napelemek",
+    "Alacsony degradáció (N-type)",
+    "Modern fekete keretes napelem panel",
+    "Fekete eloxált leszorítók"
+  ],
+  "order": 20
+}

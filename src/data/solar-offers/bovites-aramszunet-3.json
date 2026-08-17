@@ -6,7 +6,7 @@
   "systemType": "grid",
   "storageType": "with-storage",
   "extensionType": "full-backup",
-  "image": "/images/solar-offers/minta-bovites-aramszunet-3/image.webp",
+  "image": "/images/solar-offers/bovites-aramszunet-3/image.webp",
   "summary": "Teljes körű áramszüneti ellátást biztosító rendszer. Tartalmazza az inverter cseréjét, az energiatárolós bővítést és a full-backup kialakítását.",
   "inverterBrand": "Sigen Hybrid 10.0 TP2",
   "batteryBrand": "SigenStor BAT 10 kWh",

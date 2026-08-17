@@ -6,7 +6,7 @@
   "systemType": "grid",
   "storageType": "with-storage",
   "extensionType": "full-backup",
-  "image": "/images/solar-offers/minta-bovites-aramszunet-2/image.webp",
+  "image": "/images/solar-offers/bovites-aramszunet-2/image.webp",
   "summary": "Teljes körű áramszüneti ellátást biztosító rendszer. Tartalmazza az inverter cseréjét, az energiatárolós bővítést, a full-backup kialakítását és autótöltő csatlakozási lehetőséget is.",
   "inverterBrand": "SigenStor EC 10.0 TP",
   "batteryBrand": "SigenStor BAT 10 kWh",

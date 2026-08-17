@@ -1,0 +1,29 @@
+{
+  "marketingName": "Hétvégi ház, vagy nyaraló ellátására",
+  "published": true,
+  "example": false,
+  "offerType": "new-system",
+  "systemType": "off-grid",
+  "storageType": "with-storage",
+  "extensionType": "full-backup",
+  "image": "/images/solar-offers/sziget-alap/image.webp",
+  "summary": "Népszerű rendszerméret, amivel nyaralód energiafüggetlenné válik. A tetőn kis helyet igényel, az akku kapacitás pedig igény szerint, könnyedén bővíthető.",
+  "inverterBrand": "Fox ESS P3 Smart 5.0 E",
+  "batteryBrand": "Fox MIRA M12",
+  "panelBrand": "12 db Leapton 450W black frame",
+  "systemPower": "5,4 kWp",
+  "batteryCapacity": "12 kWh",
+  "priceText": "1 900 000 Ft",
+  "highlights": [
+    "Kiegészítő eszközzel bővíthető",
+    "Temperált akkumulátor (kültérre is)",
+    "Akku modulba integrált töltésvezérlő",
+    "Teljes szolgáltatófüggetlen rendszer",
+    "Dupla üveges, jégeső-álló napelemek",
+    "Prémium hatásfokú napelemek",
+    "Alacsony degradáció (N-type)",
+    "Modern fekete keretes napelem panel",
+    "Fekete eloxált leszorítók"
+  ],
+  "order": 10
+}
