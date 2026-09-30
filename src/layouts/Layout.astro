@@ -17,6 +17,7 @@ interface Props {
   description?: string
   seo?: SeoData
   breadcrumbs?: Array<{ name: string; url: string }>
+  ogType?: 'website' | 'article'
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   description: pageDescription,
   seo,
   breadcrumbs,
+  ogType = 'website',
 } = Astro.props
 
 const defaultTitle = 'MentaSolar – Napelem és Klíma Megoldások'
@@ -94,7 +96,7 @@ const structuredDataJson = structuredData.length
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="MentaSolar" />
     {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
     <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
@@ -145,7 +147,7 @@ const structuredDataJson = structuredData.length
       window.addEventListener('resize', () => { if (window.innerWidth >= 992 && !mobileNavigation.hidden) closeMobileNavigation(); });
     </script>
     <main><slot /></main>
-    <footer class="footer-area"><div class="footer__bg"></div><div class="container"><div class="footer__wrp pt-80 pb-80"><div class="row g-4"><div class="col-lg-3 col-md-6"><div class="footer__item"><div class="logo"><a class="d-block" href="/"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a></div><p class="mt-30 black-para">MentaSolar – Használja fel a Nap erejét!</p><div class="social-icons mt-30"><a href={site.facebook} aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href={site.instagram} aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div></div><div class="col-lg-1 d-none d-lg-block"></div><div class="col-lg-2 col-md-6"><div class="footer__item service"><h4 class="text-white mb-30">Szolgáltatások</h4><ul><li class="mb-15"><a href="/napelem"><i class="fa-solid fa-angle-right"></i> Napelem</a></li><li class="mb-15"><a href="/klima"><i class="fa-solid fa-angle-right"></i> Klíma</a></li><li class="mb-15"><a href="/auto-tolto"><i class="fa-solid fa-angle-right"></i> Autótöltő</a></li></ul></div></div><div class="col-lg-3 col-md-6"><div class="footer__item find"><h4 class="text-white mb-30">Kapcsolat</h4><ul><li class="mb-20"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-circle pr-10"></i>{site.phone}</a></li><li><a href={`mailto:${site.email}`}><i class="fa-solid fa-circle pr-10"></i>{site.email}</a></li></ul></div></div></div></div></div><div class="footer__copy-text"><div class="container"><div class="d-flex copy-text align-items-center"><p>© {new Date().getFullYear()} MentaSolar. Minden jog fenntartva!</p></div></div></div></footer>
+    <footer class="footer-area"><div class="footer__bg"></div><div class="container"><div class="footer__wrp pt-80 pb-80"><div class="row g-4"><div class="col-lg-3 col-md-6"><div class="footer__item"><div class="logo"><a class="d-block" href="/"><img src="/images/logo/mentasolar_logo_horizontal.svg" alt="MentaSolar" /></a></div><p class="mt-30 black-para">MentaSolar – Használja fel a Nap erejét!</p><div class="social-icons mt-30"><a href={site.facebook} aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href={site.instagram} aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></div></div></div><div class="col-lg-1 d-none d-lg-block"></div><div class="col-lg-2 col-md-6"><div class="footer__item service"><h4 class="text-white mb-30">Szolgáltatások</h4><ul><li class="mb-15"><a href="/napelem"><i class="fa-solid fa-angle-right"></i> Napelem</a></li><li class="mb-15"><a href="/klima"><i class="fa-solid fa-angle-right"></i> Klíma</a></li><li class="mb-15"><a href="/auto-tolto"><i class="fa-solid fa-angle-right"></i> Autótöltő</a></li></ul></div></div><div class="col-lg-3 col-md-6"><div class="footer__item find"><h4 class="text-white mb-30">Kapcsolat</h4><ul><li class="mb-20"><a href={`tel:${site.phone.replaceAll(' ', '')}`}><i class="fa-solid fa-circle pr-10"></i>{site.phone}</a></li><li><a href={`mailto:${site.email}`}><i class="fa-solid fa-circle pr-10"></i>{site.email}</a></li></ul></div></div></div></div></div><div class="footer__copy-text"><div class="container"><div class="d-flex copy-text align-items-center"><p>© {new Date().getFullYear()} MentaSolar Minden jog fenntartva!</p></div></div></div></footer>
     <script is:inline src="/js/jquery-3.7.1.min.js"></script><script is:inline src="/js/bootstrap.min.js"></script><script is:inline src="/js/jquery.meanmenu.js"></script><script is:inline src="/js/swiper-bundle.min.js"></script><script is:inline src="/js/jquery.counterup.min.js"></script><script is:inline src="/js/wow.min.js"></script><script is:inline src="/js/magnific-popup.min.js"></script><script is:inline src="/js/nice-select.min.js"></script><script is:inline src="/js/isotope.pkgd.min.js"></script><script is:inline src="/js/jquery.waypoints.js"></script><script is:inline src="/js/script.js"></script>
   </body>
 </html>
