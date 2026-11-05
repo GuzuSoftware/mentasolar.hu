@@ -1,14 +1,19 @@
 <script>
-  const acceptedMessage = 'Az űrlap elküldési kérése választ kapott. Az üzenet beérkezését még nem tudjuk itt igazolni; ha nem kap választ, írjon az info@mentasolar.hu címre.';
+  const successTitle = 'Köszönjük megkeresését!';
+  const successMessage = 'Üzenetét sikeresen elküldte. Hamarosan felvesszük Önnel a kapcsolatot.';
   const errorMessage = 'Az üzenet elküldése nem sikerült. Kérjük, próbálja újra, vagy írjon az info@mentasolar.hu címre.';
 
   document.querySelectorAll<HTMLFormElement>('[data-netlify-contact-form]').forEach((form) => {
     const status = form.parentElement?.querySelector<HTMLElement>('[data-form-status]');
     const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"], button:not([type])');
 
-    const showStatus = (message: string, state: 'pending' | 'error') => {
+    const showStatus = (message: string, state: 'success' | 'error') => {
       if (!status) return;
-      status.textContent = message;
+      if (state === 'success') {
+        status.innerHTML = `<h3>${successTitle}</h3><p>${message}</p>`;
+      } else {
+        status.textContent = message;
+      }
       status.className = `form-submission-status is-${state}`;
       status.hidden = false;
     };
@@ -39,7 +44,11 @@
 
         if (!response.ok) throw new Error(`Netlify Forms response: ${response.status}`);
 
-        showStatus(acceptedMessage, 'pending');
+        form.reset();
+        form.hidden = true;
+        const privacyNote = form.parentElement?.querySelector<HTMLElement>('.form-privacy-note');
+        if (privacyNote) privacyNote.hidden = true;
+        showStatus(successMessage, 'success');
       } catch {
         showStatus(errorMessage, 'error');
       } finally {
