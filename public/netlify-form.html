@@ -4,7 +4,7 @@
   <body>
     <!-- A Netlify ezt a statikus mintát a buildkor felismeri.
          A látogatók a tényleges űrlapot a főoldalon és a kapcsolat oldalon látják. -->
-    <form name="kapcsolat" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form name="kapcsolat" method="POST" action="/netlify-form.html" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="kapcsolat" />
       <p hidden><label>Ne töltse ki: <input name="bot-field" /></label></p>
       <input name="nev" />
