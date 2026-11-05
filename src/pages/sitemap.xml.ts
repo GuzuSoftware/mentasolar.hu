@@ -8,8 +8,6 @@ const publicRoutes = [
   '/napelem',
   '/napelem/uj-rendszer',
   '/napelem/rendszer-bovites',
-  '/klima',
-  '/auto-tolto',
   '/gyik',
   '/kapcsolat',
 ]
