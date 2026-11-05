@@ -28,8 +28,8 @@ const {
   ogType = 'website',
 } = Astro.props
 
-const defaultTitle = 'MentaSolar – Napelem és Klíma Megoldások'
-const defaultDescription = 'Professzionális napelem- és klímamegoldások.'
+const defaultTitle = 'MentaSolar – napelemes megoldások'
+const defaultDescription = 'Napelemes rendszerek tervezése, kivitelezése, bővítése és karbantartása.'
 const siteUrl = Astro.site ?? new URL('https://mentasolar.hu')
 const textOrNull = (value?: string | null) => value?.trim() || null
 const title = textOrNull(seo?.title) ?? textOrNull(pageTitle) ?? defaultTitle
