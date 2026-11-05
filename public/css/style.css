@@ -4056,6 +4056,10 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .solar-finder__heading p {
   color: var(--paragraph);
 }
+.error-page__content { max-width: 760px; margin: 0 auto; text-align: center; }
+.error-page__content h1 { margin: 10px 0 18px; }
+.error-page__content p { max-width: 650px; margin: 0 auto; color: var(--paragraph); }
+.error-page__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 30px; }
 .solar-offer-page__intro p + p,
 .solar-hub__intro p + p { margin-top: 12px; }
 .faq-page__title,

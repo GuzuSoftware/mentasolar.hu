@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  title="A keresett oldal nem található – MentaSolar"
+  description="A keresett oldal nem található. Fedezze fel a MentaSolar napelemes szolgáltatásait, vagy vegye fel velünk a kapcsolatot."
+  seo={{ robotsIndex: false, robotsFollow: false }}
+>
+  <section class="error-page pt-120 pb-120">
+    <div class="container">
+      <div class="error-page__content">
+        <span class="solar-finder__eyebrow">404</span>
+        <h1>A keresett oldal nem található</h1>
+        <p>
+          Lehetséges, hogy az oldal megszűnt, vagy a megadott hivatkozás hibás. A MentaSolar
+          napelemes szolgáltatásait továbbra is elérheti weboldalunkon.
+        </p>
+        <nav class="error-page__links" aria-label="404-es oldal navigáció">
+          <a class="btn-one" href="/">Főoldal</a>
+          <a class="btn-three" href="/napelem">Napelemes szolgáltatások</a>
+          <a class="btn-three" href="/kapcsolat">Kapcsolat</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+</Layout>
