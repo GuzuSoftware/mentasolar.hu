@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  title="Adatkezelési tájékoztató – MentaSolar"
+  description="A MentaSolar kapcsolatfelvételi és ajánlatkérési adatkezelésének tájékoztatója."
+  breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Adatkezelés', url: '/adatkezeles' }]}
+>
+  <section class="legal-page pt-120 pb-120">
+    <div class="container">
+      <article class="legal-page__content">
+        <span class="solar-finder__eyebrow">Jogi tájékoztató</span>
+        <h1>Adatkezelési tájékoztató</h1>
+        <p class="legal-page__lead">Ez a tájékoztató a MentaSolar weboldalán kezdeményezett kapcsolatfelvétel és ajánlatkérés során történő adatkezelésre vonatkozik.</p>
+
+        <section class="legal-page__section">
+          <h2>Adatkezelő és kapcsolat</h2>
+          <p><strong>Tóth Dániel egyéni vállalkozó</strong><br />Székhely: 7634 Pécs, Brassó utca 3. (nem ügyfélfogadási hely)<br />E-mail: <a href="mailto:info@mentasolar.hu">info@mentasolar.hu</a><br />Telefon: <a href="tel:+36702209197">+36 70 220 9197</a></p>
+        </section>
+
+        <section class="legal-page__section">
+          <h2>Milyen adatokat és miért kezelünk?</h2>
+          <div class="legal-page__table-wrap">
+            <table class="legal-page__table">
+              <thead><tr><th>Cél</th><th>Kezelt adatok</th><th>Jogalap</th><th>Megőrzés</th></tr></thead>
+              <tbody>
+                <tr><td>Kapcsolatfelvétel, ajánlatkérés megválaszolása</td><td>Név, e-mail-cím, telefonszám, érdeklődési tárgy, üzenet, ajánlatazonosító</td><td>A szerződéskötést megelőző, az érintett kérésére történő lépések megtétele</td><td>Lezárt, szerződés nélküli ajánlatkérés esetén 12 hónap a lezárástól; ezt követően törlés, kivéve más jogszerű megőrzési ok fennállását.</td></tr>
+                <tr><td>E-mailes kapcsolattartás</td><td>Az üzenetben megadott adatok és a levelezés tartalma</td><td>A megkeresés megválaszolásához szükséges, szerződéskötést megelőző lépések</td><td>A kapcsolatfelvétel céljának teljesüléséig, illetve a fenti 12 hónapos időtartam szerint.</td></tr>
+                <tr><td>Szerződés teljesítése, jogszabályi kötelezettségek</td><td>Az adott ügylethez szükséges azonosító- és kapcsolattartási adatok</td><td>Szerződés teljesítése, illetve jogszabályi kötelezettség</td><td>Az adott szerződésre és jogszabályi kötelezettségre irányadó időtartam szerint.</td></tr>
+                <tr><td>A weboldal biztonságos működtetése</td><td>Technikai naplóadatok, például IP-cím, böngésző- és eszközinformáció</td><td>Jogos érdek a szolgáltatás biztonságának és működőképességének fenntartásához</td><td>A technikai szolgáltató beállításai és a biztonsági cél eléréséhez szükséges idő szerint.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="legal-page__section">
+          <h2>Adatforrás, címzettek és adattovábbítás</h2>
+          <p>Az adatokat Ön adja meg az űrlap kitöltésekor vagy e-mailes megkeresés során. A weboldal kapcsolatfelvételi űrlapjai Netlify Forms szolgáltatást használnak, ezért az űrlapadatok a Netlify, Inc. mint technikai szolgáltató rendszerén is áthaladhatnak és ott tárolódhatnak.</p>
+          <p>A levelezés az adatkezelő saját üzemeltetésű e-mail-rendszerén történik. Ha az adott ügyletet a PilkPress Kft. teljesíti, az ügylet teljesítéséhez szükséges adatokat a PilkPress Kft. megkaphatja; ilyen esetben a szerződő vállalkozás személyéről az ajánlatadás és szerződéskötés során külön tájékoztatást adunk.</p>
+          <p>A Netlify USA-beli szolgáltató. A Netlify eszközei és infrastruktúrája révén előfordulhat harmadik országbeli adatkezelés. A Netlify saját tájékoztatója szerint az ilyen adattovábbításoknál alkalmazandó garanciákat, többek között az EU–USA adatvédelmi keretrendszert és szükség esetén az Európai Bizottság általános szerződési feltételeit alkalmazza.</p>
+        </section>
+
+        <section class="legal-page__section">
+          <h2>Az Ön jogai</h2>
+          <p>Ön kérheti a személyes adataihoz való hozzáférést, azok helyesbítését, törlését vagy kezelésének korlátozását; tiltakozhat a jogos érdeken alapuló adatkezelés ellen, és jogosult lehet az adathordozhatóságra is. Kérelmét az <a href="mailto:info@mentasolar.hu">info@mentasolar.hu</a> címen jelezheti.</p>
+          <p>Jogorvoslatért a Nemzeti Adatvédelmi és Információszabadság Hatósághoz fordulhat, illetve bírósághoz fordulhat. A Hatóság honlapja: <a href="https://www.naih.hu/" rel="noopener">www.naih.hu</a>.</p>
+        </section>
+
+        <section class="legal-page__section">
+          <h2>Adatbiztonság</h2>
+          <p>Az adatkezelő és technikai szolgáltatói a kezelt adatok védelméhez szükséges, ésszerű technikai és szervezési intézkedéseket alkalmazzák. Az adatokhoz csak azok férhetnek hozzá, akiknek ez feladatuk ellátásához szükséges.</p>
+        </section>
+      </article>
+    </div>
+  </section>
+</Layout>

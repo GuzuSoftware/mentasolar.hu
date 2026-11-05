@@ -10,6 +10,9 @@ const publicRoutes = [
   '/napelem/rendszer-bovites',
   '/gyik',
   '/kapcsolat',
+  '/impresszum',
+  '/adatkezeles',
+  '/sutikezeles',
 ]
 
 export const GET: APIRoute = () => {

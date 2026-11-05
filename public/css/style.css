@@ -4063,6 +4063,33 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 @media (max-width: 767px) {
   .error-page__content h1 { font-size: 40px; line-height: 50px; }
 }
+.legal-page { background: linear-gradient(180deg, #f7faf8 0, var(--white) 360px); }
+.legal-page__content { max-width: 940px; margin: 0 auto; }
+.legal-page__content > h1 { margin: 10px 0 18px; }
+.legal-page__lead { max-width: 760px; color: var(--paragraph); font-size: 18px; line-height: 1.7; }
+.legal-page__section { margin-top: 44px; }
+.legal-page__section h2 { margin-bottom: 16px; font-size: 28px; }
+.legal-page__section p { color: var(--paragraph); }
+.legal-page__section p + p { margin-top: 14px; }
+.legal-page__details { display: grid; gap: 10px; margin: 0; }
+.legal-page__details > div { display: grid; grid-template-columns: minmax(180px, 30%) 1fr; gap: 18px; padding: 13px 16px; border-radius: 8px; background: var(--sub-bg); }
+.legal-page__details dt { color: var(--heading-color); font-weight: 700; }
+.legal-page__details dd { margin: 0; color: var(--paragraph); }
+.legal-page__note { margin-top: 14px; font-size: 14px; }
+.legal-page__table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+.legal-page__table { width: 100%; min-width: 760px; margin: 0; border-collapse: collapse; }
+.legal-page__table th, .legal-page__table td { padding: 15px; border-bottom: 1px solid var(--border); vertical-align: top; text-align: left; }
+.legal-page__table th { color: var(--heading-color); background: var(--sub-bg); font-family: var(--exo); }
+.legal-page__table tr:last-child td { border-bottom: 0; }
+.form-privacy-note { margin: 16px 0 0; color: var(--paragraph); font-size: 13px; line-height: 1.55; }
+.form-privacy-note a { color: var(--primary-color); text-decoration: underline; }
+@media (max-width: 767px) {
+  .legal-page__content > h1 { font-size: 40px; line-height: 50px; }
+  .legal-page__lead { font-size: 16px; }
+  .legal-page__section { margin-top: 34px; }
+  .legal-page__section h2 { font-size: 24px; line-height: 32px; }
+  .legal-page__details > div { grid-template-columns: 1fr; gap: 4px; }
+}
 .solar-offer-page__intro p + p,
 .solar-hub__intro p + p { margin-top: 12px; }
 .faq-page__title,
