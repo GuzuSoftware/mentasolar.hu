@@ -1,12 +1,12 @@
 <script>
-  const successMessage = 'Üzenetét sikeresen elküldtük. Hamarosan felvesszük Önnel a kapcsolatot.';
+  const acceptedMessage = 'Az űrlap elküldési kérése választ kapott. Az üzenet beérkezését még nem tudjuk itt igazolni; ha nem kap választ, írjon az info@mentasolar.hu címre.';
   const errorMessage = 'Az üzenet elküldése nem sikerült. Kérjük, próbálja újra, vagy írjon az info@mentasolar.hu címre.';
 
   document.querySelectorAll<HTMLFormElement>('[data-netlify-contact-form]').forEach((form) => {
     const status = form.parentElement?.querySelector<HTMLElement>('[data-form-status]');
     const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"], button:not([type])');
 
-    const showStatus = (message: string, state: 'success' | 'error') => {
+    const showStatus = (message: string, state: 'pending' | 'error') => {
       if (!status) return;
       status.textContent = message;
       status.className = `form-submission-status is-${state}`;
@@ -30,16 +30,16 @@
         const formData = new FormData(form);
         const encodedFormData = new URLSearchParams();
         formData.forEach((value, name) => encodedFormData.append(name, String(value)));
-        const response = await fetch('/', {
+        const response = await fetch(form.action, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encodedFormData.toString(),
+          redirect: 'error',
         });
 
         if (!response.ok) throw new Error(`Netlify Forms response: ${response.status}`);
 
-        form.reset();
-        showStatus(successMessage, 'success');
+        showStatus(acceptedMessage, 'pending');
       } catch {
         showStatus(errorMessage, 'error');
       } finally {

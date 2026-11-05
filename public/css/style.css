@@ -4084,7 +4084,7 @@ input, .subscribe__item form textarea, .blog-details__left-item .post-comment .p
 .form-privacy-note { margin: 16px 0 0; color: var(--paragraph); font-size: 13px; line-height: 1.55; }
 .form-privacy-note a { color: var(--primary-color); text-decoration: underline; }
 .form-submission-status { margin: 18px 0 0; font-size: 15px; line-height: 1.55; font-weight: 600; }
-.form-submission-status.is-success { color: var(--primary-color); }
+.form-submission-status.is-pending { color: var(--primary-color); }
 .form-submission-status.is-error { color: #b42318; }
 @media (max-width: 767px) {
   .legal-page__content > h1 { font-size: 40px; line-height: 50px; }

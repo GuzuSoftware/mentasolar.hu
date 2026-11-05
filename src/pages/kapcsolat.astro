@@ -42,7 +42,7 @@ import NetlifyFormSubmission from '../components/NetlifyFormSubmission.astro'
           <div class="subscribe__item contact__form">
             <h5 class="text-uppercase pb-10 mb-10">Üzenjen nekünk</h5>
             <h2 class="mb-20">Küldjön üzenetet</h2>
-            <form name="kapcsolat" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-contact-form>
+            <form name="kapcsolat" method="POST" action="/netlify-form.html" data-netlify="true" netlify-honeypot="bot-field" data-netlify-contact-form>
               <input type="hidden" name="form-name" value="kapcsolat" />
               <input type="hidden" name="ajanlat-azonosito" value="" />
               <p class="d-none"><label>Ne töltse ki: <input name="bot-field" /></label></p>
