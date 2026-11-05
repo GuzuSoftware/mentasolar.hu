@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import site from '../content/site.json'
+import NetlifyFormSubmission from '../components/NetlifyFormSubmission.astro'
 ---
 
 <Layout seo={site.contactSeo} breadcrumbs={[{ name: 'Kezdőlap', url: '/' }, { name: 'Kapcsolat', url: '/kapcsolat' }]}>
@@ -41,7 +42,7 @@ import site from '../content/site.json'
           <div class="subscribe__item contact__form">
             <h5 class="text-uppercase pb-10 mb-10">Üzenjen nekünk</h5>
             <h2 class="mb-20">Küldjön üzenetet</h2>
-            <form name="kapcsolat" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <form name="kapcsolat" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-contact-form>
               <input type="hidden" name="form-name" value="kapcsolat" />
               <input type="hidden" name="ajanlat-azonosito" value="" />
               <p class="d-none"><label>Ne töltse ki: <input name="bot-field" /></label></p>
@@ -51,6 +52,7 @@ import site from '../content/site.json'
               <textarea name="uzenet" required placeholder="Írjon üzenetet..."></textarea>
               <button type="submit">Üzenet küldése</button>
             </form>
+            <p class="form-submission-status" data-form-status role="status" aria-live="polite" hidden></p>
             <p class="form-privacy-note">Az űrlap adatkezelési részletei az <a href="/adatkezeles">Adatkezelési tájékoztatóban</a> olvashatók.</p>
           </div>
         </div>
@@ -67,3 +69,4 @@ import site from '../content/site.json'
     if (offerId && offerField) offerField.value = offerId;
   </script>
 </Layout>
+<NetlifyFormSubmission />

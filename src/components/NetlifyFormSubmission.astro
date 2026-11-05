@@ -1,0 +1,54 @@
+<script>
+  const successMessage = 'Üzenetét sikeresen elküldtük. Hamarosan felvesszük Önnel a kapcsolatot.';
+  const errorMessage = 'Az üzenet elküldése nem sikerült. Kérjük, próbálja újra, vagy írjon az info@mentasolar.hu címre.';
+
+  document.querySelectorAll<HTMLFormElement>('[data-netlify-contact-form]').forEach((form) => {
+    const status = form.parentElement?.querySelector<HTMLElement>('[data-form-status]');
+    const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"], button:not([type])');
+
+    const showStatus = (message: string, state: 'success' | 'error') => {
+      if (!status) return;
+      status.textContent = message;
+      status.className = `form-submission-status is-${state}`;
+      status.hidden = false;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const originalLabel = submitButton?.textContent;
+      form.setAttribute('aria-busy', 'true');
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Küldés folyamatban…';
+      }
+      if (status) status.hidden = true;
+
+      try {
+        const formData = new FormData(form);
+        const encodedFormData = new URLSearchParams();
+        formData.forEach((value, name) => encodedFormData.append(name, String(value)));
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodedFormData.toString(),
+        });
+
+        if (!response.ok) throw new Error(`Netlify Forms response: ${response.status}`);
+
+        form.reset();
+        showStatus(successMessage, 'success');
+      } catch {
+        showStatus(errorMessage, 'error');
+      } finally {
+        form.removeAttribute('aria-busy');
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel ?? 'Üzenet küldése';
+        }
+      }
+    });
+  });
+</script>
