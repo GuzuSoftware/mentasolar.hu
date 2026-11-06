@@ -9,6 +9,7 @@ import {
 
 const completeSubmission = {
   'form-name': 'kapcsolat',
+  'mentasolar-form-id': 'kapcsolat',
   nev: 'Teszt Elek',
   email: 'teszt@example.com',
   telefon: '+36 70 000 0000',
@@ -19,7 +20,8 @@ const completeSubmission = {
 
 test('csak a kapcsolat űrlap indít értesítést', () => {
   assert.equal(isContactSubmission(completeSubmission), true);
-  assert.equal(isContactSubmission({ 'form-name': 'masik-urlap' }), false);
+  assert.equal(isContactSubmission({ 'mentasolar-form-id': 'masik-urlap' }), false);
+  assert.equal(isContactSubmission({ 'form-name': 'kapcsolat' }), false);
   assert.equal(isContactSubmission({}), false);
 });
 

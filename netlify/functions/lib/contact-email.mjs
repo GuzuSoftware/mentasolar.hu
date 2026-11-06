@@ -1,10 +1,11 @@
 export const CONTACT_FORM_NAME = 'kapcsolat';
+export const CONTACT_FORM_MARKER = 'mentasolar-form-id';
 export const NOTIFICATION_RECIPIENT = 'info@mentasolar.hu';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/u;
 
 export function isContactSubmission(data) {
-  return data?.['form-name'] === CONTACT_FORM_NAME;
+  return data?.[CONTACT_FORM_MARKER] === CONTACT_FORM_NAME;
 }
 
 export function isValidReplyTo(value) {
